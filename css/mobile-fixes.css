@@ -1,0 +1,291 @@
+/* Mobile font size fixes */
+@media screen and (max-width: 767px) {
+  /* Override CSS variables for mobile */
+  :root,
+  html,
+  body,
+  #indexpage {
+    --hc-xl: max(40px, 10vw) !important;
+  }
+  
+  /* Force override for specific elements */
+  .thirty-center {
+    --hc-xl: max(40px, 10vw) !important;
+  }
+  
+  /* Override global selectors with more specific selectors for title elements */
+  html body .hidcontent__title {
+    font-size: max(40px, 8vw) !important;
+  }
+  
+  html body .feature-header,
+  html body .feature-head {
+    font-size: max(24px, 5vw) !important;
+  }
+  
+  html body .hyper {
+    font-size: max(28px, 6vw) !important;
+  }
+  
+  html body .font-12 {
+    font-size: max(18px, 4vw) !important;
+  }
+  
+  html body .content__title {
+    font-size: max(24px, 5vw) !important;
+  }
+  
+  /* Specific fix for "What We Do" header */
+  html body .content__title .font-12 {
+    font-size: max(28px, 6vw) !important;
+  }
+  
+  html body .instagram-close {
+    font-size: max(24px, 1.5rem) !important;
+  }
+  
+  /* Fix for "Working Worldwide" text - with extremely high specificity */
+  html body .worldwide-text,
+  html body section.global-video-section div.worldwide-text,
+  html body div.worldwide-text,
+  html body .global-video-section .worldwide-text,
+  html[lang="en"] body .worldwide-text,
+  #indexpage .worldwide-text,
+  body.page-index .worldwide-text,
+  .worldwide-text[style*="font-size"],
+  div.worldwide-text[style*="font-size"],
+  .global-video-section .worldwide-text[style*="font-size"] {
+    font-size: max(8vw) !important;
+  }
+  
+
+  
+  /* Ensure the spans inside worldwide-text inherit the font size */
+  html body .worldwide-text span,
+  html body .worldwide-text > span,
+  html body #working-text,
+  html body #worldwide-text,
+  html body span#working-text,
+  html body span#worldwide-text {
+    font-size: inherit !important;
+  }
+  
+  /* Final override for worldwide-text */
+  body .worldwide-text,
+  .worldwide-text {
+    font-size: max(34px, 6vw) !important;
+  }
+  
+  /* Fix for "All Work" text - with extremely high specificity */
+  html body .thirty-center,
+  html body section .thirty-center,
+  html body div.thirty-center,
+  html[lang="en"] body .thirty-center,
+  #indexpage .thirty-center,
+  body.page-index .thirty-center,
+  html body .thirtyworks .thirty-center,
+  .thirty-center[style*="font-size"],
+  div.thirty-center[style*="font-size"],
+  section .thirty-center[style*="font-size"] {
+    font-size: max(32px, 6vw) !important;
+  }
+  
+  /* Ensure the spans inside thirty-center inherit the font size */
+  html body .thirty-center span,
+  html body .thirty-center > span,
+  html body .thirty-center span.gt-italic,
+  html body span.gt-italic {
+    font-size: inherit !important;
+  }
+  
+  /* Final override for thirty-center */
+  body .thirty-center,
+  .thirty-center {
+    font-size: max(40px, 10vw) !important;
+  }
+  
+  /* Ensure these selectors have higher specificity than the global * selector */
+  html body h1, 
+  html body h2, 
+  html body h3, 
+  html body h4, 
+  html body h5, 
+  html body h6 {
+    font-size: revert !important;
+  }
+  
+  /* Fix for any elements with vw-based font sizes */
+  html body [style*="font-size:"] {
+    font-size: max(14px, 1rem) !important;
+  }
+  
+  /* Disable any global font-size rules */
+  html body * {
+    font-size: initial;
+  }
+  
+  /* Then set specific font sizes for text elements */
+  html body p, 
+  html body span, 
+  html body a, 
+  html body button, 
+  html body input, 
+  html body textarea, 
+  html body label, 
+  html body div:not(.hidcontent__title):not(.feature-header):not(.feature-head):not(.hyper):not(.font-12):not(.content__title):not(.instagram-close):not(.worldwide-text):not(.thirty-center):not(.footer-map-header) {
+    font-size: max(14px, 1rem) !important;
+  }
+  
+  /* Contact form improvements for mobile */
+  .wrapper.get-in-touch {
+    padding: 10px 20px !important;
+    margin-bottom: 8vh !important;
+  }
+  
+  .field-box {
+    margin-bottom: 20px !important;
+    padding-top: 10px !important;
+  }
+  
+  .text-field {
+    width: 100% !important;
+    margin-left: 0 !important;
+    font-size: 16px !important; /* Prevent zoom on input focus on iOS */
+  }
+  
+  .submit-box {
+    height: 60px !important;
+    grid-template-columns: 70% 30% !important;
+  }
+  
+  .submit-box .text-field {
+    padding-left: 1rem !important;
+  }
+  
+  .socials-header {
+    padding: 20px 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  
+  .heading-2 {
+    font-size: max(24px, 6vw) !important;
+    margin-top: 10px !important;
+  }
+  
+  @media screen and (max-width: 480px) {
+    .wrapper.get-in-touch {
+      padding: 10px 15px !important;
+    }
+  }
+  
+  /* Footer improvements for mobile */
+  .footer {
+    padding: 2rem 1.5rem !important;
+    grid-template-rows: auto auto auto !important;
+    row-gap: 0;
+    padding-top: 5rem !important;
+    grid-template-areas: "footer-left" "footer-right" "footer-footer" !important;
+  }
+  
+  .footer-right {
+    margin-bottom: 0rem;
+    text-align: left;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .large-h, .large-c {
+    font-size: 20vw !important;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;;
+  }
+  
+  .large-c sup {
+    font-size: 5vw !important;
+    right: 0;
+    top: 0;
+  }
+  
+  .footer-left {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem;
+  }
+  
+  .footer-map-header {
+    font-size: max(18px, 1.2rem) !important;
+    margin-bottom: 1rem;
+    padding-inline-start: 0 !important;
+  }
+  
+  .footer li {
+    font-size: max(16px, 1.1rem) !important;
+    
+  }
+  
+  .footer-social, .footer-contact, .sitemap {
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+  
+  .sitemap {
+    order: 1;
+  }
+  
+  .footer-social {
+    order: 2;
+  }
+  
+  .footer-contact {
+    order: 3;
+  }
+  
+  .footer ul.flexme {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0 !important;
+  }
+  
+  .footer-contact ul {
+    padding-left: 0 !important;
+  }
+  
+  .footer-footer {
+    margin-top: 0;
+    padding: 1.5rem 0;
+    border-top: none !important;
+  }
+  
+  .footer-footer-right {
+    font-size: max(16px, 1.1rem) !important;
+    text-align: center;
+    width: 100%;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+  
+  .footer__link-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+  }
+  
+  .footer__link-top svg {
+    width: 30px;
+    height: 30px;
+  }
+}

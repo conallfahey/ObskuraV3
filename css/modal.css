@@ -1,0 +1,362 @@
+/* Vimeo Modal Styles */
+.vimeo-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.vimeo-modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+
+.vimeo-modal-content {
+    position: relative;
+    background-color: transparent;
+    margin: auto;
+    width: 90%;
+    max-width: 1300px;
+    box-sizing: border-box;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.vimeo-modal.active .vimeo-modal-content {
+    transform: scale(1);
+}
+
+.vimeo-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.vimeo-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.vimeo-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+    z-index: 1010;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+}
+
+.vimeo-close:hover,
+.vimeo-close:focus {
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.vimeo-close:active {
+    transform: scale(0.95);
+}
+
+.icon-close-modal {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: white;
+    stroke-width: 0.75;
+    opacity: 1;
+}
+
+/* Make grid items clickable with a hover effect */
+.grid__item {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.grid__item:hover {
+    transform: translateY(-5px);
+}
+
+.grid__item-img::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-left: 40px solid rgba(255, 255, 255, 0.8);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.grid__item:hover .grid__item-img::after {
+    opacity: 1;
+}
+
+/* Instagram Modal Styles */
+.instagram-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.instagram-modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+
+.instagram-modal-content {
+    position: relative;
+    background-color: #fff;
+    margin: auto;
+    width: 80%;
+    max-width: 500px;
+    box-sizing: border-box;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+    border-radius: 4px;
+}
+
+.instagram-modal.active .instagram-modal-content {
+    transform: scale(1);
+}
+
+.instagram-container {
+    position: relative;
+    padding-bottom: 120%; /* Square aspect ratio plus space for caption */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.instagram-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.instagram-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+    z-index: 1010;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+}
+
+.instagram-close:hover,
+.instagram-close:focus {
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.instagram-close:active {
+    transform: scale(0.95);
+}
+
+/* YouTube Modal Styles */
+.youtube-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.youtube-modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+
+.youtube-modal-content {
+    position: relative;
+    background-color: transparent;
+    margin: auto;
+    width: 80%;
+    max-width: 900px;
+    box-sizing: border-box;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.youtube-modal.active .youtube-modal-content {
+    transform: scale(1);
+}
+
+.youtube-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.youtube-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.youtube-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+    z-index: 1010;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+}
+
+.youtube-close:hover,
+.youtube-close:focus {
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.youtube-close:active {
+    transform: scale(0.95);
+}
+
+/* Vertical Vimeo Modal for L'imperatrice */
+.vimeo-vertical-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.vimeo-vertical-modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+
+.vimeo-vertical-modal-content {
+    position: relative;
+    background-color: transparent;
+    margin: auto;
+    width: 50%;
+    max-width: 650px;
+    box-sizing: border-box;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.vimeo-vertical-modal.active .vimeo-vertical-modal-content {
+    transform: scale(1);
+}
+
+.vimeo-vertical-container {
+    position: relative;
+    padding-bottom: 177.78%; /* 9:16 aspect ratio for vertical video */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.vimeo-vertical-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Mobile font size fixes to prevent text from becoming too small */
+@media (max-width: 767px) {
+    .instagram-close, .youtube-close, .vimeo-close {
+        font-size: max(24px, 1.5rem) !important;
+    }
+    
+    /* Ensure all modal text has minimum readable sizes, but exclude headings and title elements */
+    p, span, a, li, button, input, textarea, label, div:not(.hidcontent__title):not(.feature-header):not(.feature-head):not(.hyper):not(.font-12):not(.instagram-close):not(.youtube-close):not(.vimeo-close) {
+        font-size: max(12px, 1em) !important;
+    }
+}
