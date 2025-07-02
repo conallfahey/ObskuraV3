@@ -11,6 +11,14 @@
 	--s: 1;
 }
 
+/* Ensure proper font rendering on all devices including iOS */
+html, body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+	-webkit-text-size-adjust: 100%;
+}
+
 /* Assuming you're using a class .grid-container for your grid */
 .grid {
     padding: 0rem;

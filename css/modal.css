@@ -122,6 +122,91 @@
     opacity: 1;
 }
 
+/* Featured work thumbnails hover effect */
+.feature-outer-wrapper {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.feature-outer-wrapper:hover {
+    transform: translateY(-5px);
+}
+
+.feature-outer-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-left: 50px solid rgba(255, 255, 255, 0.8);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 5;
+}
+
+.feature-outer-wrapper:hover::after {
+    opacity: 1;
+}
+
+/* Vertical Vimeo Modal Styles */
+.vimeo-vertical-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.vimeo-vertical-modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+
+.vimeo-vertical-modal-content {
+    position: relative;
+    background-color: transparent;
+    margin: auto;
+    width: 90%;
+    max-width: 800px;
+    box-sizing: border-box;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.vimeo-vertical-modal.active .vimeo-vertical-modal-content {
+    transform: scale(1);
+}
+
+.vimeo-vertical-container {
+    position: relative;
+    padding-bottom: 177.78%; /* 9:16 aspect ratio for vertical video */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.vimeo-vertical-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
 /* Instagram Modal Styles */
 .instagram-modal {
     display: none;

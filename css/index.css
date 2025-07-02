@@ -766,9 +766,14 @@ details[open] .accordion-icon:after {
 details[open] {
   border-bottom: 1px solid var(--color-bg) !important;
 }
+
+.details-content {
+  padding: 0.5rem 0 1rem 0;
+}
 .col__content-txt span {
   font-family: var(--font-1);
-  font-size: .7rem;
+  font-size: 1rem; /* Increased from .7rem to 1rem */
+  line-height: 1.5;
 }
 .services-head :before {
   align-items: center;

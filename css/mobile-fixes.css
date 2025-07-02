@@ -1,5 +1,56 @@
 /* Mobile font size fixes */
 @media screen and (max-width: 767px) {
+  /* Improve text rendering on mobile devices */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
+  }
+  
+  /* Make navigation logo 30% smaller on mobile */
+  .est_nav img {
+    width: 38.5px !important; /* 55px * 0.7 = 38.5px (30% smaller) */
+    height: auto !important;
+  }
+  
+  /* Adjust menu button margin-top on mobile */
+  .menu_button_wrapper {
+    margin-top: 6.5px !important;
+  }
+  
+  /* Remove unwanted text shadows on mobile */
+  .frame a,
+  .nav_logo_parent,
+  .mainmenuUzi__item,
+  .sidemenuUzi__item,
+  .hero-largelogo,
+  .hyper,
+  .intro-title-inner,
+  .desc-wrapper,
+  .btn-text,
+  .content__title,
+  .worldwide-text,
+  .thirty-center,
+  h1, h2, h3, h4, h5, h6 {
+    text-shadow: none !important;
+  }
+  
+  /* Adjust hero-image height on mobile */
+  .hero-image {
+    height: 70vh !important; /* Changed from 50vh to 70vh for consistency */
+  }
+  
+  /* Fix letter spacing issues */
+  .worldwide-text,
+  .thirty-center,
+  .hero-largelogo,
+  .hyper,
+  .intro-title-inner {
+    letter-spacing: normal !important;
+    word-spacing: normal !important;
+  }
+
   /* Override CSS variables for mobile */
   :root,
   html,
@@ -24,7 +75,18 @@
   }
   
   html body .hyper {
-    font-size: max(28px, 6vw) !important;
+    font-size: max(36.4px, 7.8vw) !important; /* Increased by 30% from 28px to 36.4px and 6vw to 7.8vw */
+  }
+  
+  /* Make the hero logo bigger on mobile */
+  html body .hero-largelogo {
+    font-size: 11.7vw !important; /* Increased by 30% from 9vw */
+  }
+  
+  /* Ensure dropdown text is readable on mobile */
+  .col__content-txt span {
+    font-size: 0.9rem !important;
+    line-height: 1.4 !important;
   }
   
   html body .font-12 {
@@ -134,6 +196,56 @@
   html body label, 
   html body div:not(.hidcontent__title):not(.feature-header):not(.feature-head):not(.hyper):not(.font-12):not(.content__title):not(.instagram-close):not(.worldwide-text):not(.thirty-center):not(.footer-map-header) {
     font-size: max(14px, 1rem) !important;
+  }
+  
+  /* Adjust header video height on mobile */
+  .global-video-section {
+    height: 70vh !important; /* Changed from 60vh to 70vh for mobile */
+  }
+  
+  /* Adjust global-video for mobile */
+  .global-video {
+    height: 100% !important;
+  }
+  
+  .global-video video {
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+  
+  /* Adjust hero-main height on mobile to match */
+  .hero-main {
+    height: 70vh !important; /* Changed from 100vh to 70vh for mobile */
+  }
+  
+  /* Adjust service videos in grid items to maintain aspect ratio */
+  .service-video {
+    height: 100% !important;
+    max-height: 70vh !important;
+  }
+  
+  /* Adjust grid item videos for mobile */
+  .grid__item-video {
+    height: 100% !important;
+    max-height: 70vh !important;
+    object-fit: cover !important;
+  }
+  
+  /* Ensure grid item images maintain proper aspect ratio */
+  .grid__item-img {
+    max-height: 70vh !important;
+  }
+  
+  /* Adjust video-background for mobile */
+  .video-background {
+    height: 100% !important;
+    max-height: 70vh !important;
+  }
+  
+  .video-background video {
+    height: 100% !important;
+    max-height: 70vh !important;
+    object-fit: cover !important;
   }
   
   /* Contact form improvements for mobile */
