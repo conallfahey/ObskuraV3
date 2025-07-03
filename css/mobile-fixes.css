@@ -36,6 +36,15 @@
     text-shadow: none !important;
   }
   
+  /* Ensure 'Get In Touch' button text is black on mobile */
+  .btn-stack .btn-text {
+    color: var(--color-black) !important;
+}
+
+.btn-stack:hover .btn-text {
+    color: var(--color-text) !important;
+}
+  
   /* Adjust hero-image height on mobile */
   .hero-image {
     height: 70vh !important; /* Changed from 50vh to 70vh for consistency */
@@ -236,6 +245,49 @@
     max-height: 70vh !important;
   }
   
+  /* Make 'Why Choose Us' section display in two rows on mobile */
+  .ourservices {
+    grid-template-areas: 
+      "servicehead servicehead"
+      "serviceaccordion serviceaccordion" !important;
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-rows: auto 1fr !important;
+    padding: 40px 1.5rem !important;
+    margin-bottom: 2rem !important;
+  }
+  
+  .services-head {
+    grid-area: servicehead !important;
+    padding-left: 0 !important;
+    padding-top: 1rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .services-accordion {
+    grid-area: serviceaccordion !important;
+    width: 100% !important;
+  }
+  
+  /* Improve details and summary elements in the 'Why Choose Us' section */
+  .services-accordion details {
+    max-width: 100% !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .services-accordion summary {
+    padding: 0.8rem 0 !important;
+    font-size: 0.9rem !important;
+  }
+  
+  .services-accordion .details-content {
+    padding: 0.5rem 0 1.2rem 0 !important;
+  }
+  
+  .services-accordion .col__content-txt span {
+    font-size: 0.9rem !important;
+    line-height: 1.5 !important;
+  }
+  
   /* Adjust video-background for mobile */
   .video-background {
     height: 100% !important;
@@ -250,19 +302,24 @@
   
   /* Contact form improvements for mobile */
   .wrapper.get-in-touch {
-    padding: 10px 20px !important;
-    margin-bottom: 8vh !important;
+    padding: 20px 20px !important;
+    margin-bottom: 10vh !important;
   }
   
   .field-box {
-    margin-bottom: 20px !important;
-    padding-top: 10px !important;
+    margin-bottom: 25px !important;
+    padding-top: 15px !important;
   }
   
   .text-field {
     width: 100% !important;
     margin-left: 0 !important;
-    font-size: 16px !important; /* Prevent zoom on input focus on iOS */
+    font-size: 18px !important; /* Increased from 16px for better readability */
+  }
+  
+  .field-label {
+    font-size: 1em !important; /* Increased from 0.68em in index.css */
+    margin-bottom: 8px !important;
   }
   
   .submit-box {
@@ -270,8 +327,14 @@
     grid-template-columns: 70% 30% !important;
   }
   
+  .text-field.text-area {
+    font-size: 18px !important; /* Match the increased font size of other text fields */
+    height: 180px !important; /* Slightly increased height for better usability */
+  }
+  
   .submit-box .text-field {
     padding-left: 1rem !important;
+    font-size: 18px !important; /* Match the increased font size of other form elements */
   }
   
   .socials-header {

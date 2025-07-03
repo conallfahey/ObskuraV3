@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Vimeo video IDs for featured works
     const vimeoIds = {
-        'limperatrice': '824636539', // L'imperatrice
+        'limperatrice': '1053953559', // L'imperatrice
         'bobmoses': '824804225'      // Bob Moses
     };
     
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Instagram post URLs
     const instagramUrls = {
-        'bobmoses': 'https://www.instagram.com/p/C3-Ht-5Ixj-/' // Bob Moses
+        'bobmoses': 'https://www.instagram.com/reel/CuAQJUxsYl5/' // Bob Moses
     };
     
     // Add click event to each featured work thumbnail

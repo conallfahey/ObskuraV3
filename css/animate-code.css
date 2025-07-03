@@ -141,97 +141,95 @@ body #cdawrap {
 }
 
 .uzijoint {
-    height: 1px;
     position: absolute;
-    right: -1px;
-    rotate: 45deg;
-    top: -1px;
-    width: 1px;
+    right: -4px;
+    top: -4px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 1px solid var(--color-black);
+    background: transparent;
     z-index: 1
 }
 
 .uzijoint:before {
-    height: 9px;
-    top: -4px;
-    width: 1px
+    display: none
 }
 
 .uzijoint:after,
 .uzijoint:before {
-    background: var(--color-black);
+    background: transparent;
     content: "";
     position: absolute
 }
 
 .uzijoint:after {
-    height: 1px;
-    left: -4px;
-    width: 9px
+    display: none
 }
 
 .uzijoint-left {
-    top: -1px
+    top: -4px;
+    left: -4px;
+    right: auto
 }
 
 .uzijoint-bottom-left,
 .uzijoint-left {
-    height: 1px;
-    left: -1px;
     position: absolute;
-    rotate: 45deg;
-    width: 1px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 1px solid var(--color-black);
+    background: transparent;
     z-index: 1
 }
 
 .uzijoint-bottom-left {
-    bottom: -1px
+    bottom: -4px;
+    left: -4px;
+    top: auto
 }
 
 .uzijoint-bottom-right {
-    bottom: -1px;
-    height: 1px;
+    bottom: -4px;
+    right: -4px;
+    top: auto;
     position: absolute;
-    right: -1px;
-    rotate: 45deg;
-    width: 1px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 1px solid var(--color-black);
+    background: transparent;
     z-index: 1
 }
 
 .uzijoint-bottom-left:before {
-    height: 9px;
-    top: -4px;
-    width: 1px
+    display: none
 }
 
 .uzijoint-bottom-left:after,
 .uzijoint-bottom-left:before {
-    background: var(--color-black);
+    background: transparent;
     content: "";
     position: absolute
 }
 
 .uzijoint-bottom-left:after {
-    height: 1px;
-    left: -4px;
-    width: 9px
+    display: none
 }
 
 .uzijoint-bottom-right:before {
-    background: var(--color-black);
+    background: transparent;
     content: "";
-    height: 9px;
-    position: absolute;
-    top: -4px;
-    width: 1px
+    display: none;
+    position: absolute
 }
 
 .uzijoint-bottom-right:after {
-    background: var(--color-black);
+    background: transparent;
     content: "";
-    height: 1px;
-    position: absolute;
-    right: -4px;
-    width: 9px
+    display: none;
+    position: absolute
 }
 
 @media (max-width:767px) {
