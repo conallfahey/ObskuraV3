@@ -155,6 +155,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Force a reflow to ensure the content is rendered
                 instagramContainer.offsetHeight;
                 
+                // Reset modal state before opening
+                instagramModal.style.pointerEvents = 'auto';
+                
                 // First load the Instagram script, then show the modal
                 // Remove any existing Instagram script to avoid conflicts
                 const existingScripts = document.querySelectorAll('script[src*="instagram.com/embed.js"]');
@@ -348,6 +351,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Force a reflow to ensure the content is rendered
                 instagramContainer.offsetHeight;
                 
+                // Reset modal state before opening
+                instagramModal.style.pointerEvents = 'auto';
+                
                 console.log('Adding active class to modal for Summer Smash');
                 instagramModal.classList.add('active');
                 lenis.stop();
@@ -440,11 +446,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add click event to Instagram close button
     instagramCloseBtn.addEventListener('click', () => {
         console.log('Instagram close button clicked');
+        
+        // Immediately remove active class and disable pointer events to prevent reopening
         instagramModal.classList.remove('active');
+        instagramModal.style.pointerEvents = 'none';
+        
+        // Clear Instagram embed scripts to prevent reprocessing
+        const existingScripts = document.querySelectorAll('script[src*="instagram.com/embed.js"]');
+        existingScripts.forEach(script => script.remove());
+        
         // Add a small delay before clearing content to ensure transitions complete
         setTimeout(() => {
             instagramContainer.innerHTML = ''; // Clear iframe content
             lenis.start();
+            
+            // Re-enable pointer events after modal is fully closed
+            setTimeout(() => {
+                instagramModal.style.pointerEvents = 'auto';
+            }, 100);
         }, 500); // Match this with the CSS transition duration
     });
     
@@ -458,11 +477,24 @@ document.addEventListener('DOMContentLoaded', () => {
         // Only close if clicking directly on the modal background, not on any child elements
         if (e.target === instagramModal) {
             console.log('Instagram modal background clicked - closing modal');
+            
+            // Immediately remove active class and disable pointer events to prevent reopening
             instagramModal.classList.remove('active');
+            instagramModal.style.pointerEvents = 'none';
+            
+            // Clear Instagram embed scripts to prevent reprocessing
+            const existingScripts = document.querySelectorAll('script[src*="instagram.com/embed.js"]');
+            existingScripts.forEach(script => script.remove());
+            
             // Add a small delay before clearing content to ensure transitions complete
             setTimeout(() => {
                 instagramContainer.innerHTML = ''; // Clear iframe content
                 lenis.start();
+                
+                // Re-enable pointer events after modal is fully closed
+                setTimeout(() => {
+                    instagramModal.style.pointerEvents = 'auto';
+                }, 100);
             }, 500); // Match this with the CSS transition duration
         } else {
             console.log('Instagram modal clicked but not on background, target:', e.target);
@@ -481,9 +513,23 @@ document.addEventListener('DOMContentLoaded', () => {
         if (instagramModal.classList.contains('active') && 
             (modalStyle.opacity < 0.5 || modalStyle.visibility === 'hidden')) {
             console.log('Failsafe: Fully closing Instagram modal');
+            
+            // Immediately remove active class and disable pointer events to prevent reopening
             instagramModal.classList.remove('active');
+            instagramModal.style.pointerEvents = 'none';
+            
+            // Clear Instagram embed scripts to prevent reprocessing
+            const existingScripts = document.querySelectorAll('script[src*="instagram.com/embed.js"]');
+            existingScripts.forEach(script => script.remove());
+            
+            // Clear content and restart scrolling
             instagramContainer.innerHTML = '';
             lenis.start();
+            
+            // Re-enable pointer events after a short delay
+            setTimeout(() => {
+                instagramModal.style.pointerEvents = 'auto';
+            }, 100);
         }
     });
     

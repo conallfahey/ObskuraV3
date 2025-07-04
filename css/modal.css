@@ -219,8 +219,9 @@
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.9);
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
     visibility: hidden;
+    will-change: opacity, visibility;
 }
 
 .instagram-modal.active {
@@ -246,6 +247,8 @@
     justify-content: center;
     gap: 20px;
     z-index: 1001;
+    will-change: transform;
+    pointer-events: auto;
 }
 
 .instagram-modal.active .instagram-modal-content {
