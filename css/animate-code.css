@@ -40,7 +40,7 @@ body #cdawrap {
 
 .grid__item-img {
     aspect-ratio: 1;
-    border-radius: 1.6rem;
+    border-radius: 0; /* Removed rounded edges */
     display: grid;
     overflow: hidden;
     place-items: center;
@@ -89,8 +89,23 @@ body #cdawrap {
     transition: opacity .3s ease
 }
 
-.grid__item-img:hover .grid__item-img-deco {
+.grid__item:not(.grid-itemz) .grid__item-img:hover .grid__item-img-deco {
     opacity: 1
+}
+
+/* Completely disable hover and click interactions for grid-itemz */
+.grid-itemz {
+    pointer-events: none;
+}
+
+/* Ensure links inside grid-itemz are also disabled */
+.grid-itemz a {
+    pointer-events: none;
+    cursor: default;
+}
+
+.grid-itemz .grid__item-img:hover .grid__item-img-deco {
+    opacity: 0
 }
 
 .grid__item-video {

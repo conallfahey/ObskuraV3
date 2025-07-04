@@ -212,7 +212,7 @@ span.frame__demos-item:not(:first-child) {
 	width: 100%;
 	height: auto;
 	aspect-ratio: var(--img-ratio);
-	border-radius: 12px;
+	border-radius: 0; /* Removed rounded edges */
 }
 
 .grid__item-img-inner {

@@ -219,7 +219,8 @@
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.9);
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.5s ease;
+    visibility: hidden;
 }
 
 .instagram-modal.active {
@@ -227,18 +228,24 @@
     justify-content: center;
     align-items: center;
     opacity: 1;
+    visibility: visible;
 }
 
 .instagram-modal-content {
     position: relative;
-    background-color: #fff;
+    background-color: transparent;
     margin: auto;
-    width: 80%;
-    max-width: 500px;
+    width: 90%;
+    max-width: 1100px;
     box-sizing: border-box;
     transform: scale(0.8);
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease;
     border-radius: 4px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    z-index: 1001;
 }
 
 .instagram-modal.active .instagram-modal-content {
@@ -247,10 +254,28 @@
 
 .instagram-container {
     position: relative;
-    padding-bottom: 120%; /* Square aspect ratio plus space for caption */
-    height: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    min-height: 600px; /* Ensure container has height while loading */
+}
+
+.instagram-post {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    background-color: #fff;
+    border-radius: 4px;
     overflow: hidden;
-    max-width: 100%;
+    min-height: 600px; /* Ensure post has height while loading */
+}
+
+@media (min-width: 992px) {
+    .instagram-post {
+        width: calc(50% - 10px);
+    }
 }
 
 .instagram-container iframe {
