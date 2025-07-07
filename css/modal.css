@@ -247,8 +247,6 @@
     justify-content: center;
     gap: 20px;
     z-index: 1001;
-    will-change: transform;
-    pointer-events: auto;
 }
 
 .instagram-modal.active .instagram-modal-content {

@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         's2puu2gnXzM', // Pigeons Playing Ping Pong 
         'r0BK6JIZNP4', // Summer Smash - LIVE @ Summer Smash Day 1
         'lRE41jJZLB8', // Noel Miller (AUS Tour)
-        'CdhqVtpR2ts', // Cannons
+        'Uk_HWMKICVU', // Cannons
         'tL2QPNxr4NY', // Paris Texas
         'kOr-6L4gnhg', // Noel Miller (Philadelphia)
         'IF0Cnj-zmO4', // Lunar Tide - using "Wen - Lunar Tide Cycle" video
@@ -157,6 +157,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Reset modal state before opening
                 instagramModal.style.pointerEvents = 'auto';
+                
+                // Reset visibility and opacity before adding active class
+                instagramModal.style.visibility = 'visible';
+                instagramModal.style.opacity = '1';
                 
                 // First load the Instagram script, then show the modal
                 // Remove any existing Instagram script to avoid conflicts
@@ -351,10 +355,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Force a reflow to ensure the content is rendered
                 instagramContainer.offsetHeight;
                 
-                // Reset modal state before opening
-                instagramModal.style.pointerEvents = 'auto';
-                
                 console.log('Adding active class to modal for Summer Smash');
+                // Reset visibility and opacity before adding active class
+                instagramModal.style.visibility = 'visible';
+                instagramModal.style.opacity = '1';
+                
                 instagramModal.classList.add('active');
                 lenis.stop();
                 
@@ -405,7 +410,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log('Opening YouTube modal for item', index); // Debug log
                 
                 const youtubeId = youtubeIds[index] || 'dQw4w9WgXcQ';
-                const iframe = `<iframe src="https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&origin=${window.location.origin}" allow="autoplay; fullscreen" frameborder="0" allowfullscreen></iframe>`;
+                const iframe = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${youtubeId}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
                 
                 youtubeContainer.innerHTML = iframe;
                 youtubeModal.classList.add('active');
@@ -447,24 +452,24 @@ document.addEventListener('DOMContentLoaded', () => {
     instagramCloseBtn.addEventListener('click', () => {
         console.log('Instagram close button clicked');
         
-        // Immediately remove active class and disable pointer events to prevent reopening
+        // First set visibility to hidden to ensure proper transition
+        instagramModal.style.visibility = 'hidden';
+        instagramModal.style.opacity = '0';
+        
+        // Then remove active class
         instagramModal.classList.remove('active');
-        instagramModal.style.pointerEvents = 'none';
         
-        // Clear Instagram embed scripts to prevent reprocessing
-        const existingScripts = document.querySelectorAll('script[src*="instagram.com/embed.js"]');
-        existingScripts.forEach(script => script.remove());
-        
-        // Add a small delay before clearing content to ensure transitions complete
+        // Clear content to prevent reprocessing
         setTimeout(() => {
-            instagramContainer.innerHTML = ''; // Clear iframe content
-            lenis.start();
+            instagramContainer.innerHTML = '';
             
-            // Re-enable pointer events after modal is fully closed
-            setTimeout(() => {
-                instagramModal.style.pointerEvents = 'auto';
-            }, 100);
-        }, 500); // Match this with the CSS transition duration
+            // Clear Instagram embed scripts to prevent reprocessing
+            const existingScripts = document.querySelectorAll('script[src*="instagram.com/embed.js"]');
+            existingScripts.forEach(script => script.remove());
+        }, 300); // Short delay to ensure transition completes
+        
+        // Restart scrolling
+        lenis.start();
     });
     
     // Prevent clicks on the Instagram modal content from closing the modal
@@ -478,24 +483,24 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === instagramModal) {
             console.log('Instagram modal background clicked - closing modal');
             
-            // Immediately remove active class and disable pointer events to prevent reopening
+            // First set visibility to hidden to ensure proper transition
+            instagramModal.style.visibility = 'hidden';
+            instagramModal.style.opacity = '0';
+            
+            // Then remove active class
             instagramModal.classList.remove('active');
-            instagramModal.style.pointerEvents = 'none';
             
-            // Clear Instagram embed scripts to prevent reprocessing
-            const existingScripts = document.querySelectorAll('script[src*="instagram.com/embed.js"]');
-            existingScripts.forEach(script => script.remove());
-            
-            // Add a small delay before clearing content to ensure transitions complete
+            // Clear content to prevent reprocessing
             setTimeout(() => {
-                instagramContainer.innerHTML = ''; // Clear iframe content
-                lenis.start();
+                instagramContainer.innerHTML = '';
                 
-                // Re-enable pointer events after modal is fully closed
-                setTimeout(() => {
-                    instagramModal.style.pointerEvents = 'auto';
-                }, 100);
-            }, 500); // Match this with the CSS transition duration
+                // Clear Instagram embed scripts to prevent reprocessing
+                const existingScripts = document.querySelectorAll('script[src*="instagram.com/embed.js"]');
+                existingScripts.forEach(script => script.remove());
+            }, 300); // Short delay to ensure transition completes
+            
+            // Restart scrolling
+            lenis.start();
         } else {
             console.log('Instagram modal clicked but not on background, target:', e.target);
         }
@@ -504,33 +509,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Prevent clicks inside the Instagram container from closing the modal
     instagramContainer.addEventListener('click', (e) => {
         e.stopPropagation();
-    });
-    
-    // Add a failsafe to ensure modal is fully closed when clicking anywhere on the document
-    document.addEventListener('click', (e) => {
-        // Check if modal is partially active (has active class but should be closed)
-        const modalStyle = window.getComputedStyle(instagramModal);
-        if (instagramModal.classList.contains('active') && 
-            (modalStyle.opacity < 0.5 || modalStyle.visibility === 'hidden')) {
-            console.log('Failsafe: Fully closing Instagram modal');
-            
-            // Immediately remove active class and disable pointer events to prevent reopening
-            instagramModal.classList.remove('active');
-            instagramModal.style.pointerEvents = 'none';
-            
-            // Clear Instagram embed scripts to prevent reprocessing
-            const existingScripts = document.querySelectorAll('script[src*="instagram.com/embed.js"]');
-            existingScripts.forEach(script => script.remove());
-            
-            // Clear content and restart scrolling
-            instagramContainer.innerHTML = '';
-            lenis.start();
-            
-            // Re-enable pointer events after a short delay
-            setTimeout(() => {
-                instagramModal.style.pointerEvents = 'auto';
-            }, 100);
-        }
     });
     
     // Add click event to YouTube close button

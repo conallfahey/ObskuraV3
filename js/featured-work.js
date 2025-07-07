@@ -131,6 +131,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         `;
                         
                         instagramContainer.innerHTML = instagramEmbed;
+                        instagramModal.style.visibility = 'visible';
+                        instagramModal.style.opacity = '1';
                         instagramModal.classList.add('active');
                         document.body.style.overflow = 'hidden';
                         
@@ -148,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         console.log('Opening YouTube modal for Bob Moses');
                         
                         const youtubeId = youtubeIds[workId] || 'L_jWHffIx5E';
-                        const iframe = `<iframe src="https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&origin=${window.location.origin}" allow="autoplay; fullscreen" frameborder="0" allowfullscreen></iframe>`;
+                        const iframe = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${youtubeId}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
                         
                         youtubeContainer.innerHTML = iframe;
                         youtubeModal.classList.add('active');
@@ -160,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.log('Opening YouTube modal for unknown work');
                     
                     const youtubeId = youtubeIds[workId] || 'dQw4w9WgXcQ'; // Default video
-                    const iframe = `<iframe src="https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&origin=${window.location.origin}" allow="autoplay; fullscreen" frameborder="0" allowfullscreen></iframe>`;
+                    const iframe = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${youtubeId}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
                     
                     youtubeContainer.innerHTML = iframe;
                     youtubeModal.classList.add('active');
@@ -208,17 +210,35 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Add click event to Instagram close button
     instagramCloseBtn.addEventListener('click', () => {
+        instagramModal.style.visibility = 'hidden';
+        instagramModal.style.opacity = '0';
         instagramModal.classList.remove('active');
-        instagramContainer.innerHTML = ''; // Clear iframe content
-        document.body.style.overflow = ''; // Restore scrolling
+        
+        // Delay clearing content until transition completes
+        setTimeout(() => {
+            instagramContainer.innerHTML = ''; // Clear iframe content
+            // Remove any existing Instagram embed scripts
+            const existingScripts = document.querySelectorAll('script[src*="instagram.com/embed.js"]');
+            existingScripts.forEach(script => script.remove());
+            document.body.style.overflow = ''; // Restore scrolling
+        }, 300);
     });
 
     // Add click event to Instagram modal background to close it
     instagramModal.addEventListener('click', (e) => {
         if (e.target === instagramModal) {
+            instagramModal.style.visibility = 'hidden';
+            instagramModal.style.opacity = '0';
             instagramModal.classList.remove('active');
-            instagramContainer.innerHTML = ''; // Clear iframe content
-            document.body.style.overflow = ''; // Restore scrolling
+            
+            // Delay clearing content until transition completes
+            setTimeout(() => {
+                instagramContainer.innerHTML = ''; // Clear iframe content
+                // Remove any existing Instagram embed scripts
+                const existingScripts = document.querySelectorAll('script[src*="instagram.com/embed.js"]');
+                existingScripts.forEach(script => script.remove());
+                document.body.style.overflow = ''; // Restore scrolling
+            }, 300);
         }
     });
     
