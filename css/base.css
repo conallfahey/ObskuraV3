@@ -141,7 +141,7 @@ a:focus-visible {
     text-align: left;
 	position: relative;
 	margin-top: 6rem;
-
+	margin-bottom: 3rem; /* Added margin-bottom to create more space above the grid */
 }
 
 .title-arrow-icon {
@@ -196,7 +196,7 @@ span.frame__demos-item:not(:first-child) {
     display: grid;
     grid-gap: 4rem;
     position: relative;
-    margin: 2.5vh auto 25vh; /* Halve the top and bottom margins from 5vh/50vh to 2.5vh/25vh */
+    margin: 10vh auto 25vh; /* Increased top margin from 6vh to 10vh to start even lower */
 }
 
 .grid__item {

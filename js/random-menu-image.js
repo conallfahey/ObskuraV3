@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'img/photo/BenBohmer_SaltShed.jpg',
         'img/photo/Bicep_CRSSD.jpg',
         'img/photo/BobMosesElectricForest.jpg',
-        'img/photo/ChanceTheRapperBW.jpg',
+        // 'img/photo/ChanceTheRapperBW.jpg', // Excluded studio portrait
         'img/photo/ChaseStatus_AragonTheater.jpg',
         'img/photo/ClaudeVonstrokeChicago.jpg',
         'img/photo/DEADSHED_SaltShed.jpg',
@@ -17,12 +17,12 @@ document.addEventListener('DOMContentLoaded', function() {
         'img/photo/DenzelCurry_RivieraTheater.jpg',
         'img/photo/ElderBrook_SaltShed(2).jpg',
         'img/photo/ElderBrook_SaltShed.jpg',
-        'img/photo/FlyNari.jpg',
+        // 'img/photo/FlyNari.jpg', // Excluded studio portrait
         'img/photo/LSZEE-Night2-3.jpg',
         'img/photo/LSZEE_SaltShed.jpg',
         'img/photo/LTC.jpg',
         'img/photo/LYNY-1.jpg',
-        'img/photo/M.E.H..jpg',
+        // 'img/photo/M.E.H..jpg', // Excluded studio portrait
         'img/photo/Mamitas_WindyCitySmokeout.jpg',
         'img/photo/Mamitas_WindyCitySmokeout2.jpg',
         'img/photo/MoodyGoodRadius-17.jpg',

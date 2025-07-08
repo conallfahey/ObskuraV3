@@ -245,8 +245,10 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     gap: 20px;
     z-index: 1001;
+    height: 100%;
 }
 
 .instagram-modal.active .instagram-modal-content {
@@ -258,9 +260,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     gap: 20px;
     width: 100%;
     min-height: 600px; /* Ensure container has height while loading */
+    margin: 0 auto;
+    align-self: center;
 }
 
 .instagram-post {
@@ -271,6 +276,10 @@
     border-radius: 4px;
     overflow: hidden;
     min-height: 600px; /* Ensure post has height while loading */
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @media (min-width: 992px) {
