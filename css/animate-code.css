@@ -40,7 +40,7 @@ body #cdawrap {
 
 .grid__item-img {
     aspect-ratio: 1;
-    border-radius: 0; /* Removed rounded edges */
+    border-radius: 12px; /* Added rounded edges */
     display: grid;
     overflow: hidden;
     place-items: center;
@@ -55,7 +55,8 @@ body #cdawrap {
     height: 100%;
     object-fit: cover;
     object-position: center;
-    width: 100%
+    width: 100%;
+    border-radius: 12px; /* Added rounded edges */
 }
 
 .grid__item-img:after {
@@ -115,7 +116,20 @@ body #cdawrap {
     object-fit: cover;
     position: absolute;
     top: -101%;
-    width: 100%
+    width: 100%;
+    border-radius: 12px; /* Added rounded edges */
+}
+
+.grid__item-img .video-background.service-video {
+    border-radius: 12px; /* Added rounded edges */
+    overflow: hidden;
+}
+
+.grid__item-img .video-background.service-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px; /* Added rounded edges */
 }
 
 .grid__item-img svg {

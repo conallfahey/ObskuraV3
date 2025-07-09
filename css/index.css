@@ -2019,6 +2019,10 @@ html, body {
   height: 100%;
   width: 100%;
   position: relative;
+  border-radius: 12px; /* Added rounded edges */
+  overflow: hidden;
+  background-size: cover !important;
+  background-position: center !important;
 }
 
 .feature-outer-wrapper::before {
@@ -2031,6 +2035,7 @@ html, body {
   background-color: rgba(0, 0, 0, 0.2);
   z-index: 0;
   pointer-events: none;
+  border-radius: 12px; /* Added rounded edges */
 }
 .feature-inner-wrapper {
   width: 100%;
@@ -2042,6 +2047,7 @@ html, body {
   opacity: 100%;
   position: relative;
   z-index: 1;
+  border-radius: 8px; /* Added rounded edges */
 }
 
 /* .feature-inner-wrapper:hover {
@@ -2334,6 +2340,7 @@ html, body {
   height: 100%;
   z-index: 1;
   overflow: hidden;
+  border-radius: 13px;
 }
 
 .service-video video {
@@ -2346,6 +2353,8 @@ html, body {
 .grid__item-img {
   position: relative;
   overflow: hidden;
+  border-radius: 13px;
+  
 }
 
 .vanta-clouds-bg {
