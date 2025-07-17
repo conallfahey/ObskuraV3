@@ -425,6 +425,7 @@ a:focus-visible {
     min-height: auto;
     max-height: none;
     padding: 1.5rem;
+    margin-top: 2rem; /* Added larger margin above the Who are we section on mobile */
   }
   .intro-title:before {
     left: 0;
