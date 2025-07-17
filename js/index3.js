@@ -15,7 +15,8 @@ const initSmoothScrolling = () => {
 	// Instantiate the Lenis object with specified properties
 	lenis = new Lenis({
 		lerp: 0.15, // Lower values create a smoother scroll effect
-		smoothWheel: true // Enables smooth scrolling for mouse wheel events
+		smoothWheel: true, // Enables smooth scrolling for mouse wheel events
+		anchors: true // Enable smooth scrolling for anchor links (hash navigation)
 	});
 
 	// Update ScrollTrigger each time the user scrolls
@@ -85,19 +86,23 @@ preloadImages('.grid__item-img-inner').then(() => {
 	scroll();
 	document.body.classList.remove('loading');
 	
-	// Add event listener for "Get In Touch" button after DOM is ready
-	const getInTouchButton = document.getElementById('get-in-touch-button');
-	if (getInTouchButton) {
-		getInTouchButton.addEventListener('click', (e) => {
-			e.preventDefault();
-			const contactSection = document.getElementById('contact-section');
-			if (contactSection) {
-				const offsetTop = contactSection.offsetTop - 80; // 80px offset to prevent scrolling too far
-				window.scrollTo({
-					top: offsetTop,
-					behavior: 'smooth'
+	// Check if there's a hash in the URL and scroll to that section after a short delay
+	if (window.location.hash) {
+		const targetId = window.location.hash.substring(1); // Remove the # character
+		const targetElement = document.getElementById(targetId);
+		
+		if (targetElement) {
+			// Small delay to ensure everything is loaded and Lenis is ready
+			setTimeout(() => {
+				const offsetTop = targetElement.offsetTop - 80; // 80px offset for proper positioning
+				lenis.scrollTo(offsetTop, {
+					duration: 1.2,
+					easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
 				});
-			}
-		});
+			}, 500);
+		}
 	}
+	
+	// The "Get In Touch" button now uses an href="#getintouch" for navigation
+	// Lenis will handle smooth scrolling for all anchor links with the anchors:true setting
 });

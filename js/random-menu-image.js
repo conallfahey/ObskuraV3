@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', function() {
         'img/photo/LTC.jpg',
         'img/photo/LYNY-1.jpg',
         // 'img/photo/M.E.H..jpg', // Excluded studio portrait
-        'img/photo/Mamitas_WindyCitySmokeout.jpg',
-        'img/photo/Mamitas_WindyCitySmokeout2.jpg',
+        // 'img/photo/Mamitas_WindyCitySmokeout.jpg', // Excluded Mamitas photos
+        // 'img/photo/Mamitas_WindyCitySmokeout2.jpg', // Excluded Mamitas photos
         'img/photo/MoodyGoodRadius-17.jpg',
         'img/photo/MoodyGood_ElectricForest.jpg',
         'img/photo/NyeAragon.jpg',
@@ -44,5 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (menuItemMap) {
         const randomImage = getRandomImage();
         menuItemMap.style.backgroundImage = `url(${randomImage})`;
+        menuItemMap.style.backgroundPosition = 'center center';
+        menuItemMap.style.opacity = '0.85';
     }
 });

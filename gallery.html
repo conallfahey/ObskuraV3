@@ -7,12 +7,18 @@
 		<meta name="description" content="Photography gallery showcasing Obskura Studios' work" />
 		<meta name="keywords" content="photography, gallery, obskura, portfolio, images" />
 		<meta name="author" content="Obskura" />
-		<link rel="shortcut icon" href="">
+		<link rel="apple-touch-icon" href="favicon/apple-touch-icon.png" />
+		<link rel="icon" href="favicon/favicon-32x32.png" type="image/png" sizes="32x32" />
+		<link rel="icon" href="favicon/favicon-16x16.png" type="image/png" sizes="16x16" />
+		<link rel="shortcut icon" href="favicon/favicon.ico" />
+		<link rel="icon" href="favicon/android-chrome-192x192.png" sizes="192x192" />
+		<link rel="icon" href="favicon/android-chrome-512x512.png" sizes="512x512" />
 		<link rel="stylesheet" href="https://use.typekit.net/pdt4wgm.css">
 		<link rel="stylesheet" type="text/css" href="css/base.css" />
 		<link rel="stylesheet" type="text/css" href="css/modal.css" />
 		<link rel="stylesheet" href="css/multi-menu.css" />
 		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" href="css/navigation.css" />
 		<link rel="stylesheet" href="css/gallery.css" />
 		<link rel="stylesheet" href="css/mobile-fixes.css" />
 		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
@@ -57,12 +63,19 @@
 	<body class="demo-3 loading">
 		<main>
 			<div class="nav">
-				<div class="padding_global nav_padding">
+				<div class="nav_padding">
 					<div class="nav_grid">
-						<div class="nav_logo_parent" onclick="window.open('index')">Obskura</div>
-						<div class="est_nav">
-						  <img src="assets/svg/ObskuraWhite150ppi-05.png" alt="">
+						<div class="nav_logo_parent" onclick="window.open('index')">
+							<div class="nav_logo_text">Obskura</div>
 						</div>
+						<img src="assets/svg/ObskuraWhite150ppi-05.png" loading="lazy" alt="" class="nav_centered_logo">
+						<div class="est_nav">
+						  <img src="images/logo.svg" loading="lazy" alt="" class="image-2">
+						</div>
+					</div>
+					<div class="below-line"></div>
+				</div>
+			</div>
 						<link rel="stylesheet" href="css/multi-menu.css" /><svg class="hidden">
 						  <symbol id="icon-arrow" viewBox="0 0 24 24">
 							<title>arrow</title>

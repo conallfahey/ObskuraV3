@@ -179,7 +179,6 @@ a:focus-visible {
 	width: 2rem;
 	display: block;
 	flex: none;
-	border-radius: 10px;
 	aspect-ratio: 1;
 	display: grid;
 	place-items: center;
@@ -188,6 +187,7 @@ a:focus-visible {
 span.frame__demos-item:not(:first-child) {
 	border-color: #fff;
 }
+
 .grid {
     padding: 2rem 4rem; /* Increased side margins */
     width: 100%;
@@ -196,7 +196,7 @@ span.frame__demos-item:not(:first-child) {
     display: grid;
     grid-gap: 4rem;
     position: relative;
-    margin: 10vh auto 25vh; /* Increased top margin from 6vh to 10vh to start even lower */
+    margin: 7vh auto 25vh; /* Reduced top margin by 30% from 10vh to 7vh */
 }
 
 .grid__item {
@@ -212,15 +212,18 @@ span.frame__demos-item:not(:first-child) {
 	width: 100%;
 	height: auto;
 	aspect-ratio: var(--img-ratio);
-	border-radius: 0; /* Removed rounded edges */
+	border-radius: 12px; /* Added rounded edges */
 }
 
 .grid__item-img-inner {
 	width: 100%;
 	height: 100%;
-	background-position: 50%;
+	background-position: center center;
 	background-size: cover;
+	background-repeat: no-repeat;
 	position: relative;
+	border-radius: 12px; /* Added rounded corners to thumbnails */
+	overflow: hidden; /* Ensure content doesn't overflow rounded corners */
 }
 
 /* Grid item caption styling */
@@ -238,7 +241,6 @@ span.frame__demos-item:not(:first-child) {
 	letter-spacing: -0.025em;
 	text-shadow: 0 0 0 transparent;
 	font-size: 1rem;
-	line-height: 1.2;
 }
 
 
@@ -249,14 +251,12 @@ span.frame__demos-item:not(:first-child) {
 	font-family: var(--font-2), sans-serif; /* Changed to MonumentExtended */
 	letter-spacing: 1px;
 	font-size: 0.8rem; /* Adjust as needed */
-	line-height: 1.2;
 }
 
 .grid__item-caption h3 {
 	font-family: var(--font-2), sans-serif; /* Monument Extended */
 	font-weight: normal;
 	letter-spacing: -0.025em;
-	line-height: 1.2;
 }
 
 .outro {
@@ -277,7 +277,6 @@ span.frame__demos-item:not(:first-child) {
 
 .card__image {
 	display: block;
-	border-radius: 7px;
 	background-size: cover;
 	background-position: 50% 50%;
 	width: 100%;

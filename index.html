@@ -7,10 +7,12 @@
     <meta name="description" content="Obskura" />
     <meta name="keywords" content="Welcome, Obskura" />
     <meta name="author" content="cons" />
-    <link rel="apple-touch-icon" href="/assets/svg/svg-path.png" />
-    <link rel="icon" href="/assets/svg/svg-path.png" type="image/png" sizes="32x32" />
-    <link rel="icon" href="/assets/svg/svg-path.png" type="image/png" sizes="32x32" />
-    <link id="browser_favicon" rel="icon" href="/assets/svg/svg-path.png" sizes="196x196" />
+    <link rel="apple-touch-icon" href="favicon/apple-touch-icon.png" />
+    <link rel="icon" href="favicon/favicon-32x32.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="favicon/favicon-16x16.png" type="image/png" sizes="16x16" />
+    <link rel="shortcut icon" href="favicon/favicon.ico" />
+    <link rel="icon" href="favicon/android-chrome-192x192.png" sizes="192x192" />
+    <link rel="icon" href="favicon/android-chrome-512x512.png" sizes="512x512" />
     <link rel="manifest" href="includes/site.webmanifest" />
     <meta name="theme-color" content="#fc1234" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
@@ -32,6 +34,7 @@
     <script src="js/library/vue.min.js"></script>
     <script src="js/library/gsap.min.js"></script>
     <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/navigation.css" />
     <link rel="stylesheet" href="css/transition.css" />
     <link rel="stylesheet" href="css/mobile-fixes.css" />
     <link rel="stylesheet" href="css/modal.css" />
@@ -144,11 +147,14 @@
     </main>
     <script src="includes/preloader.js"></script>
     <div class="nav">
-      <div class="padding_global nav_padding">
+      <div class="nav_padding">
         <div class="nav_grid">
-          <div class="nav_logo_parent" onclick="window.open('index')">Obskura</div>
+          <div class="nav_logo_parent">
+            <div class="nav_logo_text">Obskura</div>
+          </div>
+          <img src="assets/svg/ObskuraWhite150ppi-05.png" loading="lazy" alt="" class="nav_centered_logo">
           <div class="est_nav">
-            <img src="assets/svg/ObskuraWhite150ppi-05.png" alt="">
+            <img src="images/logo.svg" loading="lazy" alt="" class="image-2">
           </div>
           <link rel="stylesheet" href="css/multi-menu.css" /><svg class="hidden">
             <symbol id="icon-arrow" viewBox="0 0 24 24">
@@ -310,17 +316,20 @@
           <div class="intro-footer">
             <div class="morestudio">
               <div class="button margin-buttons">
+                <a href=#getintouch >
                 <button
                   class="btn-stack flex-withgap"
                   aria-label="view all"
                   type="button"
                   id="get-in-touch-button"
+                  
                 >
                   <span class="btn-text"> Get In Touch</span
                   ><span style="display: flex"
                     ><svg class="margin-svgg" role="button"><use xlink:href="#arrow-right"></use></svg
                   ></span>
                 </button>
+                </a>
               </div>
             </div>
           </div>

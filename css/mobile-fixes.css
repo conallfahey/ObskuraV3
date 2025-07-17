@@ -8,16 +8,7 @@
     -webkit-text-size-adjust: 100%;
   }
   
-  /* Make navigation logo 30% smaller on mobile */
-  .est_nav img {
-    width: 38.5px !important; /* 55px * 0.7 = 38.5px (30% smaller) */
-    height: auto !important;
-  }
-  
-  /* Adjust menu button margin-top on mobile */
-  .menu_button_wrapper {
-    margin-top: 6.5px !important;
-  }
+  /* Mobile navigation fixes moved to navigation.css */
   
   /* Remove unwanted text shadows on mobile */
   .frame a,
@@ -175,9 +166,18 @@
     font-size: max(40px, 10vw) !important;
   }
 
-  /* Fix for .below-line visibility on mobile */
-  .below-line {
+  /* Fix for .below-line and .top-line visibility on mobile */
+  .below-line,
+  .top-line {
     height: 1px !important; /* Ensure visibility on mobile */
+    opacity: 1 !important;
+    display: block !important;
+    visibility: visible !important;
+  }
+  
+  /* Ensure proper background color for top-line in thirtyworks section */
+  .thirtyworks .top-line {
+    background-color: var(--main-color) !important;
   }
   
   /* Ensure these selectors have higher specificity than the global * selector */

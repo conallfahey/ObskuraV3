@@ -262,7 +262,7 @@ body {
 
 .menuUzi__item-map {
     background: url(../assets/images/IMG_8008.jpg);
-    background-position: top;
+    background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;
@@ -270,7 +270,8 @@ body {
     position: absolute;
     top: 0;
     transition: transform .8s cubic-bezier(.2, 1, .8, 1);
-    width: 100%
+    width: 100%;
+    opacity: 0.85;
 }
 
 .menuUzi__item-inner:hover .menuUzi__item-map {

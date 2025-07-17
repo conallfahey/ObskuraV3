@@ -31,7 +31,6 @@ body #cdawrap {
 .grid__item {
     align-content: start;
     background: transparent;
-    border: 1px solid #2e2e2f;
     display: grid;
     gap: 1.5rem;
     grid-template-rows: auto 1fr auto;
