@@ -11,7 +11,6 @@
   
   /* Remove unwanted text shadows on iOS */
   .frame a,
-  .nav_logo_parent,
   .mainmenuUzi__item,
   .sidemenuUzi__item,
   .hero-largelogo,
@@ -154,9 +153,7 @@
   }
   
   /* Fix for any elements with margins or padding that might be causing spacing issues */
-  .nav_grid,
   .padding_global,
-  .nav_padding,
   .hero-main,
   .main-hero,
   .introduction,

@@ -999,14 +999,18 @@ details[open] {
   position: relative;
   transition-duration: 0.1s;
   transition-timing-function: linear;
-  background: var(--main-color);
+  background-color: var(--color-black);
+  box-shadow: -4px 3px 0 0 var(--color-bg);
+  color: var(--color-bg);
 }
 
 .btn-stack:hover {
-  color: var(--color-bg);
+  background: var(--main-color);
+  box-shadow: none;
+  color: inherit;
 }
 .btn-stack:hover .margin-svgg {
-  fill: var(--color-bg);
+  fill: inherit;
 }
 
 .margin-buttons .btn-text {
@@ -1019,17 +1023,17 @@ details[open] {
   position: absolute;
   right: 0;
   top: 0;
-  transform: translate(20%, -35%) rotate(-180deg) skew(0) skewY(0) scaleX(0) scaleY(0);
+  transform: translate(-14%, -22%) rotate(0deg) skew(0) skewY(0) scaleX(1) scaleY(1);
   transition-duration: 0.15s;
   transition-property: transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .btn-stack:hover {
-  background-color: var(--color-black);
-  box-shadow: -4px 3px 0 0 var(--color-bg);
+  background: var(--main-color);
+  box-shadow: none;
 }
 .btn-stack:hover:after {
-  transform: translate(-14%, -22%) rotate(0deg) skew(0) skewY(0) scaleX(1) scaleY(1);
+  transform: translate(20%, -35%) rotate(-180deg) skew(0) skewY(0) scaleX(0) scaleY(0);
 }
 .flex-withgap {
   display: flex;
@@ -1040,6 +1044,9 @@ details[open] {
   height: 1.6rem;
   justify-self: center;
   width: 1.6rem;
+}
+.btn-stack .margin-svgg {
+  fill: var(--color-bg);
 }
 .margin-buttons {
   margin: 0 0 0 40px;
