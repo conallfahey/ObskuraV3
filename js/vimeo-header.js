@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Vimeo video ID
     const vimeoId = '1100065426';
     
+    // Mobile detection
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
     // Get the video background container
     const videoBackground = document.querySelector('.video-background');
     
@@ -28,11 +31,31 @@ document.addEventListener('DOMContentLoaded', function() {
         // Append the container to the video background
         videoBackground.appendChild(vimeoContainer);
         
-        // Create the Vimeo iframe
+        // Create the Vimeo iframe with mobile-optimized parameters
         const iframe = document.createElement('iframe');
-        iframe.src = `https://player.vimeo.com/video/${vimeoId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&transparent=0&dnt=1&quality=1080p`;
+        
+        // Mobile-optimized Vimeo parameters
+        const vimeoParams = [
+            'background=1',
+            'autoplay=1',
+            'loop=1',
+            'byline=0',
+            'title=0',
+            'muted=1',
+            'transparent=0',
+            'dnt=1',
+            'playsinline=1',
+            'autopause=0',
+            'controls=0',
+            isMobile ? 'quality=720p' : 'quality=1080p'
+        ].join('&');
+        
+        iframe.src = `https://player.vimeo.com/video/${vimeoId}?${vimeoParams}`;
         iframe.setAttribute('frameborder', '0');
-        iframe.setAttribute('allow', 'autoplay; fullscreen');
+        iframe.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture');
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.setAttribute('playsinline', '');
+        iframe.setAttribute('webkit-playsinline', '');
         // Let CSS handle the styling
         iframe.style.width = '100%';
         iframe.style.height = '100%';
@@ -55,9 +78,44 @@ document.addEventListener('DOMContentLoaded', function() {
             // Create Vimeo player instance
             const player = new Vimeo.Player(iframe);
             
+            // Listen for the 'ready' event to ensure player is fully initialized
+            player.on('ready', function() {
+                console.log('Vimeo player ready');
+                if (isMobile) {
+                    // Set volume to 0 for mobile autoplay compliance
+                    player.setVolume(0);
+                    // Try to play immediately when ready
+                    player.play().catch(function(error) {
+                        console.log('Autoplay failed on ready, waiting for user interaction:', error);
+                    });
+                }
+            });
+            
             // Listen for the 'loaded' event
             player.on('loaded', function() {
                 console.log('Vimeo video loaded');
+                
+                // For mobile devices, ensure video plays
+                if (isMobile) {
+                    // Try to play the video immediately
+                    player.play().then(function() {
+                        console.log('Mobile video autoplay successful');
+                    }).catch(function(error) {
+                        console.log('Mobile autoplay blocked, will play on user interaction:', error);
+                        // Add a one-time click/touch listener to start video
+                        const playOnInteraction = function() {
+                            player.play().then(function() {
+                                console.log('Video started after user interaction');
+                            }).catch(function(err) {
+                                console.error('Failed to play video after interaction:', err);
+                            });
+                            document.removeEventListener('click', playOnInteraction);
+                            document.removeEventListener('touchstart', playOnInteraction);
+                        };
+                        document.addEventListener('click', playOnInteraction, { once: true });
+                        document.addEventListener('touchstart', playOnInteraction, { once: true });
+                    });
+                }
                 
                 // Access the preloader Vue instance
                 if (window.preloaderVue) {

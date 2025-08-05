@@ -8,6 +8,32 @@
     -webkit-text-size-adjust: 100%;
   }
   
+  /* Fix navigation logo centering issues on mobile */
+  .nav {
+    position: fixed;
+    width: 100vw;
+  }
+  
+  .nav_padding {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .nav_grid {
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 50px;
+  }
+  
+  /* Ensure centered logo stays centered during orientation changes */
+  .nav_centered_logo {
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
+  }
+  
   /* Mobile navigation fixes moved to navigation.css */
   
   /* Remove unwanted text shadows on mobile */

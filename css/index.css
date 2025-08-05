@@ -44,6 +44,10 @@
   scrollbar-width: 0 !important;
 }
 
+body {
+  overflow: hidden;
+}
+
 h1 {
   font-size: 2.986rem;
 }
@@ -425,7 +429,7 @@ a:focus-visible {
     min-height: auto;
     max-height: none;
     padding: 1.5rem;
-    margin-top: 2rem; /* Added larger margin above the Who are we section on mobile */
+    
   }
   .intro-title:before {
     left: 0;
@@ -1042,7 +1046,7 @@ details[open] {
 }
 .getintouch {
   display: grid;
-  min-height: 80svh;
+  min-height: 60svh;
   position: relative;
   background-color: var(--color-bg); /* Add solid background color */
 }
@@ -1566,7 +1570,7 @@ input[type="radio"]:checked + .radio-input {
     grid-template-areas: "introtitle" " introexpla" " introfooter";
     grid-template-columns: 1fr;
     grid-template-rows: auto;
-    min-height: 45vh;
+    min-height: 55vh;
     padding: 25px;
     position: relative;
   }
