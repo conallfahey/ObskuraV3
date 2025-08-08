@@ -253,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Two Instagram posts side by side
                 const instagramEmbed = `
                     <div class="instagram-post">
-                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/C8Yt-QJuQnO/" 
+                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/Ct92QIIANOp/" 
                         data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); 
                         margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
                         <div style="padding:16px;"> <a href="https://www.instagram.com/p/C8Yt-QJuQnO/" style="background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
@@ -305,7 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </blockquote>
                     </div>
                     <div class="instagram-post" style="display: flex; justify-content: center; align-items: center; margin: 0 auto;">
-                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/C8YuCQxOXJm/" 
+                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/Ct4k_NbgbQ7/" 
                         data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); 
                         margin: 0 auto; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
                         <div style="padding:16px;"> <a href="https://www.instagram.com/p/C8YuCQxOXJm/" style="background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
