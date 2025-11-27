@@ -244,7 +244,9 @@
   }
   
   .global-video video {
-    height: 100% !important;
+    /* Prevent native mobile play overlay by hiding the empty video */
+    display: none !important;
+    height: 0 !important;
     object-fit: cover !important;
   }
   
