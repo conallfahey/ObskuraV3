@@ -1845,8 +1845,9 @@ html, body {
 
 @media screen and (max-width: 625px) {
   .feature-wrapper {
-    grid-template-areas: "feature-header" "feature-expla" "feature-expla-2" "feature-expla-3" "feature-expla-4" !important;
-    grid-template-columns: 1fr !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 15px !important;
   }
   :root {
     --feature-height: 80vw;
