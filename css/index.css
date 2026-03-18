@@ -1845,7 +1845,7 @@ html, body {
 
 @media screen and (max-width: 625px) {
   .feature-wrapper {
-    grid-template-areas: "feature-header" "feature-expla" "feature-image" "feature-expla-2" "feature-image-2" !important;
+    grid-template-areas: "feature-header" "feature-expla" "feature-expla-2" "feature-expla-3" "feature-expla-4" !important;
     grid-template-columns: 1fr !important;
   }
   :root {
@@ -1870,7 +1870,8 @@ html, body {
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
     "feature-header feature-header"
-    "feature-expla feature-expla-2";
+    "feature-expla feature-expla-2"
+    "feature-expla-3 feature-expla-4";
   gap: 15px; /* Reduced gap from 20px to 15px */
 }
 
@@ -1988,6 +1989,14 @@ html, body {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.feature-expla-3 {
+  grid-area: feature-expla-3;
+}
+
+.feature-expla-4 {
+  grid-area: feature-expla-4;
 }
 .feature-expla-info {
   font-size: var(--hc-xxl);

@@ -21,21 +21,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Featured work thumbnails
     const featuredWorks = document.querySelectorAll('.feature-outer-wrapper');
     
-    // Vimeo video IDs for featured works
     const vimeoIds = {
-        'limperatrice': '1053953559', // L'imperatrice
-        'bobmoses': '824804225'      // Bob Moses
+        'limperatrice': '1053953559'
     };
     
-    // YouTube video IDs for featured works (fallback)
     const youtubeIds = {
-        'limperatrice': 'dQw4w9WgXcQ', // L'imperatrice
-        'bobmoses': 'L_jWHffIx5E'      // Bob Moses
+        'zedsdead': 'acLdrrfLSoc',
+        'nicole-arc': '6g7HHRV0HSE'
     };
     
-    // Instagram post URLs
     const instagramUrls = {
-        'bobmoses': 'https://www.instagram.com/reel/CuAQJUxsYl5/' // Bob Moses
+        'lsdream': 'https://www.instagram.com/reel/DTLq2vHEuaF/'
     };
     
     // Add click event to each featured work thumbnail
@@ -68,6 +64,46 @@ document.addEventListener('DOMContentLoaded', () => {
                     vimeoVerticalModal.classList.add('active');
                     
                     // Stop scrolling while modal is open
+                    document.body.style.overflow = 'hidden';
+                }
+                else if (workId === 'lsdream') {
+                    console.log('Opening Instagram modal for LSDREAM');
+                    
+                    const igPermalink = instagramUrls[workId] || 'https://www.instagram.com/reel/DTLq2vHEuaF/';
+                    const igEmbedUrl = 'https://www.instagram.com/reel/DTLq2vHEuaF/embed/captioned/';
+                    
+                    instagramContainer.innerHTML = `
+                        <div class="instagram-post">
+                            <div data-ig-fallback style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;color:#fff;background:rgba(0,0,0,0.75);z-index:2;gap:10px;">
+                                <div style="font-size:18px;line-height:1.2;">Instagram embed not loading here.</div>
+                                <div style="opacity:0.9;font-size:14px;">Open the reel on Instagram:</div>
+                                <a href="${igPermalink}" target="_blank" rel="noopener noreferrer" style="color:#fff;text-decoration:underline;">${igPermalink}</a>
+                            </div>
+                            <iframe src="${igEmbedUrl}" allowtransparency="true" allowfullscreen="true" frameborder="0" scrolling="no"></iframe>
+                        </div>
+                        <div style="width:100%;text-align:center;margin-top:12px;">
+                            <a href="${igPermalink}" target="_blank" rel="noopener noreferrer" style="color:#fff;text-decoration:underline;">Open on Instagram</a>
+                        </div>
+                    `;
+                    
+                    const igIframe = instagramContainer.querySelector('iframe');
+                    const igFallback = instagramContainer.querySelector('[data-ig-fallback]');
+                    if (igIframe && igFallback) {
+                        let didLoad = false;
+                        igIframe.addEventListener('load', () => {
+                            didLoad = true;
+                            igFallback.remove();
+                        });
+                        setTimeout(() => {
+                            if (!didLoad) {
+                                igFallback.style.display = 'flex';
+                            }
+                        }, 1500);
+                    }
+                    
+                    instagramModal.style.visibility = 'visible';
+                    instagramModal.style.opacity = '1';
+                    instagramModal.classList.add('active');
                     document.body.style.overflow = 'hidden';
                 }
                 // Bob Moses - Instagram popup (or fallback to YouTube)
