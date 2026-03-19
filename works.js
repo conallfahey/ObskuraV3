@@ -92,6 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
         zedsdead: 'acLdrrfLSoc',
         'nicole-arc': '6g7HHRV0HSE',
         'nicole-radius': 'aZYVlPyj0oY',
+        alleycvt: '-pzhzLFUu9c',
         pigeons: 's2puu2gnXzM',
         'noel-aus': 'lRE41jJZLB8',
         cannons: 'Uk_HWMKICVU',
@@ -149,9 +150,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 vimeoContainer.innerHTML = iframe;
                 vimeoModal.classList.add('active');
                 lenis.stop();
-            }
-            else if (workId === 'alleycvt') {
-                openPlaceholder(item);
             }
             else if (workId === 'lsdream') {
                 console.log('Opening Instagram modal for LSDREAM'); // Debug log
