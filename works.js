@@ -89,6 +89,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     
     const youtubeIds = {
+        'kvsh-soundbar': '1aoeMmg2LTA',
+        'nastia-movement-detroit': 'RnKaKMSyjlQ',
         zedsdead: 'acLdrrfLSoc',
         'nicole-arc': '6g7HHRV0HSE',
         'nicole-radius': 'aZYVlPyj0oY',
@@ -102,6 +104,55 @@ document.addEventListener('DOMContentLoaded', () => {
         pdm: 'vuzTTcA_8BQ',
         carlcox: 'sUgH5BM_T8c',
         surfmesa: 'win7s3DM-5M'
+    };
+
+    const instagramUrls = {
+        'overmono-movement-detroit': ['https://www.instagram.com/p/DZIk_KcCaJv/'],
+        'supersonic-caverns': [
+            'https://www.instagram.com/p/Daoj8HZR2HG/',
+            'https://www.instagram.com/p/DarLmFoRKk2/'
+        ],
+        'djbone-zackfox-tour': ['https://www.instagram.com/p/DY9dnIxNOZD/'],
+        'elli-acula-serum': ['https://www.instagram.com/p/DYDIegeP0d0/']
+    };
+
+    const toInstagramEmbedUrl = (url) => {
+        const cleanUrl = url.split('?')[0].replace(/\/?$/, '/');
+        return `${cleanUrl}embed/captioned/`;
+    };
+
+    const openInstagramPosts = (urls) => {
+        instagramContainer.innerHTML = urls.map((url) => `
+            <div class="instagram-post">
+                <div data-ig-fallback style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;color:#fff;background:rgba(0,0,0,0.75);z-index:2;gap:10px;">
+                    <div style="font-size:18px;line-height:1.2;">Instagram embed not loading here.</div>
+                    <div style="opacity:0.9;font-size:14px;">Open the post on Instagram:</div>
+                    <a href="${url}" target="_blank" rel="noopener noreferrer" style="color:#fff;text-decoration:underline;">${url}</a>
+                </div>
+                <iframe src="${toInstagramEmbedUrl(url)}" allowtransparency="true" allowfullscreen="true" frameborder="0" scrolling="no" style="position:absolute;inset:0;width:100%;height:100%;border:0;z-index:1;background:#fff;"></iframe>
+            </div>
+        `).join('');
+
+        instagramContainer.offsetHeight;
+        instagramContainer.querySelectorAll('iframe').forEach((iframe) => {
+            const fallback = iframe.parentElement.querySelector('[data-ig-fallback]');
+            let didLoad = false;
+            iframe.addEventListener('load', () => {
+                didLoad = true;
+                fallback?.remove();
+            });
+            setTimeout(() => {
+                if (!didLoad && fallback) {
+                    fallback.style.display = 'flex';
+                }
+            }, 1500);
+        });
+
+        instagramModal.style.pointerEvents = 'auto';
+        instagramModal.style.visibility = 'visible';
+        instagramModal.style.opacity = '1';
+        instagramModal.classList.add('active');
+        lenis.stop();
     };
 
     const openPlaceholder = (item, subtitle = 'Video coming soon.') => {
@@ -128,6 +179,11 @@ document.addEventListener('DOMContentLoaded', () => {
             e.stopPropagation();
 
             const workId = item.getAttribute('data-work-id') || '';
+
+            if (instagramUrls[workId]) {
+                openInstagramPosts(instagramUrls[workId]);
+                return;
+            }
             
             // L'imperatrice entry - Vertical Vimeo popup
             if (workId === 'limperatrice') {

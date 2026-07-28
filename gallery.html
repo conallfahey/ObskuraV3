@@ -26,26 +26,9 @@
 		<script>
 			// Helper function to preload images
 			function preloadImages() {
-				const imageUrls = [
-					'img/photo/AnnaMorganBoilerRoom.jpg',
-					'img/photo/ClaudeVonstrokeChicago.jpg',
-					'img/photo/ChaseStatus.jpg',
-					'img/photo/BobMosesElectricForest.jpg',
-					'img/photo/LTC.jpg',
-					'img/photo/RadiusFan.jpg',
-					'img/photo/ChanceTheRapperBW.jpg',
-					'img/photo/Denzel.jpg',
-					'img/photo/FlyNari.jpg',
-					'assets/images/carlcox1.jpg',
-					'assets/images/PDM_ARAGON2.jpg',
-					'assets/images/CANNONS_BONAROO.jpg',
-					'assets/images/BOBM.jpg',
-					'assets/images/surf_mesa_lollapalooza.jpg',
-					'assets/images/summer_smash_2024.jpg',
-					'assets/images/ELEPHANTHEART.jpg',
-					'assets/images/lunar_tide_recap_v2_mp4_00_00_23_15_still001.jpg',
-					'assets/images/limpTN.jpg'
-				];
+				const imageUrls = Array.from(document.querySelectorAll('.gallery-item-img-inner'))
+					.map(el => el.style.backgroundImage.replace(/^url\(['"]?/, '').replace(/['"]?\)$/, ''))
+					.filter(url => url && url !== 'none');
 				
 				imageUrls.forEach(url => {
 					const img = new Image();
@@ -230,153 +213,255 @@
 					
 					
 					
+					<div class="gallery-item horizontal" data-category="concerts">
+						<div class="gallery-item-img">
+							<div class="gallery-item-img-inner" style="background-image:url('img/photo/Beach Bunny - Salt Shed.webp');"></div>
+						</div>
+						<figcaption class="gallery-item-caption"><h3>Beach Bunny</h3> <span>Salt Shed</span></figcaption>
+					</div>
+					<div class="gallery-item horizontal" data-category="concerts">
+						<div class="gallery-item-img">
+							<div class="gallery-item-img-inner" style="background-image:url('img/photo/Daily Bread - House of Blues Chicago.webp');"></div>
+						</div>
+						<figcaption class="gallery-item-caption"><h3>Daily Bread</h3> <span>House of Blues Chicago</span></figcaption>
+					</div>
+					<div class="gallery-item vertical" data-category="portraits">
+						<div class="gallery-item-img">
+							<div class="gallery-item-img-inner" style="background-image:url('img/photo/Daniel Allan - Portrait.webp');"></div>
+						</div>
+						<figcaption class="gallery-item-caption"><h3>Daniel Allan</h3> <span>Portrait</span></figcaption>
+					</div>
+					<div class="gallery-item vertical" data-category="portraits">
+						<div class="gallery-item-img">
+							<div class="gallery-item-img-inner" style="background-image:url('img/photo/Daniel Allan - Tour Promo.webp');"></div>
+						</div>
+						<figcaption class="gallery-item-caption"><h3>Daniel Allan</h3> <span>Tour Promo</span></figcaption>
+					</div>
+					<div class="gallery-item horizontal" data-category="concerts">
+						<div class="gallery-item-img">
+							<div class="gallery-item-img-inner" style="background-image:url('img/photo/Elderbrook - Salt Shed.webp');"></div>
+						</div>
+						<figcaption class="gallery-item-caption"><h3>Elderbrook</h3> <span>Salt Shed</span></figcaption>
+					</div>
+					<div class="gallery-item horizontal" data-category="concerts">
+						<div class="gallery-item-img">
+							<div class="gallery-item-img-inner" style="background-image:url('img/photo/Gotti - PRYSM.webp');"></div>
+						</div>
+						<figcaption class="gallery-item-caption"><h3>Gotti</h3> <span>PRYSM</span></figcaption>
+					</div>
+					<div class="gallery-item vertical" data-category="concerts">
+						<div class="gallery-item-img">
+							<div class="gallery-item-img-inner" style="background-image:url('img/photo/Mary Droppinz - Chop Shop.webp');"></div>
+						</div>
+						<figcaption class="gallery-item-caption"><h3>Mary Droppinz</h3> <span>Chop Shop</span></figcaption>
+					</div>
+					<div class="gallery-item vertical" data-category="festivals">
+						<div class="gallery-item-img">
+							<div class="gallery-item-img-inner" style="background-image:url('img/photo/Supertaste - Electric Forest.webp');"></div>
+						</div>
+						<figcaption class="gallery-item-caption"><h3>Supertaste</h3> <span>Electric Forest</span></figcaption>
+					</div>
+					<div class="gallery-item vertical" data-category="concerts">
+						<div class="gallery-item-img">
+							<div class="gallery-item-img-inner" style="background-image:url('img/photo/Tazu - Red Rocks-6.webp');"></div>
+						</div>
+						<figcaption class="gallery-item-caption"><h3>Tazu</h3> <span>Red Rocks</span></figcaption>
+					</div>
 					<div class="gallery-item square" data-category="concerts">
 						<div class="gallery-item-img">
-							<div class="gallery-item-img-inner" style="background-image:url(img/photo/BenBohmer_SaltShed.jpg);"></div>
+							<div class="gallery-item-img-inner" style="background-image:url(img/photo/BenBohmer_SaltShed.webp);"></div>
 						</div>
 						<figcaption class="gallery-item-caption"><h3>Ben Böhmer</h3> <span>Salt Shed</span></figcaption>
 					</div>
 					<div class="gallery-item vertical" data-category="concerts">
 						<div class="gallery-item-img">
-							<div class="gallery-item-img-inner" style="background-image:url(img/photo/AnnaMorgan_BoilerRoom.jpg);"></div>
+							<div class="gallery-item-img-inner" style="background-image:url(img/photo/AnnaMorgan_BoilerRoom.webp);"></div>
 						</div>
 						<figcaption class="gallery-item-caption"><h3>Anna Morgan</h3> <span>Boiler Room</span></figcaption>
 					</div>
 					<div class="gallery-item large" data-category="concerts">
 						<div class="gallery-item-img">
-							<div class="gallery-item-img-inner" style="background-image:url(img/photo/BobMosesElectricForest.jpg);"></div>
+							<div class="gallery-item-img-inner" style="background-image:url(img/photo/BobMosesElectricForest.webp);"></div>
 						</div>
 						<figcaption class="gallery-item-caption"><h3>Bob Moses</h3> <span>Electric Forest</span></figcaption>
 					</div>
 					<div class="gallery-item square" data-category="concerts">
 						<div class="gallery-item-img">
-							<div class="gallery-item-img-inner" style="background-image:url(img/photo/ChaseStatus_AragonTheater.jpg);"></div>
+							<div class="gallery-item-img-inner" style="background-image:url(img/photo/ChaseStatus_AragonTheater.webp);"></div>
 						</div>
 						<figcaption class="gallery-item-caption"><h3>Chase & Status</h3> <span>Aragon Theater</span></figcaption>
 					</div>
 					<div class="gallery-item horizontal" data-category="concerts">
 						<div class="gallery-item-img">
-							<div class="gallery-item-img-inner" style="background-image:url(img/photo/NyeAragon.jpg);"></div>
+							<div class="gallery-item-img-inner" style="background-image:url(img/photo/NyeAragon.webp);"></div>
 						</div>
 						<figcaption class="gallery-item-caption"><h3>NYE</h3> <span>Aragon Ballroom</span></figcaption>
 					</div>
 					<div class="gallery-item horizontal" data-category="concerts">
 						<div class="gallery-item-img">
-							<div class="gallery-item-img-inner" style="background-image:url(img/photo/ChanceTheRapperBW.jpg);"></div>
+							<div class="gallery-item-img-inner" style="background-image:url(img/photo/ChanceTheRapperBW.webp);"></div>
 						</div>
 						<figcaption class="gallery-item-caption"><h3>Chance The Rapper</h3> <span>Black & White Portrait</span></figcaption>
 					</div>
 					<div class="gallery-item square" data-category="festivals">
 						<div class="gallery-item-img">
-							<div class="gallery-item-img-inner" style="background-image:url(img/photo/RadiusFan.jpg);"></div>
+							<div class="gallery-item-img-inner" style="background-image:url(img/photo/RadiusFan.webp);"></div>
 						</div>
 						<figcaption class="gallery-item-caption"><h3>Radius</h3> <span>Festival Crowd</span></figcaption>
 					</div>
+					<div class="gallery-item vertical" data-category="concerts">
+						<div class="gallery-item-img">
+							<div class="gallery-item-img-inner" style="background-image:url('img/photo/Disco Biscuits - Garcias.webp');"></div>
+						</div>
+						<figcaption class="gallery-item-caption"><h3>Disco Biscuits</h3> <span>Garcia's</span></figcaption>
+					</div>
 					<div class="gallery-item vertical" data-category="portraits">
 						<div class="gallery-item-img">
-							<div class="gallery-item-img-inner" style="background-image:url(img/photo/LSZEE_SaltShed.jpg);"></div>
+							<div class="gallery-item-img-inner" style="background-image:url(img/photo/LSZEE_SaltShed.webp);"></div>
 						</div>
 						<figcaption class="gallery-item-caption"><h3>LSZEE</h3> <span>Salt Shed</span></figcaption>
 					</div>
+					<div class="gallery-item horizontal" data-category="concerts">
+						<div class="gallery-item-img">
+							<div class="gallery-item-img-inner" style="background-image:url('img/photo/Drop Kick Murphys - Salt Shed.webp');"></div>
+						</div>
+						<figcaption class="gallery-item-caption"><h3>Drop Kick Murphys</h3> <span>Salt Shed</span></figcaption>
+					</div>
 					<div class="gallery-item horizontal" data-category="festivals">
 						<div class="gallery-item-img">
-							<div class="gallery-item-img-inner" style="background-image:url(img/photo/ElderBrook_SaltShed\(2\).jpg);"></div>
+							<div class="gallery-item-img-inner" style="background-image:url(img/photo/ElderBrook_SaltShed\(2\).webp);"></div>
 						</div>
 						<figcaption class="gallery-item-caption"><h3>Elderbrook</h3> <span>Salt Shed</span></figcaption>
 					</div>
+					<div class="gallery-item vertical" data-category="concerts">
+						<div class="gallery-item-img">
+							<div class="gallery-item-img-inner" style="background-image:url('img/photo/Disco Biscuits 2 - Garcias.webp');"></div>
+						</div>
+						<figcaption class="gallery-item-caption"><h3>Disco Biscuits</h3> <span>Garcia's</span></figcaption>
+					</div>
 					<div class="gallery-item vertical" data-category="portraits">
 						<div class="gallery-item-img">
-							<div class="gallery-item-img-inner" style="background-image:url(img/photo/Mamitas_WindyCitySmokeout.jpg);"></div>
+							<div class="gallery-item-img-inner" style="background-image:url(img/photo/Mamitas_WindyCitySmokeout.webp);"></div>
 						</div>
 						<figcaption class="gallery-item-caption"><h3>Mamitas</h3> <span>Windy City Smokeout</span></figcaption>
 					</div>
+					<div class="gallery-item vertical" data-category="concerts">
+						<div class="gallery-item-img">
+							<div class="gallery-item-img-inner" style="background-image:url('img/photo/Flawed Mangoes - Chop Shop.webp');"></div>
+						</div>
+						<figcaption class="gallery-item-caption"><h3>Flawed Mangoes</h3> <span>Chop Shop</span></figcaption>
+					</div>
 					<div class="gallery-item horizontal" data-category="festivals">
 						<div class="gallery-item-img">
-							<div class="gallery-item-img-inner" style="background-image:url(img/photo/DailyBread_Radius.jpg);"></div>
+							<div class="gallery-item-img-inner" style="background-image:url(img/photo/DailyBread_Radius.webp);"></div>
 						</div>
 						<figcaption class="gallery-item-caption"><h3>Daily Bread</h3> <span>Radius</span></figcaption>
 					</div>
 					<div class="gallery-item horizontal" data-category="concerts">
 						<div class="gallery-item-img">
-							<div class="gallery-item-img-inner" style="background-image:url(img/photo/DenzelCurry_RivieraTheater.jpg);"></div>
+							<div class="gallery-item-img-inner" style="background-image:url('img/photo/Disco Biscuits 3 - Garcias.webp');"></div>
+						</div>
+						<figcaption class="gallery-item-caption"><h3>Disco Biscuits</h3> <span>Garcia's</span></figcaption>
+					</div>
+					<div class="gallery-item horizontal" data-category="concerts">
+						<div class="gallery-item-img">
+							<div class="gallery-item-img-inner" style="background-image:url(img/photo/DenzelCurry_RivieraTheater.webp);"></div>
 						</div>
 						<figcaption class="gallery-item-caption"><h3>Denzel Curry</h3> <span>Riviera Theater</span></figcaption>
 					</div>
+					<div class="gallery-item horizontal" data-category="concerts">
+						<div class="gallery-item-img">
+							<div class="gallery-item-img-inner" style="background-image:url('img/photo/Violent Femmes - Salt Shed.webp');"></div>
+						</div>
+						<figcaption class="gallery-item-caption"><h3>Violent Femmes</h3> <span>Salt Shed</span></figcaption>
+					</div>
 					<div class="gallery-item vertical" data-category="portraits">
 						<div class="gallery-item-img">
-							<div class="gallery-item-img-inner" style="background-image:url(img/photo/FlyNari.jpg);"></div>
+							<div class="gallery-item-img-inner" style="background-image:url(img/photo/FlyNari.webp);"></div>
 						</div>
 						<figcaption class="gallery-item-caption"><h3>Fly Nari</h3> <span>Studio Portrait</span></figcaption>
 					</div>
 					<div class="gallery-item horizontal" data-category="festivals">
 						<div class="gallery-item-img">
-							<div class="gallery-item-img-inner" style="background-image:url(img/photo/LSZEE-Night2-3.jpg);"></div>
+							<div class="gallery-item-img-inner" style="background-image:url('img/photo/SuperTaste - Electric Forest 2.webp');"></div>
+						</div>
+						<figcaption class="gallery-item-caption"><h3>SuperTaste</h3> <span>Electric Forest</span></figcaption>
+					</div>
+					<div class="gallery-item horizontal" data-category="festivals">
+						<div class="gallery-item-img">
+							<div class="gallery-item-img-inner" style="background-image:url(img/photo/LSZEE-Night2-3.webp);"></div>
 						</div>
 						<figcaption class="gallery-item-caption"><h3>LSZEE</h3> <span>Night 2</span></figcaption>
 					</div>
 					<div class="gallery-item vertical" data-category="concerts">
 						<div class="gallery-item-img">
-							<div class="gallery-item-img-inner" style="background-image:url(img/photo/DEADSHED_SaltShed.jpg);"></div>
+							<div class="gallery-item-img-inner" style="background-image:url('img/photo/Drop Kick Murphys 2 - Salt Shed.webp');"></div>
+						</div>
+						<figcaption class="gallery-item-caption"><h3>Drop Kick Murphys</h3> <span>Salt Shed</span></figcaption>
+					</div>
+					<div class="gallery-item vertical" data-category="concerts">
+						<div class="gallery-item-img">
+							<div class="gallery-item-img-inner" style="background-image:url(img/photo/DEADSHED_SaltShed.webp);"></div>
 						</div>
 						<figcaption class="gallery-item-caption"><h3>DEADSHED</h3> <span>Salt Shed</span></figcaption>
 					</div>
 					<div class="gallery-item square" data-category="festivals">
 						<div class="gallery-item-img">
-							<div class="gallery-item-img-inner" style="background-image:url(img/photo/Daya_PrideInThePark.jpg);"></div>
+							<div class="gallery-item-img-inner" style="background-image:url(img/photo/Daya_PrideInThePark.webp);"></div>
 						</div>
 						<figcaption class="gallery-item-caption"><h3>Daya</h3> <span>Pride In The Park</span></figcaption>
 					</div>
 					<div class="gallery-item vertical" data-category="festivals">
 						<div class="gallery-item-img">
-							<div class="gallery-item-img-inner" style="background-image:url(img/photo/LTC.jpg);"></div>
+							<div class="gallery-item-img-inner" style="background-image:url(img/photo/LTC.webp);"></div>
 						</div>
 						<figcaption class="gallery-item-caption"><h3>Louis The Child</h3> <span>Festival Performance</span></figcaption>
 					</div>
 					<div class="gallery-item square" data-category="festivals">
 						<div class="gallery-item-img">
-							<div class="gallery-item-img-inner" style="background-image:url(img/photo/SIREN_Ramova.jpg);"></div>
+							<div class="gallery-item-img-inner" style="background-image:url(img/photo/SIREN_Ramova.webp);"></div>
 						</div>
 						<figcaption class="gallery-item-caption"><h3>SIREN</h3> <span>Ramova</span></figcaption>
 					</div>
 					<div class="gallery-item vertical" data-category="portraits">
 						<div class="gallery-item-img">
-							<div class="gallery-item-img-inner" style="background-image:url(img/photo/M.E.H..jpg);"></div>
+							<div class="gallery-item-img-inner" style="background-image:url(img/photo/M.E.H..webp);"></div>
 						</div>
 						<figcaption class="gallery-item-caption"><h3>M.E.H.</h3> <span>Studio Session</span></figcaption>
 					</div>
 					<div class="gallery-item horizontal" data-category="portraits">
 						<div class="gallery-item-img">
-							<div class="gallery-item-img-inner" style="background-image:url(img/photo/MoodyGood_ElectricForest.jpg);"></div>
+							<div class="gallery-item-img-inner" style="background-image:url(img/photo/MoodyGood_ElectricForest.webp);"></div>
 						</div>
 						<figcaption class="gallery-item-caption"><h3>Moody Good</h3> <span>Electric Forest</span></figcaption>
 					</div>
 					<div class="gallery-item vertical" data-category="portraits">
 						<div class="gallery-item-img">
-							<div class="gallery-item-img-inner" style="background-image:url(img/photo/Mamitas_WindyCitySmokeout2.jpg);"></div>
+							<div class="gallery-item-img-inner" style="background-image:url(img/photo/Mamitas_WindyCitySmokeout2.webp);"></div>
 						</div>
 						<figcaption class="gallery-item-caption"><h3>Mamitas</h3> <span>Windy City Smokeout</span></figcaption>
 					</div>
 					<div class="gallery-item square" data-category="festivals">
 						<div class="gallery-item-img">
-							<div class="gallery-item-img-inner" style="background-image:url(img/photo/Bicep_CRSSD.jpg);"></div>
+							<div class="gallery-item-img-inner" style="background-image:url(img/photo/Bicep_CRSSD.webp);"></div>
 						</div>
 						<figcaption class="gallery-item-caption"><h3>Bicep</h3> <span>CRSSD</span></figcaption>
 					</div>
 					<div class="gallery-item square" data-category="festivals">
 						<div class="gallery-item-img">
-							<div class="gallery-item-img-inner" style="background-image:url(img/photo/ClaudeVonstrokeChicago.jpg);"></div>
+							<div class="gallery-item-img-inner" style="background-image:url(img/photo/ClaudeVonstrokeChicago.webp);"></div>
 						</div>
 						<figcaption class="gallery-item-caption"><h3>Claude VonStroke</h3> <span>Chicago Encore</span></figcaption>
 					</div>
 					<div class="gallery-item square" data-category="festivals">
 						<div class="gallery-item-img">
-							<div class="gallery-item-img-inner" style="background-image:url(img/photo/ElderBrook_SaltShed.jpg);"></div>
+							<div class="gallery-item-img-inner" style="background-image:url(img/photo/ElderBrook_SaltShed.webp);"></div>
 						</div>
 						<figcaption class="gallery-item-caption"><h3>Elderbrook</h3> <span>Salt Shed</span></figcaption>
 					</div>
 					<div class="gallery-item horizontal" data-category="festivals">
 						<div class="gallery-item-img">
-							<div class="gallery-item-img-inner" style="background-image:url(img/photo/LYNY-1.jpg);"></div>
+							<div class="gallery-item-img-inner" style="background-image:url(img/photo/LYNY-1.webp);"></div>
 						</div>
 						<figcaption class="gallery-item-caption"><h3>LYNY</h3> <span>Performance</span></figcaption>
 					</div>

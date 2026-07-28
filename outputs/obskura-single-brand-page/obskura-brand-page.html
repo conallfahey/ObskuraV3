@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Obskura Brand Page</title>
+  <style>
+    @font-face {
+      font-family: "MonumentExtended";
+      src: url("../../fonts/MonumentExtended-Regular.woff") format("woff");
+      font-display: block;
+    }
+
+    @font-face {
+      font-family: "MonumentExtended-light";
+      src: url("../../fonts/monumentextended-ultralight.woff") format("woff");
+      font-display: block;
+    }
+
+    @font-face {
+      font-family: "SpaceGrotesk";
+      src: url("../../fonts/SpaceGrotesk.woff2") format("woff2");
+      font-display: block;
+    }
+
+    @font-face {
+      font-family: "SohneLight";
+      src: url("../../fonts/sohne-light.woff2") format("woff2");
+      font-display: block;
+    }
+
+    @font-face {
+      font-family: "GTAlpine";
+      src: url("../../fonts/GT-Alpina-Light-Italic.woff") format("woff");
+      font-display: block;
+    }
+
+    :root {
+      --paper: #ece9e1;
+      --ink: #0c0c0c;
+      --orange: #f84c29;
+      --blue: #bed2f5;
+      --steel: #2b2d42;
+      --line: #676767;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+      background: var(--ink);
+    }
+
+    body {
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      color: var(--ink);
+    }
+
+    .page {
+      width: min(1440px, 100%);
+      aspect-ratio: 16 / 9;
+      min-height: 720px;
+      position: relative;
+      overflow: hidden;
+      background: var(--paper);
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+    }
+
+    .mark {
+      position: absolute;
+      top: 54px;
+      left: 64px;
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--white);
+    }
+
+    .mark img {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+    }
+
+    .wordmark {
+      font-family: "MonumentExtended", sans-serif;
+      font-size: 16px;
+    }
+
+    .left {
+      position: relative;
+      min-width: 0;
+      background: var(--ink);
+      color: var(--white);
+      padding: 154px 64px 56px;
+      display: grid;
+      grid-template-rows: 1fr auto;
+    }
+
+    .hero-photo {
+      position: absolute;
+      inset: 0;
+      opacity: 0.55;
+      background:
+        linear-gradient(90deg, rgba(12, 12, 12, 0.9), rgba(12, 12, 12, 0.42)),
+        url("../../img/photo/AnnaMorgan_BoilerRoom.jpg") center / cover;
+    }
+
+    .title-block {
+      position: relative;
+      z-index: 2;
+      align-self: end;
+      padding-bottom: 34px;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "MonumentExtended", sans-serif;
+      font-size: clamp(56px, 6vw, 84px);
+      line-height: 0.92;
+      font-weight: 400;
+      color: var(--white);
+      max-width: 100%;
+    }
+
+    .font-strip {
+      position: relative;
+      z-index: 2;
+      border-top: 1px solid rgba(255, 255, 255, 0.42);
+      display: grid;
+      gap: 14px;
+      padding-top: 28px;
+    }
+
+    .font-row {
+      display: grid;
+      grid-template-columns: 210px 1fr;
+      align-items: baseline;
+      gap: 24px;
+    }
+
+    .font-name {
+      color: var(--orange);
+      font-family: "Courier New", monospace;
+      font-size: 12px;
+    }
+
+    .font-sample {
+      font-size: 28px;
+      line-height: 1;
+      color: var(--white);
+    }
+
+    .monument {
+      font-family: "MonumentExtended", sans-serif;
+    }
+
+    .monument-light {
+      font-family: "MonumentExtended-light", sans-serif;
+    }
+
+    .space {
+      font-family: "SpaceGrotesk", sans-serif;
+    }
+
+    .sohne {
+      font-family: "SohneLight", sans-serif;
+    }
+
+    .alpina {
+      font-family: "GTAlpine", serif;
+      font-size: 34px;
+    }
+
+    .right {
+      padding: 54px 64px 56px 48px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 34px;
+      min-width: 0;
+    }
+
+    .palette {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 12px;
+    }
+
+    .swatch {
+      min-height: 154px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 14px 8px;
+      border: 1px solid rgba(12, 12, 12, 0.28);
+      font-family: "Courier New", monospace;
+      font-size: 11px;
+      color: var(--white);
+    }
+
+    .paper-swatch {
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    .ink-swatch {
+      background: var(--ink);
+    }
+
+    .orange-swatch {
+      background: var(--orange);
+    }
+
+    .blue-swatch {
+      background: var(--blue);
+      color: var(--ink);
+    }
+
+    .steel-swatch {
+      background: var(--steel);
+    }
+
+    .line-swatch {
+      background: var(--line);
+    }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      min-height: 0;
+    }
+
+    .photo {
+      min-height: 0;
+      background-size: cover;
+      background-position: center;
+      filter: saturate(1.02) contrast(1.02);
+    }
+
+    .photo:nth-child(1) {
+      background-image: url("../../assets/images/LSDREAM_NAVYPIER.png");
+    }
+
+    .bottom-rule {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      border-top: 1px solid var(--ink);
+      padding-top: 22px;
+      gap: 24px;
+    }
+
+    .os {
+      font-family: "MonumentExtended", sans-serif;
+      font-size: 64px;
+      line-height: 0.8;
+      color: var(--orange);
+    }
+
+    .meta {
+      font-family: "Courier New", monospace;
+      font-size: 12px;
+      color: var(--ink);
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="mark">
+      <img src="../../assets/svg/ObskuraWhite150ppi-05.png" alt="Obskura logo" />
+      <div class="wordmark">Obskura</div>
+    </div>
+
+    <section class="left">
+      <div class="hero-photo" aria-hidden="true"></div>
+      <div class="title-block">
+        <h1>OBSKURA</h1>
+      </div>
+
+      <div class="font-strip">
+        <div class="font-row">
+          <div class="font-name">MonumentExtended</div>
+          <div class="font-sample monument">OBSKURA</div>
+        </div>
+        <div class="font-row">
+          <div class="font-name">MonumentExtended-light</div>
+          <div class="font-sample monument-light">OBSKURA</div>
+        </div>
+        <div class="font-row">
+          <div class="font-name">SpaceGrotesk</div>
+          <div class="font-sample space">Obskura</div>
+        </div>
+        <div class="font-row">
+          <div class="font-name">sohne-light</div>
+          <div class="font-sample sohne">Obskura</div>
+        </div>
+        <div class="font-row">
+          <div class="font-name">GT-Alpina-Light-Italic</div>
+          <div class="font-sample alpina">Obskura</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="right">
+      <div class="palette">
+        <div class="swatch paper-swatch">#ece9e1</div>
+        <div class="swatch ink-swatch">#0c0c0c</div>
+        <div class="swatch orange-swatch">#f84c29</div>
+        <div class="swatch blue-swatch">#bed2f5</div>
+        <div class="swatch steel-swatch">#2b2d42</div>
+        <div class="swatch line-swatch">#676767</div>
+      </div>
+
+      <div class="image-grid" aria-label="Obskura site images">
+        <div class="photo"></div>
+      </div>
+
+      <div class="bottom-rule">
+        <div class="os">OS</div>
+        <div class="meta">assets/svg/ObskuraWhite150ppi-05.png<br />css/index.css</div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
