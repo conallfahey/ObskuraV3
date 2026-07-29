@@ -116,37 +116,28 @@ document.addEventListener('DOMContentLoaded', () => {
         'elli-acula-serum': ['https://www.instagram.com/p/DYDIegeP0d0/']
     };
 
-    const toInstagramEmbedUrl = (url) => {
-        const cleanUrl = url.split('?')[0].replace(/\/?$/, '/');
-        return `${cleanUrl}embed/captioned/`;
+    const getBackgroundImageUrl = (item) => {
+        const backgroundImage = item?.querySelector('.grid__item-img-inner')?.style.backgroundImage || '';
+        return backgroundImage.replace(/^url\(['"]?/, '').replace(/['"]?\)$/, '');
     };
 
-    const openInstagramPosts = (urls) => {
-        instagramContainer.innerHTML = urls.map((url) => `
-            <div class="instagram-post">
-                <div data-ig-fallback style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;color:#fff;background:rgba(0,0,0,0.75);z-index:2;gap:10px;">
-                    <div style="font-size:18px;line-height:1.2;">Instagram embed not loading here.</div>
-                    <div style="opacity:0.9;font-size:14px;">Open the post on Instagram:</div>
-                    <a href="${url}" target="_blank" rel="noopener noreferrer" style="color:#fff;text-decoration:underline;">${url}</a>
-                </div>
-                <iframe src="${toInstagramEmbedUrl(url)}" allowtransparency="true" allowfullscreen="true" frameborder="0" scrolling="no" style="position:absolute;inset:0;width:100%;height:100%;border:0;z-index:1;background:#fff;"></iframe>
-            </div>
-        `).join('');
+    const openInstagramPosts = (urls, item) => {
+        const spanText = item?.querySelector('.grid__item-caption span')?.textContent?.trim();
+        const h3Text = item?.querySelector('.grid__item-caption h3')?.textContent?.trim();
+        const title = h3Text || spanText || 'Instagram Post';
+        const subtitle = spanText && h3Text ? spanText : 'View on Instagram';
+        const thumbnail = getBackgroundImageUrl(item);
 
-        instagramContainer.offsetHeight;
-        instagramContainer.querySelectorAll('iframe').forEach((iframe) => {
-            const fallback = iframe.parentElement.querySelector('[data-ig-fallback]');
-            let didLoad = false;
-            iframe.addEventListener('load', () => {
-                didLoad = true;
-                fallback?.remove();
-            });
-            setTimeout(() => {
-                if (!didLoad && fallback) {
-                    fallback.style.display = 'flex';
-                }
-            }, 1500);
-        });
+        instagramContainer.innerHTML = urls.map((url) => `
+            <a class="instagram-post" href="${url}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:#fff;background:#111;min-height:620px;">
+                <div style="position:absolute;inset:0;background-image:linear-gradient(180deg,rgba(0,0,0,0.05),rgba(0,0,0,0.78)),url('${thumbnail}');background-size:cover;background-position:center;"></div>
+                <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;z-index:2;">
+                    <div style="font-size:34px;line-height:1.05;margin-bottom:8px;">${title}</div>
+                    <div style="font-size:16px;line-height:1.35;opacity:0.86;margin-bottom:18px;">${subtitle}</div>
+                    <div style="display:inline-flex;align-items:center;justify-content:center;align-self:flex-start;border:1px solid rgba(255,255,255,0.72);padding:10px 14px;font-size:14px;text-transform:uppercase;letter-spacing:0.04em;">Open on Instagram</div>
+                </div>
+            </a>
+        `).join('');
 
         instagramModal.style.pointerEvents = 'auto';
         instagramModal.style.visibility = 'visible';
@@ -181,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const workId = item.getAttribute('data-work-id') || '';
 
             if (instagramUrls[workId]) {
-                openInstagramPosts(instagramUrls[workId]);
+                openInstagramPosts(instagramUrls[workId], item);
                 return;
             }
             
