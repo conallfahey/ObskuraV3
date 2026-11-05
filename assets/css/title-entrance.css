@@ -1,0 +1,9 @@
+/* Keep the original lettering and spacing; reveal at measured glyph boundaries. */
+.load-type-line{display:inline-block;font:inherit;letter-spacing:inherit;vertical-align:baseline}
+.motion-ready .wordmark.load-title{animation:none;clip-path:none;transform:none}
+.load-bar{overflow:hidden}
+.load-bar i{transform-origin:left center;animation:color-register 1.1s cubic-bezier(.19,1,.22,1) both}
+.load-bar i:nth-child(2){animation-delay:120ms}
+.load-bar i:nth-child(3){animation-delay:240ms}
+@keyframes color-register{0%{transform:translateX(-110%) scaleX(.2);opacity:0}25%{opacity:1}65%{transform:translateX(5%) scaleX(1.08)}100%{transform:translateX(0) scaleX(1);opacity:1}}
+@media(prefers-reduced-motion:reduce){.load-type-line{clip-path:none!important}.load-bar i{animation:none}}

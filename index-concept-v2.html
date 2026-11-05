@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#e9e4da">
+  <meta name="description" content="Obskura is a Chicago production team creating dynamic social content, live performance films, and authentic visual stories.">
+  <title>Obskura — Stories in Motion</title>
+  <link rel="icon" href="favicon/favicon-32x32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="favicon/apple-touch-icon.png">
+  <style>
+    @font-face { font-family: Monument; src: url("fonts/MonumentExtended-Regular.woff") format("woff"); font-display: swap; }
+    @font-face { font-family: Alpina; src: url("fonts/GT-Alpina-Light-Italic.woff") format("woff"); font-style: italic; font-display: swap; }
+    @font-face { font-family: Mono; src: url("fonts/sohne-mono-light.woff2") format("woff2"); font-display: swap; }
+    @font-face { font-family: Mori; src: url("fonts/PPMori-Regular.woff") format("woff"); font-display: swap; }
+
+    :root {
+      --paper: #e9e4da;
+      --ink: #0b0b0b;
+      --red: #fc1234;
+      --blue: #b9cdef;
+      --white: #f7f5f0;
+      --rule: 1px solid var(--ink);
+      --gutter: clamp(16px, 2.2vw, 34px);
+      --ease: cubic-bezier(.22, .8, .28, 1);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--paper); }
+    body { margin: 0; overflow-x: hidden; color: var(--ink); background: var(--paper); font-family: Mori, Arial, sans-serif; }
+    body.menu-open { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { color: inherit; font: inherit; }
+    img, video { display: block; width: 100%; }
+    ::selection { color: var(--white); background: var(--red); }
+    :focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+    .skip { position: fixed; z-index: 100; top: 10px; left: 10px; padding: 10px 14px; background: var(--ink); color: var(--white); transform: translateY(-150%); }
+    .skip:focus { transform: none; }
+
+    .topbar {
+      position: fixed; z-index: 40; inset: 0 0 auto; display: grid; grid-template-columns: 1fr auto 1fr;
+      align-items: center; height: 66px; padding: 0 var(--gutter); border-bottom: var(--rule); background: rgba(233,228,218,.93);
+      backdrop-filter: blur(12px);
+    }
+    .brand { font: 17px Monument, sans-serif; letter-spacing: -.055em; text-transform: uppercase; }
+    .edition { font: 9px Mono, monospace; letter-spacing: .14em; text-transform: uppercase; }
+    .menu-button { justify-self: end; display: flex; align-items: center; gap: 9px; border: 0; padding: 9px 0 9px 14px; background: transparent; font: 10px Mono, monospace; letter-spacing: .12em; text-transform: uppercase; cursor: pointer; }
+    .menu-icon { position: relative; width: 26px; height: 10px; }
+    .menu-icon::before, .menu-icon::after { content: ""; position: absolute; left: 0; width: 100%; height: 1px; background: currentColor; transition: transform .3s var(--ease), top .3s var(--ease); }
+    .menu-icon::before { top: 1px; }
+    .menu-icon::after { top: 8px; }
+    .menu-button[aria-expanded="true"] .menu-icon::before { top: 5px; transform: rotate(45deg); }
+    .menu-button[aria-expanded="true"] .menu-icon::after { top: 5px; transform: rotate(-45deg); }
+
+    .menu-sheet { position: fixed; z-index: 35; inset: 66px 0 0; display: grid; grid-template-columns: 2fr 1fr; background: var(--blue); transform: translateY(-105%); visibility: hidden; transition: transform .65s var(--ease), visibility .65s; }
+    .menu-sheet.open { transform: none; visibility: visible; }
+    .menu-nav { display: flex; flex-direction: column; justify-content: center; padding: var(--gutter); border-right: var(--rule); }
+    .menu-nav a { width: max-content; font: clamp(45px, 8.5vw, 134px)/.86 Monument, sans-serif; letter-spacing: -.075em; text-transform: uppercase; }
+    .menu-nav a::before { content: "↳"; display: inline-block; width: 0; overflow: hidden; color: var(--red); transition: width .25s; }
+    .menu-nav a:hover::before { width: .72em; }
+    .menu-aside { display: flex; flex-direction: column; justify-content: flex-end; padding: var(--gutter); }
+    .menu-aside img { width: 64px; height: 64px; margin-bottom: auto; object-fit: contain; filter: invert(1); }
+    .menu-aside p { margin: 0 0 18px; font: 10px/1.5 Mono, monospace; text-transform: uppercase; }
+
+    .hero { display: grid; grid-template-columns: minmax(0, 7fr) minmax(320px, 5fr); min-height: 100svh; padding-top: 66px; border-bottom: var(--rule); }
+    .hero-copy { display: flex; flex-direction: column; padding: var(--gutter); border-right: var(--rule); }
+    .hero-meta { display: grid; grid-template-columns: 1fr 1fr; margin-bottom: auto; font: 9px/1.4 Mono, monospace; letter-spacing: .1em; text-transform: uppercase; }
+    .hero-meta span:last-child { text-align: right; }
+    .hero-title { margin: 8vh 0 0; font: clamp(56px, 9.5vw, 154px)/.79 Monument, sans-serif; letter-spacing: -.08em; text-transform: uppercase; }
+    .hero-title em { display: block; color: var(--red); font-family: Alpina, serif; font-weight: 400; text-align: right; text-transform: none; }
+    .hero-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: end; margin-top: 7vh; padding-top: 14px; border-top: var(--rule); }
+    .hero-intro p { grid-column: 2; margin: 0; max-width: 440px; font-size: clamp(14px, 1.25vw, 19px); line-height: 1.35; }
+    .hero-intro a { grid-column: 1; grid-row: 1; width: max-content; font: 10px Mono, monospace; letter-spacing: .12em; text-transform: uppercase; }
+    .hero-intro a::after { content: "↓"; margin-left: 18px; color: var(--red); font-size: 18px; }
+    .hero-visual { position: relative; min-height: 620px; overflow: hidden; background: #333; }
+    .hero-visual video { height: 100%; object-fit: cover; filter: saturate(.86) contrast(1.08); }
+    .hero-visual::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(0,0,0,.6)); pointer-events: none; }
+    .frame-data { position: absolute; z-index: 1; top: 18px; right: 18px; padding: 7px 9px; color: var(--white); background: var(--red); font: 8px Mono, monospace; letter-spacing: .12em; text-transform: uppercase; }
+    .vertical-word { position: absolute; z-index: 1; left: 12px; bottom: 18px; color: var(--white); font: clamp(44px, 5vw, 78px)/.8 Monument, sans-serif; letter-spacing: -.08em; text-transform: uppercase; writing-mode: vertical-rl; transform: rotate(180deg); }
+
+    .ribbon { overflow: hidden; padding: 13px 0 11px; border-bottom: var(--rule); color: var(--white); background: var(--red); }
+    .ribbon-track { display: flex; width: max-content; animation: roll 22s linear infinite; }
+    .ribbon span { flex: none; font: clamp(26px, 3vw, 46px)/1 Monument, sans-serif; letter-spacing: -.04em; text-transform: uppercase; }
+    .ribbon i { padding: 0 .45em; color: var(--ink); font-family: Alpina, serif; font-weight: 400; }
+    @keyframes roll { to { transform: translateX(-50%); } }
+
+    .section-label { margin: 0; font: 9px Mono, monospace; letter-spacing: .14em; text-transform: uppercase; }
+    .section-label::before { content: "●"; margin-right: 9px; color: var(--red); }
+    .about { display: grid; grid-template-columns: 1fr 3fr; min-height: 84svh; border-bottom: var(--rule); background: var(--blue); }
+    .about-side { padding: clamp(70px, 9vw, 140px) var(--gutter); border-right: var(--rule); }
+    .about-main { display: flex; flex-direction: column; justify-content: space-between; padding: clamp(70px, 9vw, 140px) var(--gutter); }
+    .about h2 { max-width: 1200px; margin: 0; font: clamp(38px, 6.2vw, 98px)/.94 Monument, sans-serif; letter-spacing: -.065em; text-transform: uppercase; }
+    .about h2 em { color: var(--red); font-family: Alpina, serif; font-weight: 400; text-transform: none; }
+    .about-bottom { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 40px; margin-top: 90px; }
+    .about-bottom p { grid-column: 2; margin: 0; max-width: 550px; font-size: clamp(15px, 1.35vw, 20px); line-height: 1.5; }
+    .stamp-link { grid-column: 1; grid-row: 1; display: grid; place-items: center; width: 120px; aspect-ratio: 1; border: var(--rule); border-radius: 50%; font: 9px/1.4 Mono, monospace; text-align: center; text-transform: uppercase; transition: transform .4s var(--ease), background .3s, color .3s; }
+    .stamp-link:hover { color: var(--white); background: var(--ink); transform: rotate(-10deg); }
+
+    .work { border-bottom: var(--rule); }
+    .work-head { display: grid; grid-template-columns: 1fr 3fr; border-bottom: var(--rule); }
+    .work-head > * { padding: clamp(50px, 7vw, 100px) var(--gutter); }
+    .work-head .section-label { border-right: var(--rule); }
+    .work-title { margin: 0; font: clamp(53px, 9.5vw, 152px)/.78 Monument, sans-serif; letter-spacing: -.08em; text-transform: uppercase; }
+    .work-title em { color: var(--red); font-family: Alpina, serif; font-weight: 400; text-transform: none; }
+    .cases { display: grid; grid-template-columns: 1fr 1fr; }
+    .case { position: relative; min-width: 0; border-bottom: var(--rule); }
+    .case:nth-child(odd) { border-right: var(--rule); }
+    .case-media { position: relative; aspect-ratio: 16/11; overflow: hidden; background: #222; }
+    .case-media::after { content: "VIEW CASE ↗"; position: absolute; inset: 0; display: grid; place-items: center; color: var(--white); background: rgba(252,18,52,.88); font: 11px Mono, monospace; letter-spacing: .15em; opacity: 0; transition: opacity .35s; }
+    .case img { height: 100%; object-fit: cover; transition: transform .7s var(--ease); }
+    .case:hover img { transform: scale(1.04); }
+    .case:hover .case-media::after { opacity: 1; }
+    .case-copy { display: grid; grid-template-columns: auto 1fr auto; gap: 18px; align-items: start; padding: 18px var(--gutter) 28px; }
+    .case-num { font: 9px Mono, monospace; }
+    .case h3 { margin: 0; font: clamp(20px, 2.3vw, 36px)/1 Monument, sans-serif; letter-spacing: -.05em; text-transform: uppercase; }
+    .case p { grid-column: 2; margin: -7px 0 0; font: 9px Mono, monospace; letter-spacing: .1em; text-transform: uppercase; }
+    .case-arrow { grid-row: 1/3; grid-column: 3; color: var(--red); font-size: 23px; }
+    .all-work { display: grid; grid-template-columns: 1fr 3fr; min-height: 120px; border-bottom: var(--rule); }
+    .all-work span { display: grid; place-items: center; border-right: var(--rule); font: 9px Mono, monospace; text-transform: uppercase; }
+    .all-work strong { display: flex; justify-content: space-between; align-items: center; padding: 22px var(--gutter); font: clamp(28px, 4vw, 62px) Monument, sans-serif; letter-spacing: -.055em; text-transform: uppercase; transition: color .3s, background .3s; }
+    .all-work:hover strong { color: var(--white); background: var(--ink); }
+
+    .services { display: grid; grid-template-columns: 1fr 3fr; border-bottom: var(--rule); }
+    .services-side { padding: clamp(70px, 9vw, 140px) var(--gutter); border-right: var(--rule); }
+    .services-main { padding: clamp(70px, 9vw, 140px) var(--gutter); }
+    .services-main h2 { margin: 0 0 70px; font: clamp(50px, 8vw, 126px)/.8 Monument, sans-serif; letter-spacing: -.075em; text-transform: uppercase; }
+    .service { border-top: var(--rule); }
+    .service summary { display: grid; grid-template-columns: 55px 1fr auto; align-items: center; min-height: 108px; cursor: pointer; list-style: none; }
+    .service summary::-webkit-details-marker { display: none; }
+    .service-num { font: 9px Mono, monospace; }
+    .service h3 { margin: 0; font: clamp(20px, 3vw, 43px) Monument, sans-serif; letter-spacing: -.05em; text-transform: uppercase; }
+    .service-toggle { width: 34px; height: 34px; border: var(--rule); border-radius: 50%; display: grid; place-items: center; transition: color .3s, background .3s, transform .3s; }
+    .service[open] .service-toggle { color: var(--white); background: var(--red); transform: rotate(45deg); }
+    .service-body { display: grid; grid-template-columns: 55px 1fr 190px; gap: 20px; padding: 0 0 30px; }
+    .service-body p { grid-column: 2; max-width: 560px; margin: 0; color: #4b4b4b; font-size: 15px; line-height: 1.5; }
+    .service-video { grid-column: 3; aspect-ratio: 1; object-fit: cover; }
+
+    .location { position: relative; min-height: 92svh; display: grid; place-items: center; overflow: hidden; color: var(--white); background: var(--ink); }
+    .location img { position: absolute; inset: 0; height: 100%; object-fit: cover; opacity: .62; filter: saturate(.82) contrast(1.12); }
+    .location::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.1), rgba(0,0,0,.55)); }
+    .location-copy { position: relative; z-index: 1; width: 100%; padding: var(--gutter); text-align: center; }
+    .location h2 { margin: 0; font: clamp(54px, 12vw, 198px)/.76 Monument, sans-serif; letter-spacing: -.085em; text-transform: uppercase; }
+    .location h2 em { display: block; color: var(--red); font-family: Alpina, serif; font-weight: 400; text-transform: none; }
+    .location p { margin: 38px 0 0; font: 9px Mono, monospace; letter-spacing: .16em; text-transform: uppercase; }
+
+    .contact { display: grid; grid-template-columns: 5fr 7fr; min-height: 100svh; color: var(--white); background: var(--ink); border-top: 1px solid #333; }
+    .contact-copy { display: flex; flex-direction: column; justify-content: space-between; padding: clamp(70px, 8vw, 130px) var(--gutter); border-right: 1px solid #444; }
+    .contact .section-label::before { color: var(--red); }
+    .contact h2 { margin: 50px 0 0; font: clamp(52px, 8.5vw, 138px)/.78 Monument, sans-serif; letter-spacing: -.08em; text-transform: uppercase; }
+    .contact h2 em { display: block; color: var(--red); font-family: Alpina, serif; font-weight: 400; text-transform: none; }
+    .contact-direct { margin-top: 70px; font: 10px Mono, monospace; letter-spacing: .08em; text-transform: uppercase; }
+    .form { display: flex; flex-direction: column; justify-content: center; gap: 28px; padding: clamp(70px, 8vw, 130px) clamp(24px, 6vw, 100px); }
+    .field { display: grid; grid-template-columns: 120px 1fr; gap: 20px; border-bottom: 1px solid #555; }
+    .field label { padding-top: 13px; color: #888; font: 9px Mono, monospace; letter-spacing: .13em; text-transform: uppercase; }
+    .field input, .field textarea { min-width: 0; border: 0; padding: 10px 0 17px; color: var(--white); background: transparent; outline: 0; font-size: 17px; }
+    .field textarea { min-height: 120px; resize: vertical; }
+    .field:focus-within { border-color: var(--red); }
+    .send { display: flex; justify-content: space-between; align-items: center; margin-top: 18px; border: 1px solid var(--white); padding: 19px 22px; color: var(--white); background: transparent; cursor: pointer; font: 10px Mono, monospace; letter-spacing: .14em; text-transform: uppercase; transition: color .25s, background .25s; }
+    .send:hover { color: var(--ink); background: var(--white); }
+    .send:disabled { cursor: wait; opacity: .55; }
+    .status { min-height: 18px; margin: 0; color: #aaa; font: 10px Mono, monospace; }
+
+    .footer { color: var(--ink); background: var(--red); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; border-bottom: var(--rule); }
+    .footer-grid > div { min-height: 210px; padding: 28px var(--gutter); border-right: var(--rule); }
+    .footer-grid > div:last-child { border-right: 0; }
+    .footer-label { margin: 0 0 25px; font: 9px Mono, monospace; letter-spacing: .14em; text-transform: uppercase; }
+    .footer p, .footer a { font-size: 13px; line-height: 1.55; }
+    .footer-word { overflow: hidden; padding: 25px var(--gutter) 10px; font: 13.2vw/.72 Monument, sans-serif; letter-spacing: -.082em; text-align: center; text-transform: uppercase; }
+    .footer-base { display: flex; justify-content: space-between; padding: 24px var(--gutter); font: 8px Mono, monospace; letter-spacing: .12em; text-transform: uppercase; }
+
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .75s var(--ease), transform .75s var(--ease); }
+    .reveal.in { opacity: 1; transform: none; }
+
+    @media (max-width: 850px) {
+      .topbar { height: 58px; }
+      .edition { display: none; }
+      .topbar { grid-template-columns: 1fr 1fr; }
+      .menu-sheet { top: 58px; grid-template-columns: 1fr; }
+      .menu-aside { display: none; }
+      .menu-nav { border-right: 0; }
+      .hero { grid-template-columns: 1fr; padding-top: 58px; }
+      .hero-copy { min-height: 72svh; border-right: 0; border-bottom: var(--rule); }
+      .hero-title { font-size: clamp(56px, 16vw, 118px); }
+      .hero-visual { min-height: 72svh; }
+      .about, .work-head, .services { grid-template-columns: 1fr; }
+      .about-side, .work-head .section-label, .services-side { padding-bottom: 25px; border-right: 0; }
+      .about-main, .work-head > *:last-child, .services-main { padding-top: 30px; }
+      .cases { grid-template-columns: 1fr; }
+      .case:nth-child(odd) { border-right: 0; }
+      .case-media { aspect-ratio: 4/3; }
+      .all-work { grid-template-columns: 100px 1fr; }
+      .contact { grid-template-columns: 1fr; }
+      .contact-copy { min-height: 72svh; border-right: 0; border-bottom: 1px solid #444; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid > div:first-child { grid-column: 1/-1; border-bottom: var(--rule); }
+    }
+
+    @media (max-width: 520px) {
+      .menu-button > span:first-child { display: none; }
+      .hero-meta { font-size: 8px; }
+      .hero-copy { min-height: 75svh; }
+      .hero-title { margin-top: 11vh; font-size: 16.5vw; }
+      .hero-intro { grid-template-columns: 1fr auto; }
+      .hero-intro p { grid-column: 1; }
+      .hero-intro a { grid-column: 2; font-size: 0; }
+      .hero-intro a::after { margin: 0; }
+      .hero-visual { min-height: 64svh; }
+      .about-bottom { display: block; margin-top: 60px; }
+      .about-bottom p { margin-top: 35px; }
+      .stamp-link { width: 96px; }
+      .case-copy { grid-template-columns: 30px 1fr auto; }
+      .case-media { aspect-ratio: 4/5; }
+      .all-work { grid-template-columns: 68px 1fr; }
+      .all-work strong { font-size: 22px; }
+      .service summary { grid-template-columns: 34px 1fr auto; min-height: 92px; }
+      .service h3 { font-size: 19px; }
+      .service-body { grid-template-columns: 34px 1fr; }
+      .service-body p { grid-column: 2; }
+      .service-video { grid-column: 2; width: 110px; }
+      .location h2 { font-size: 16.5vw; }
+      .field { grid-template-columns: 1fr; gap: 0; }
+      .field label { padding-top: 0; }
+      .contact h2 { font-size: 16vw; }
+      .footer-grid > div { min-height: 165px; }
+      .footer-word { font-size: 13vw; }
+      .footer-base { gap: 20px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Obskura home">Obskura</a>
+    <span class="edition">Field notes / Edition 002</span>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="menu-sheet"><span>Index</span><span class="menu-icon" aria-hidden="true"></span></button>
+  </header>
+
+  <aside class="menu-sheet" id="menu-sheet" aria-hidden="true">
+    <nav class="menu-nav" aria-label="Main navigation">
+      <a href="#top">Home</a>
+      <a href="#work">Work</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="menu-aside">
+      <img src="assets/svg/ObskuraWhite150ppi-05.png" alt="">
+      <p>Chicago, IL<br>Available worldwide</p>
+      <p>+1 630 728 8536<br>conall@obskurastudios.com</p>
+    </div>
+  </aside>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="hero-meta"><span>Independent production studio</span><span>Chicago / Worldwide</span></div>
+        <h1 class="hero-title" id="hero-title">Stories<br>in <em>motion.</em></h1>
+        <div class="hero-intro">
+          <a href="#about">Scroll to discover</a>
+          <p>Dynamic social content and authentic storytelling that connects with audiences.</p>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <video autoplay muted loop playsinline preload="metadata" poster="assets/images/LSDREAM_NAVYPIER.webp"><source src="assets/videos/Pigeons_Clip.webm" type="video/webm"></video>
+        <span class="frame-data">Obskura / Reel 001</span>
+        <span class="vertical-word">Obskura</span>
+      </div>
+    </section>
+
+    <div class="ribbon" aria-hidden="true"><div class="ribbon-track"><span>Music <i>•</i> Culture <i>•</i> Brands <i>•</i> Live <i>•</i> Social <i>•</i>&nbsp;</span><span>Music <i>•</i> Culture <i>•</i> Brands <i>•</i> Live <i>•</i> Social <i>•</i>&nbsp;</span></div></div>
+
+    <section class="about" id="about">
+      <div class="about-side"><p class="section-label reveal">Who we are</p></div>
+      <div class="about-main">
+        <h2 class="reveal">We capture the energy you felt—and turn it into a story <em>worth replaying.</em></h2>
+        <div class="about-bottom reveal">
+          <a class="stamp-link" href="#contact">Start<br>a project ↗</a>
+          <p>We are a production team specializing in dynamic social media content and authentic storytelling that connects with audiences.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="work" id="work">
+      <div class="work-head">
+        <p class="section-label reveal">Selected cases</p>
+        <h2 class="work-title reveal">Proof of <em>work.</em></h2>
+      </div>
+      <div class="cases">
+        <a class="case reveal" href="works.html" aria-label="View L'Impératrice at Aragon Ballroom">
+          <div class="case-media"><img src="assets/images/limpTN.jpg" alt="L'Impératrice performing at Aragon Ballroom" loading="lazy"></div>
+          <div class="case-copy"><span class="case-num">01</span><h3>L'Impératrice</h3><span class="case-arrow">↗</span><p>Aragon Ballroom</p></div>
+        </a>
+        <a class="case reveal" href="works.html" aria-label="View Zeds Dead at Hulaween">
+          <div class="case-media"><img src="assets/images/ZEDS_DEAD_HULA.jpg" alt="Crowd watching Zeds Dead at Hulaween" loading="lazy"></div>
+          <div class="case-copy"><span class="case-num">02</span><h3>Zeds Dead</h3><span class="case-arrow">↗</span><p>Hulaween / Full Set</p></div>
+        </a>
+        <a class="case reveal" href="works.html" aria-label="View LSDREAM at Navy Pier">
+          <div class="case-media"><img src="assets/images/LSDREAM_NAVYPIER.png" alt="LSDREAM performing under lasers at Navy Pier" loading="lazy"></div>
+          <div class="case-copy"><span class="case-num">03</span><h3>LSDREAM</h3><span class="case-arrow">↗</span><p>New Year's Eve</p></div>
+        </a>
+        <a class="case reveal" href="works.html" aria-label="View Nicole Moudaber at ARC Chicago">
+          <div class="case-media"><img src="assets/images/NICOLE_MOUDABER_ARC25.jpg" alt="Nicole Moudaber performing at ARC Chicago" loading="lazy"></div>
+          <div class="case-copy"><span class="case-num">04</span><h3>Nicole Moudaber</h3><span class="case-arrow">↗</span><p>ARC Chicago / Full Set</p></div>
+        </a>
+      </div>
+      <a class="all-work" href="works.html"><span>Archive</span><strong>Explore all work <b>↗</b></strong></a>
+    </section>
+
+    <section class="services" id="services">
+      <div class="services-side"><p class="section-label reveal">What we do</p></div>
+      <div class="services-main">
+        <h2 class="reveal">Built for<br>the moment.</h2>
+        <details class="service reveal" open>
+          <summary><span class="service-num">01</span><h3>Branded Content</h3><span class="service-toggle">+</span></summary>
+          <div class="service-body"><p>On-brand visuals that capture your identity and connect with your audience across every platform.</p><video class="service-video" autoplay muted loop playsinline preload="metadata"><source src="assets/videos/Mamitas_1080Clip.webm" type="video/webm"></video></div>
+        </details>
+        <details class="service reveal">
+          <summary><span class="service-num">02</span><h3>Full Performance Coverage</h3><span class="service-toggle">+</span></summary>
+          <div class="service-body"><p>We don't miss a beat—capturing every moment from stage to crowd with cinematic precision.</p><video class="service-video" autoplay muted loop playsinline preload="metadata"><source src="assets/videos/Pigeons_Clip.webm" type="video/webm"></video></div>
+        </details>
+        <details class="service reveal">
+          <summary><span class="service-num">03</span><h3>After-Movie Duties</h3><span class="service-toggle">+</span></summary>
+          <div class="service-body"><p>Fast-paced edits that hit fast and loud, turning events into electrifying highlight reels made to be shared.</p><video class="service-video" autoplay muted loop playsinline preload="metadata"><source src="assets/videos/Ef_1080Clip.webm" type="video/webm"></video></div>
+        </details>
+      </div>
+    </section>
+
+    <section class="location" aria-label="Based in Chicago and working worldwide">
+      <img src="assets/images/carlcox1.jpg" alt="Crowd gathered for a live electronic music performance" loading="lazy">
+      <div class="location-copy reveal"><h2>Chicago <em>and beyond.</em></h2><p>Available for productions worldwide</p></div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="contact-copy reveal">
+        <p class="section-label">Start a project</p>
+        <h2>Let's make <em>something move.</em></h2>
+        <a class="contact-direct" href="mailto:conall@obskurastudios.com">conall@obskurastudios.com ↗</a>
+      </div>
+      <form class="form reveal" id="consultationForm">
+        <div class="field"><label for="yourname">Your name</label><input id="yourname" name="yourname" autocomplete="name" required placeholder="Jane Smith"></div>
+        <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="jane@studio.com"></div>
+        <div class="field"><label for="message">The project</label><textarea id="message" name="message" required placeholder="A little about your idea, timeline, and where it's happening..."></textarea></div>
+        <input id="bait" name="bait" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-10000px">
+        <button class="send" type="submit"><span>Send inquiry</span><span aria-hidden="true">↗</span></button>
+        <p class="status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div><p class="footer-label">Obskura Studios</p><p>Independent production team.<br>Chicago, Illinois / Available worldwide.</p></div>
+      <div><p class="footer-label">Connect</p><a href="https://www.instagram.com/obskurastudios" target="_blank" rel="noreferrer">Instagram ↗</a><br><a href="https://www.tiktok.com/@obskurastudios" target="_blank" rel="noreferrer">TikTok ↗</a></div>
+      <div><p class="footer-label">Contact</p><a href="tel:+16307288536">+1 630 728 8536</a><br><a href="mailto:conall@obskurastudios.com">Email us ↗</a></div>
+    </div>
+    <div class="footer-word">Obskura</div>
+    <div class="footer-base"><span>© <span id="year"></span> Obskura Studios</span><a href="#top">Back to top ↑</a></div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector('.menu-button');
+    const menuSheet = document.querySelector('.menu-sheet');
+    const closeMenu = () => {
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuSheet.setAttribute('aria-hidden', 'true');
+      menuSheet.classList.remove('open');
+      document.body.classList.remove('menu-open');
+    };
+    menuButton.addEventListener('click', () => {
+      const open = menuButton.getAttribute('aria-expanded') !== 'true';
+      menuButton.setAttribute('aria-expanded', String(open));
+      menuSheet.setAttribute('aria-hidden', String(!open));
+      menuSheet.classList.toggle('open', open);
+      document.body.classList.toggle('menu-open', open);
+    });
+    menuSheet.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .1 });
+    document.querySelectorAll('.reveal').forEach(item => observer.observe(item));
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const form = document.getElementById('consultationForm');
+    const status = document.getElementById('form-status');
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
+      const fields = form.elements;
+      if (fields.namedItem('bait').value) return;
+      const button = form.querySelector('button[type="submit"]');
+      button.disabled = true;
+      button.firstElementChild.textContent = 'Sending…';
+      status.textContent = '';
+      try {
+        const payload = {
+          name: fields.namedItem('yourname').value.trim(),
+          email: fields.namedItem('email').value.trim(),
+          message: fields.namedItem('message').value.trim(),
+          _subject: 'New Contact Form Submission from Obskura Website',
+          _captcha: 'false'
+        };
+        const response = await fetch('https://formsubmit.co/ajax/conall@obskurastudios.com', {
+          method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(payload)
+        });
+        if (!response.ok) throw new Error('Submission failed');
+        form.reset();
+        status.textContent = 'Thanks — your message is on its way.';
+      } catch (error) {
+        status.textContent = 'Something went wrong. Please email conall@obskurastudios.com.';
+      } finally {
+        button.disabled = false;
+        button.firstElementChild.textContent = 'Send inquiry';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" fill="none">
+  <title>Obskura standard</title>
+  <g stroke="#232121" stroke-width="23" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="500" cy="500" r="475"/>
+    <path d="M25 500 C25 444 77 399 142 399 C207 399 259 444 259 500 C259 706 425 871 621 871 C817 871 975 706 975 500"/>
+    <path d="M25 500 C25 378 131 280 263 280 C394 280 500 378 500 500 C500 642 606 757 738 757 C869 757 975 642 975 500"/>
+    <path d="M25 500 C25 307 185 150 383 150 C581 150 741 307 741 500 C741 564 793 616 858 616 C923 616 975 564 975 500"/>
+  </g>
+  <circle cx="259" cy="500" r="61" fill="#3189b5"/>
+  <circle cx="500" cy="500" r="61" fill="#ed5035"/>
+  <circle cx="741" cy="500" r="61" fill="#f4ce48"/>
+</svg>

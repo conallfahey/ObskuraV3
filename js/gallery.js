@@ -24,7 +24,14 @@ document.addEventListener('DOMContentLoaded', function() {
   gsap.registerPlugin(ScrollTrigger);
   
   // Elements
-  const galleryItems = document.querySelectorAll('.gallery-item');
+  const galleryGrid = document.querySelector('.gallery-grid');
+  const shuffledPhotos = [...galleryGrid.querySelectorAll('.gallery-item')];
+  for (let i = shuffledPhotos.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledPhotos[i], shuffledPhotos[j]] = [shuffledPhotos[j], shuffledPhotos[i]];
+  }
+  shuffledPhotos.forEach(photo => galleryGrid.append(photo));
+  const galleryItems = galleryGrid.querySelectorAll('.gallery-item');
   const filterBtns = document.querySelectorAll('.filter-btn');
   const lightboxModal = document.querySelector('.lightbox-modal');
   const lightboxImg = document.querySelector('.lightbox-img');

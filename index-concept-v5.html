@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ece9e1">
+  <meta name="description" content="Photo and video for artists, brands, and live shows. Obskura is a Chicago production crew, happy to travel.">
+  <title>Obskura Studios</title>
+  <link rel="icon" href="favicon/favicon-32x32.png">
+  <link rel="preload" href="fonts/overused-grotesk/OverusedGrotesk-Medium.woff" as="font" type="font/woff" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manufacturing+Consent&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/after-hours.css">
+  <script src="assets/js/after-hours.js" defer></script>
+  <style>
+    @font-face{font-family:Grotesk;src:url('fonts/overused-grotesk/OverusedGrotesk-Book.woff') format('woff');font-weight:400;font-display:swap}
+    @font-face{font-family:Grotesk;src:url('fonts/overused-grotesk/OverusedGrotesk-Medium.woff') format('woff');font-weight:500;font-display:swap}
+    @font-face{font-family:Alpina;src:url('fonts/GT-Alpina-Light-Italic.woff') format('woff');font-style:italic;font-display:swap}
+    @font-face{font-family:Mono;src:url('fonts/sohne-mono-light.woff2') format('woff2');font-display:swap}
+    :root{--paper:#ece9e1;--ink:#151613;--muted:#696b63;--line:#c7c5bc;--red:#d74220;--blue:#3189b5;--logo-red:#ed5035;--yellow:#f4ce48;--pad:clamp(22px,4.2vw,80px);--ease:cubic-bezier(.2,.65,.3,1)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:28px}body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.45 Grotesk,Arial,sans-serif}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:pointer}button,a{-webkit-tap-highlight-color:transparent}button{border:0;background:none}img,video{display:block;width:100%;height:100%;object-fit:cover}figure,p,h1,h2,h3{margin:0}::selection{background:var(--red);color:var(--ink)}:focus-visible{outline:2px solid var(--red);outline-offset:6px}button:disabled{cursor:default}.skip{position:fixed;z-index:100;top:10px;left:10px;background:var(--paper);padding:14px;transform:translateY(-200%)}.skip:focus{transform:none}.wrap{padding-inline:var(--pad)}.meta{font:10px/1.5 Mono,monospace;text-transform:uppercase;letter-spacing:.1em}.serif{font-family:Alpina,Georgia,serif;font-style:italic;font-weight:400}.arrow{font:400 24px/1 Grotesk;display:inline-block;transition:transform .3s}.text-link{display:inline-flex;align-items:center;gap:40px;border-bottom:1px solid;padding:10px 0;font-size:14px}.text-link:hover .arrow{transform:translate(3px,-3px)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:85px;border-bottom:1px solid var(--line);margin-inline:var(--pad)}.nav-brand{font-size:24px;font-weight:500;letter-spacing:-.06em}.nav-center{display:flex;gap:34px;font-size:13px}.nav-center a{position:relative}.nav-center a:after{content:'';position:absolute;bottom:-5px;left:0;width:100%;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .25s}.nav-center a:hover:after{transform:scaleX(1)}.nav-contact{display:flex;gap:24px;align-items:center;font-size:13px}.nav-contact .arrow{font-size:20px}.menu-toggle{display:none}
+    .masthead{padding:0 var(--pad) 18px}.masthead-top{display:flex;justify-content:space-between;align-items:center}.location{display:flex;gap:10px;align-items:center}.dot{width:5px;height:5px;border-radius:50%;background:currentColor;display:inline-block}.wordmark{font-size:23.7vw;font-weight:500;line-height:.75;letter-spacing:-.077em;margin-left:-.012em;margin-top:-14px;white-space:nowrap}.wordmark span{font-size:13px;letter-spacing:0;display:inline-block;vertical-align:top;margin-top:1vw;margin-left:1vw}.masthead-bottom{display:flex;justify-content:space-between;margin-top:18px}
+    .hero{position:relative;margin:0 var(--pad);height:clamp(550px,52vw,790px);overflow:hidden;background:#181e1a;color:var(--paper)}.hero>video{position:absolute;inset:0;filter:saturate(.75)}.hero:after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.12) 30%,rgba(0,0,0,.68))}.hero-top{position:absolute;top:26px;left:30px;right:30px;display:flex;justify-content:space-between;z-index:1}.hero-top .meta{display:flex;align-items:center;gap:10px}.hero-top .dot{background:var(--red)}.motion-toggle{font-size:10px;letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid #a8aaa0;padding:0 0 4px;color:var(--paper)}.hero-copy{position:absolute;left:40px;right:40px;bottom:38px;z-index:1}.hero h1{font-size:clamp(65px,7.1vw,118px);letter-spacing:-.055em;line-height:.91;font-weight:400;max-width:none}.hero h1 .serif{color:var(--red);letter-spacing:-.04em}.hero-bottom{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-top:32px}.hero-bottom p{max-width:330px;font-size:16px;line-height:1.45}.play-button{display:flex;gap:18px;align-items:center;padding:0;text-align:left}.play-circle{width:57px;height:57px;border:1px solid #d5d2c1;border-radius:50%;display:grid;place-items:center;transition:background .3s,color .3s}.play-circle:before{content:'';border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:8px solid currentColor;margin-left:3px}.play-button:hover .play-circle{background:var(--red);border-color:var(--red);color:var(--ink)}.play-button .meta{display:block;margin-top:4px;color:#c3c5ba}.hero-caption{display:flex;justify-content:space-between;padding:13px var(--pad) 0;color:var(--muted)}
+    .intro{display:grid;grid-template-columns:1fr 2.2fr;gap:50px;padding-block:112px 122px}.eyebrow{display:flex;align-items:center;gap:13px}.eyebrow:before{content:'+';font:17px/1 Mono}.intro h2{font-size:clamp(32px,3.5vw,58px);font-weight:400;letter-spacing:-.035em;line-height:1.17}.intro h2 span{color:var(--muted)}.intro .text-link{margin-top:32px}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;border-top:1px solid var(--line);padding-top:25px;margin-bottom:52px}.section-head h2{font-size:clamp(47px,5.4vw,88px);font-weight:400;letter-spacing:-.045em;line-height:1}.section-head h2 .serif{letter-spacing:-.025em}.section-head .meta{margin-bottom:8px;color:var(--muted)}.work-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:72px 7vw;padding-bottom:108px}.project{min-width:0}.project:nth-child(even){padding-top:140px}.project-media{display:block;position:relative;overflow:hidden;background:#222;width:100%;aspect-ratio:1.23;text-align:left;padding:0}.project:nth-child(even) .project-media{aspect-ratio:1.12}.project-media img{transition:transform 1s var(--ease),filter .6s;filter:saturate(.86)}.project-media:hover img{transform:scale(1.04);filter:saturate(1)}.project-index{position:absolute;top:18px;left:18px;color:#fff;z-index:1}.project-go{position:absolute;bottom:20px;right:20px;width:48px;height:48px;display:grid;place-items:center;border:1px solid #ffffff80;border-radius:50%;color:#fff;background:#0002;transition:background .3s}.project-media:hover .project-go{color:var(--ink);background:var(--paper)}.project-caption{display:flex;justify-content:space-between;align-items:start;gap:20px;margin-top:18px}.project-caption h3{font-size:29px;letter-spacing:-.03em;font-weight:400;line-height:1.1}.project-caption p{font-size:13px;color:var(--muted);margin-top:5px}.project-caption .meta{padding-top:5px;text-align:right}.all-work{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding:26px 0 55px;font-size:22px;letter-spacing:-.02em}.all-work .arrow{font-size:32px}.all-work:hover .arrow{transform:translate(6px,-6px)}
+    .services{background:var(--ink);color:var(--paper);padding-block:80px 90px}.services .section-head{border-color:#505149;margin-bottom:60px}.services .section-head .meta{color:#b5b7ab}.services-head-copy{max-width:300px;font-size:15px;color:#c1c2b8}.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}.service-media{aspect-ratio:4/5;overflow:hidden;position:relative;background:#30322c}.service-media video{transition:transform 1s;filter:saturate(.75)}.service-media:hover video{transform:scale(1.035)}.service-media:after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 55%,#0009)}.service-media .meta{position:absolute;left:22px;bottom:20px;z-index:1;color:var(--red)}.service h3{font-size:27px;font-weight:400;letter-spacing:-.025em;line-height:1.1;margin:24px 0 14px}.service p{font-size:15px;line-height:1.5;max-width:350px;color:#bbbeb0}.service .text-link{margin-top:25px;font-size:12px;color:var(--red)}
+    .studio{--line:#3b3d35;--muted:#b4b6a9;padding-block:115px;background:var(--ink);color:var(--paper);border-top:1px solid var(--line)}.studio-title{display:grid;grid-template-columns:1fr 2.2fr;gap:50px}.studio h2{font-size:clamp(52px,6.6vw,110px);line-height:1;letter-spacing:-.047em;font-weight:400}.studio h2 .serif{display:block}.studio-content{display:grid;grid-template-columns:1fr 1fr;gap:7vw;margin-top:68px;align-items:start}.studio-photo{position:relative;aspect-ratio:1.2;background:var(--ink);overflow:hidden;isolation:isolate}.studio-photo img{filter:grayscale(1) contrast(1.65);opacity:.84;mix-blend-mode:screen;object-position:center bottom;transform:scale(1.3);transform-origin:center bottom}.studio-photo:before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(circle,var(--ink) .9px,transparent 1.1px) 0 0/3px 3px;opacity:.55;mix-blend-mode:multiply;mask-image:url("img/photo/ChanceTheRapperBW.webp");mask-mode:luminance;mask-size:cover;mask-position:center bottom;mask-repeat:no-repeat;transform:scale(1.3);transform-origin:center bottom}.studio-photo .meta{position:absolute;bottom:20px;left:20px;right:20px;z-index:2;color:var(--paper)}.studio-aside>p{font-size:23px;line-height:1.4;letter-spacing:-.02em;margin-bottom:36px}.principles{border-top:1px solid var(--line)}.principles details{border-bottom:1px solid var(--line);padding:21px 0}.principles summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-size:17px}.principles summary::-webkit-details-marker{display:none}.principles summary:after{content:'+';font-size:23px;font-weight:400}.principles details[open] summary:after{content:'−'}.principles details p{font-size:15px;color:var(--muted);max-width:430px;margin-top:18px;line-height:1.6}
+    .archive{padding-block:0 100px}.archive .section-head{margin-bottom:32px}.archive-heading p{font-size:14px;color:var(--muted);margin-top:18px}.archive-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px 18px}.archive-item{display:block;width:100%;padding:0;text-align:left}.archive-item figure{aspect-ratio:1.3;background:#d5d4cc;overflow:hidden}.archive-item img{transition:transform .6s;filter:saturate(.78)}.archive-item:hover img{transform:scale(1.04)}.archive-item span{display:block;margin-top:9px;font-size:12px;color:var(--muted)}.archive-more{margin-top:35px;border-block:1px solid var(--line)}.archive-more summary{list-style:none;cursor:pointer;padding:22px 0;display:flex;align-items:center;justify-content:space-between;font-size:15px}.archive-more summary::-webkit-details-marker{display:none}.archive-more summary:after{content:'+';font-size:23px}.archive-more[open] summary:after{content:'−'}.archive-more .archive-grid{padding-block:10px 35px}
+    .contact{background:var(--red);padding-block:58px 55px}.contact-top{display:flex;align-items:center;justify-content:space-between}.contact-top p{font-size:14px}.contact-title{display:flex;align-items:center;justify-content:space-between;margin:50px 0 42px;gap:35px}.contact-title h2{font-size:clamp(62px,10.7vw,172px);font-weight:400;letter-spacing:-.055em;line-height:.96}.contact-title .arrow{font-size:clamp(70px,10vw,150px)}.contact-title:hover .arrow{transform:translate(8px,-8px)}.contact-bottom{display:flex;justify-content:space-between;align-items:end;border-top:1px solid #20211f55;padding-top:23px}.contact-bottom>a{font-size:clamp(16px,2vw,28px);letter-spacing:-.025em}.contact-bottom p{font-size:14px;max-width:275px}
+    .footer{background:var(--ink);color:var(--paper);padding-block:45px 26px}.footer-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px}.footer-brand{display:flex;align-items:center;gap:16px;font-size:27px;letter-spacing:-.045em}.footer-mark{width:49px;height:49px;object-fit:contain}.footer-links{display:flex;gap:30px;font-size:13px}.footer-links a:hover{text-decoration:underline;text-underline-offset:5px}.footer-bottom{border-top:1px solid #505149;display:flex;justify-content:space-between;padding-top:23px;color:#b4b6a9}.footer-bottom a{font:10px Mono;text-transform:uppercase;letter-spacing:.08em}
+    dialog{padding:0;border:1px solid #6a6b63;background:var(--ink);color:var(--paper);max-width:calc(100% - 36px);width:1100px;max-height:90dvh}dialog::backdrop{background:#10120fe8;backdrop-filter:blur(8px)}.dialog-bar{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid #505149;gap:20px}.dialog-bar h2{font-size:18px;font-weight:400}.dialog-close{padding:6px 0 6px 15px;font-size:13px}.dialog-close .arrow{font-size:21px;margin-left:15px}.film-frame{aspect-ratio:16/9;width:100%;background:#080908}.film-frame iframe{width:100%;height:100%;border:0}.film-frame.vertical{aspect-ratio:9/12;height:65dvh;width:100%}.dialog-note{display:flex;justify-content:space-between;gap:20px;padding:16px 22px;font-size:12px;color:#c5c8b9}.dialog-note a{text-decoration:underline;text-underline-offset:4px}.lightbox-picture{height:70dvh;padding:18px}.lightbox-picture img{object-fit:contain}.lightbox-controls{display:flex;justify-content:space-between;padding:15px 22px;border-top:1px solid #505149}.lightbox-controls button{padding:5px;font-size:13px}.mobile-menu{width:450px;background:var(--paper);color:var(--ink)}.mobile-menu nav{display:flex;flex-direction:column;padding:26px;gap:22px;font-size:35px;letter-spacing:-.04em}.mobile-menu .dialog-bar{border-color:var(--line)}
+    @media(min-width:1600px){.wordmark{font-size:23.7vw}.intro h2{font-size:3.5vw}}
+    @media(max-width:900px){.nav-center{gap:22px}.intro,.studio-title{grid-template-columns:1fr 2fr;gap:28px}.work-grid{gap:50px 5vw}.project:nth-child(even){padding-top:90px}.project-caption h3{font-size:24px}.service-grid{gap:18px}.service h3{font-size:22px}.archive-grid{grid-template-columns:repeat(3,1fr)}.hero{height:620px}.hero h1{font-size:80px}.studio-aside>p{font-size:20px}.hero-copy{left:30px;right:30px}.footer-links{gap:18px}}
+    @media(max-width:600px){.nav{height:68px}.nav-brand{font-size:22px}.nav-center,.nav-contact{display:none}.menu-toggle{display:block;font-size:13px;padding:10px 0}.masthead{padding-block:0 16px}.masthead-top .meta{font-size:8px;letter-spacing:.055em}.masthead-top>.meta{max-width:128px;text-align:right}.wordmark{font-size:22.9vw;margin-top:-4px;line-height:.84}.wordmark span{font-size:8px}.masthead-bottom{margin-top:14px;font-size:8px;letter-spacing:.035em}.hero{height:580px}.hero-top{left:20px;right:20px;top:20px}.hero-top .meta,.motion-toggle{font-size:8px}.hero-copy{left:20px;right:20px;bottom:25px}.hero h1{font-size:clamp(52px,12.7vw,77px);line-height:.98}.hero-bottom{display:block;margin-top:25px}.hero-bottom p{max-width:270px;font-size:14px}.play-button{margin-top:26px;font-size:13px}.play-circle{width:44px;height:44px}.play-button .meta{font-size:8px}.hero-caption{font-size:8px}.hero-caption span:last-child{display:none}.intro{padding-block:68px 75px;display:block}.intro .eyebrow{margin-bottom:25px}.intro h2{font-size:33px}.section-head{padding-top:20px;margin-bottom:32px;align-items:end}.section-head h2{font-size:48px}.section-head>.text-link{font-size:11px;gap:12px;flex-shrink:0}.work-grid{display:block;padding-bottom:50px}.project{margin-bottom:40px}.project:nth-child(even){padding-top:0}.project-media,.project:nth-child(even) .project-media{aspect-ratio:1.18}.project-caption h3{font-size:25px}.project-caption .meta{font-size:8px;max-width:95px}.project-caption p{font-size:12px}.project-go{width:40px;height:40px}.all-work{font-size:19px;padding-bottom:40px}.services{padding-block:48px 55px}.services .section-head{display:block;margin-bottom:35px}.services-head-copy{margin-top:25px;max-width:310px}.service-grid{display:block}.service{margin-bottom:48px}.service:last-child{margin-bottom:0}.service-media{aspect-ratio:1.25}.service h3{font-size:28px;margin-top:20px}.service p{font-size:14px}.studio{padding-block:68px}.studio-title{display:block}.studio-title .eyebrow{margin-bottom:28px}.studio h2{font-size:59px}.studio-content{display:block;margin-top:35px}.studio-photo{margin-bottom:30px}.studio-aside>p{font-size:22px}.archive{padding-bottom:65px}.archive .section-head{display:block}.archive .section-head>.meta{margin-top:20px}.archive-grid{grid-template-columns:repeat(2,1fr);gap:22px 12px}.archive-item span{font-size:10px}.contact{padding-block:35px}.contact-top p{font-size:12px}.contact-top .meta{font-size:8px}.contact-title{margin-block:35px 30px;gap:10px}.contact-title h2{font-size:15vw}.contact-title .arrow{font-size:17vw}.contact-bottom{display:block}.contact-bottom p{margin-top:18px;font-size:12px}.footer-top{display:block;margin-bottom:30px}.footer-links{margin-top:28px;flex-wrap:wrap;gap:20px}.footer-bottom{font-size:8px;gap:15px}.footer-bottom a{font-size:8px}.dialog-bar{padding:14px}.dialog-note{padding:14px;display:block;line-height:1.7}.dialog-note a{display:block}.lightbox-picture{height:62dvh;padding:10px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+
+    /* The three circles always retain the logo's blue / red / yellow order. */
+    .nav-brand{display:flex;align-items:center;gap:10px}
+    .nav-mark{width:37px;height:37px;padding:3px;border-radius:50%;background:var(--ink);object-fit:contain;transition:transform .6s var(--ease)}
+    .nav-brand:hover .nav-mark{transform:rotate(18deg) scale(1.08)}
+    .nav-contact:hover,.nav-center a:hover,.text-link:hover{color:var(--red)}
+    .wordmark{position:relative;overflow:hidden;padding-bottom:.02em}
+    .wordmark .wordmark-dots{display:flex;gap:5px;position:absolute;right:1.8vw;top:2.8vw;margin:0}
+    .wordmark-dots i,.color-trio i{display:block;width:7px;height:7px;background:var(--blue);border-radius:50%;animation:dot-lift 3.6s ease-in-out infinite}
+    .wordmark-dots i:nth-child(2),.color-trio i:nth-child(2){background:var(--logo-red);animation-delay:.15s}
+    .wordmark-dots i:nth-child(3),.color-trio i:nth-child(3){background:var(--yellow);animation-delay:.3s}
+    .color-trio{display:inline-flex;gap:5px;align-items:center;vertical-align:middle}
+    .hero h1 .serif{color:var(--red);text-shadow:0 1px 22px #0006}
+    .play-button:hover .play-circle{color:var(--paper)}
+    .scroll-cue{animation:scroll-nudge 3s ease-in-out infinite}
+    .color-interlude{display:flex;justify-content:space-between;align-items:center;gap:35px;margin-top:50px;padding-block:32px;border-block:1px solid var(--line);margin-inline:var(--pad);padding-inline:0;overflow:hidden}
+    .color-interlude-copy .meta{display:block;color:var(--muted);margin-bottom:10px}
+    .color-interlude-line{font-size:clamp(22px,2.9vw,45px);letter-spacing:-.035em;line-height:1.1}
+    .color-interlude-line em{color:var(--red)}
+    .kinetic-trio{display:flex;gap:clamp(16px,2vw,30px);align-items:center;padding:18px 12px;flex-shrink:0}
+    .kinetic-circle{--circle-color:var(--blue);position:relative;display:block;width:clamp(50px,6.5vw,105px);height:clamp(50px,6.5vw,105px);border-radius:50%;transform:translateY(calc(var(--circle-shift,0px) * -1))}
+    .kinetic-circle:nth-child(2){--circle-color:var(--logo-red);transform:translateY(var(--circle-shift,0px))}
+    .kinetic-circle:nth-child(3){--circle-color:var(--yellow)}
+    .kinetic-circle i{display:block;width:100%;height:100%;border-radius:50%;background:var(--circle-color);animation:circle-breathe 5s ease-in-out infinite}
+    .kinetic-circle:after{content:'';position:absolute;inset:-7px;border:1px solid var(--circle-color);border-radius:50%;animation:circle-echo 5s ease-in-out infinite}
+    .kinetic-circle:nth-child(2) i,.kinetic-circle:nth-child(2):after{animation-delay:.35s}
+    .kinetic-circle:nth-child(3) i,.kinetic-circle:nth-child(3):after{animation-delay:.7s}
+    .intro{padding-top:85px}
+    .eyebrow:before{color:var(--red)}
+    .project-go{overflow:hidden;isolation:isolate}
+    .project-go:after{content:'';position:absolute;inset:0;background:var(--red);border-radius:50%;z-index:-1;transform:scale(0);transition:transform .4s var(--ease)}
+    .project-media:hover .project-go,.project-media:focus-visible .project-go{background:transparent;color:white;border-color:var(--red)}
+    .project-media:hover .project-go:after,.project-media:focus-visible .project-go:after{transform:scale(1)}
+    .service{--service-color:var(--blue)}
+    .service:nth-child(2){--service-color:var(--logo-red)}
+    .service:nth-child(3){--service-color:var(--yellow)}
+    .service-dot{position:absolute;right:20px;top:20px;width:18px;height:18px;z-index:1;background:var(--service-color);border-radius:50%;box-shadow:0 0 0 6px #20211f55;animation:circle-breathe 4s ease-in-out infinite}
+    .service:nth-child(2) .service-dot{animation-delay:.35s}.service:nth-child(3) .service-dot{animation-delay:.7s}
+    .service .text-link{color:var(--paper)}
+    .service .text-link .arrow{color:var(--paper)}
+    .service-media .meta{color:var(--paper)}
+    .service-media:before{content:'';position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--service-color);z-index:2;transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease)}
+    .service:hover .service-media:before,.service:focus-within .service-media:before{transform:scaleX(1)}
+    .studio-photo:after{content:'';position:absolute;top:20px;right:20px;width:12px;height:12px;border-radius:50%;background:var(--blue);box-shadow:23px 0 var(--logo-red),46px 0 var(--yellow);margin-right:46px;animation:dot-lift 4s ease-in-out infinite}
+    .contact{position:relative;overflow:hidden;color:var(--paper);background:var(--red)}
+    .contact-top,.contact-title,.contact-bottom{position:relative;z-index:1}
+    .contact-bottom{border-color:#ece9e177}
+    .contact-circles{--orb-size:clamp(35px,5vw,80px);position:absolute;width:27%;right:var(--pad);top:100px;bottom:105px;opacity:.92;pointer-events:none}
+    .contact-circles i{position:absolute;display:block;left:0;top:0;width:var(--orb-size);height:var(--orb-size);border-radius:50%;background:var(--paper);animation:contact-bounce-a 9s linear infinite}
+    .contact-circles i:nth-child(2){left:40%;top:30%;animation:contact-bounce-b 11s linear -3s infinite}
+    .contact-circles i:nth-child(3){left:calc(100% - var(--orb-size));top:calc(100% - var(--orb-size));animation:contact-bounce-a 13s linear -7s infinite reverse}
+    .contact-title h2{max-width:75%}.contact-title>.arrow{align-self:end;color:var(--paper)}
+    .contact-title:hover .arrow{transform:translate(8px,-8px) rotate(5deg)}
+    .mobile-menu .color-trio{margin-left:10px}
+    .motion-ready .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--reveal-delay,0ms)}
+    .motion-ready .reveal.is-visible{opacity:1;transform:none}
+    .motion-ready .wordmark{animation:wordmark-enter 1.1s var(--ease) both}
+    .motion-paused *, .motion-paused *:after,.motion-paused *:before{animation-play-state:paused!important}
+    .motion-paused .reveal{opacity:1!important;transform:none!important;transition:none!important}
+    .motion-paused .kinetic-circle{transform:none}
+    .motion-paused .wordmark{animation:none!important;clip-path:none;transform:none}
+    @keyframes wordmark-enter{from{clip-path:inset(100% 0 0);transform:translateY(18px)}to{clip-path:inset(0);transform:none}}
+    @keyframes dot-lift{0%,65%,100%{transform:translateY(0)}75%{transform:translateY(-4px)}85%{transform:translateY(1px)}}
+    @keyframes circle-breathe{0%,100%{transform:scale(.94)}50%{transform:scale(1)}}
+    @keyframes circle-echo{0%,100%{transform:scale(.92);opacity:0}45%{opacity:.5}70%{transform:scale(1.15);opacity:0}}
+    @keyframes scroll-nudge{0%,80%,100%{transform:translateY(0)}90%{transform:translateY(4px)}}
+    @keyframes contact-bounce-a{0%,100%{left:0;top:0}28%{left:calc(100% - var(--orb-size));top:35%}52%{left:55%;top:calc(100% - var(--orb-size))}76%{left:0;top:45%}}
+    @keyframes contact-bounce-b{0%,100%{left:calc(100% - var(--orb-size));top:calc(100% - var(--orb-size))}25%{left:25%;top:0}53%{left:0;top:55%}78%{left:65%;top:calc(100% - var(--orb-size))}}
+    @media(max-width:900px){.color-interlude{gap:20px}.kinetic-trio{gap:15px}.contact-circles{top:85px;bottom:100px}.contact-title h2{max-width:83%}}
+    @media(max-width:600px){.nav-mark{width:31px;height:31px}.wordmark .wordmark-dots{top:16px;right:2px;gap:3px}.wordmark-dots i{width:4px;height:4px}.color-interlude{margin-top:32px;display:block;padding-block:24px}.color-interlude-line{font-size:27px}.kinetic-trio{justify-content:space-between;padding:27px 12px 12px;gap:25px}.kinetic-circle{width:61px;height:61px}.intro{padding-top:58px}.contact-circles{--orb-size:22px;top:54px;bottom:auto;height:33px;width:112px;right:22px;opacity:.92}.contact-title h2{max-width:85%}.service-dot{width:14px;height:14px}.color-trio{gap:3px}.color-trio i{width:5px;height:5px}}
+    @media(prefers-reduced-motion:reduce){.motion-ready .reveal{opacity:1;transform:none}.kinetic-circle{transform:none}.motion-ready .wordmark{clip-path:none;transform:none}}
+
+    /* Fixed glass navigation stays visible beyond the opening header. */
+    header{padding-top:85px}
+    html{scroll-padding-top:105px}
+    .nav{position:fixed;z-index:30;top:0;left:0;right:0;margin-inline:0;padding-inline:var(--pad);background:rgba(236,233,225,.64);border-bottom:1px solid rgba(21,22,19,.13);-webkit-backdrop-filter:blur(20px) saturate(140%);backdrop-filter:blur(20px) saturate(140%);box-shadow:0 4px 24px rgba(21,22,19,.035)}
+    .masthead{padding-top:18px}
+    @media(max-width:600px){header{padding-top:68px}html{scroll-padding-top:88px}.masthead{padding-top:14px}}
+
+    /* One quiet registration gesture: scattered impressions become one word. */
+    .team-intro{display:grid;grid-template-columns:1fr 2.2fr;gap:50px;padding-block:105px 115px;background:var(--paper);color:var(--ink)}
+    .team-intro>.eyebrow{align-self:start;padding-top:12px}
+    .collective-content{min-width:0}
+    .collective-content h2{font-size:clamp(38px,4.5vw,74px);line-height:1.13;font-weight:400;letter-spacing:-.04em}
+    .word-focus{position:relative;display:inline-block;color:var(--red);letter-spacing:-.035em;white-space:nowrap}
+    .focus-echo{position:absolute;inset:0;pointer-events:none;opacity:0;color:var(--red);animation:focus-left 9s var(--ease) infinite}
+    .echo-right{animation-name:focus-right}
+    .focus-rule{position:absolute;left:0;right:0;bottom:-6px;height:1px;background:var(--red);transform-origin:left;opacity:0;animation:focus-rule 9s var(--ease) infinite}
+    .collective-footer{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-top:38px}
+    .collective-footer p{font-size:15px;line-height:1.45;color:var(--muted)}
+    .collective-footer .text-link{font-size:13px;gap:35px}
+    .team-intro:not(.focus-running) .word-focus *{animation-play-state:paused}
+    @keyframes focus-left{0%,8%,65%,100%{transform:translateX(0);opacity:0}16%{transform:translateX(-8px);opacity:.22}32%{transform:translateX(0);opacity:.16}40%{opacity:0}}
+    @keyframes focus-right{0%,8%,65%,100%{transform:translateX(0);opacity:0}16%{transform:translateX(8px);opacity:.22}32%{transform:translateX(0);opacity:.16}40%{opacity:0}}
+    @keyframes focus-rule{0%,8%,70%,100%{transform:scaleX(0);opacity:0}16%{transform:scaleX(.25);opacity:.3}32%,48%{transform:scaleX(1);opacity:.5}62%{transform:scaleX(1);opacity:0}}
+    @media(max-width:900px){.team-intro{grid-template-columns:1fr 2fr;gap:28px;padding-block:85px}.collective-content h2{font-size:4.7vw}}
+    @media(max-width:600px){.team-intro{display:block;padding-block:58px 70px}.team-intro>.eyebrow{padding-top:0;margin-bottom:26px}.collective-content h2{font-size:clamp(31px,8.5vw,45px);letter-spacing:-.035em}.collective-footer{margin-top:30px;gap:16px}.collective-footer p{font-size:13px}.collective-footer .text-link{font-size:12px;gap:18px}}
+    @media(prefers-reduced-motion:reduce){.focus-echo,.focus-rule{display:none}}
+
+    /* One image, printed twice: a quiet wash and a moving window of clarity. */
+    .vision-print{--scan-width:44%;--scan-start:-8%;--scan-end:90%;--scan-focus:28%;position:relative;isolation:isolate;overflow:visible;height:clamp(240px,25vw,365px);margin-top:35px;background:var(--paper)}
+    .vision-wash{object-position:center 75%;filter:grayscale(1) contrast(1.9) invert(1);mix-blend-mode:multiply;opacity:.2}
+    .vision-detail{position:absolute;inset:0;background:url('img/photo/RadiusFan.webp') center 75%/cover no-repeat;filter:grayscale(1) contrast(1.9) invert(1);mix-blend-mode:multiply;opacity:.82;clip-path:inset(8% calc(100% - var(--scan-width) - var(--scan-start)) 3% var(--scan-start));animation:vision-reveal 12s var(--ease) infinite}
+    .vision-print:after{content:'';position:absolute;inset:0;pointer-events:none;z-index:2;background:radial-gradient(circle,var(--paper) .9px,transparent 1.15px) 0 0/3.5px 3.5px;mask-image:url('img/photo/RadiusFan.webp');mask-mode:luminance;mask-size:cover;mask-position:center 75%;mask-repeat:no-repeat;opacity:.55;mix-blend-mode:screen}
+    .vision-reticle{position:absolute;z-index:3;left:var(--scan-start);top:8%;width:var(--scan-width);height:89%;pointer-events:none;animation:vision-seek 12s var(--ease) infinite}
+    .vision-reticle>i{position:absolute;left:0;top:0;width:13px;height:13px;border-top:1px solid var(--red);border-left:1px solid var(--red)}
+    .vision-reticle>i:nth-child(2){left:auto;right:0;transform:rotate(90deg)}
+    .vision-reticle>i:nth-child(3){top:auto;bottom:0;transform:rotate(-90deg)}
+    .vision-reticle>i:nth-child(4){left:auto;right:0;top:auto;bottom:0;transform:rotate(180deg)}
+    .reticle-center{position:absolute;top:50%;left:50%;width:9px;height:9px;transform:translate(-50%,-50%);opacity:.45}
+    .reticle-center:before,.reticle-center:after{content:'';position:absolute;background:var(--red)}
+    .reticle-center:before{left:4px;top:0;width:1px;height:9px}.reticle-center:after{top:4px;left:0;height:1px;width:9px}
+    .vision-print figcaption{position:absolute;z-index:4;left:0;bottom:2px;font-size:8px;color:var(--muted);background:var(--paper);padding:5px 9px 3px 0}
+    .team-intro:not(.focus-running) .vision-detail,.team-intro:not(.focus-running) .vision-reticle{animation-play-state:paused}
+    .collective-footer{margin-top:27px}
+    @keyframes vision-reveal{0%,8%,92%,100%{clip-path:inset(8% calc(100% - var(--scan-width) - var(--scan-start)) 3% var(--scan-start))}28%{clip-path:inset(8% calc(100% - var(--scan-width) - var(--scan-end)) 3% var(--scan-end))}44%{clip-path:inset(8% 34% 3% 22%)}52%,78%{clip-path:inset(8% 28% 3% 28%)}}
+    @keyframes vision-seek{0%,8%,92%,100%{left:var(--scan-start)}28%{left:var(--scan-end)}44%{left:22%}52%,78%{left:var(--scan-focus)}}
+    @media(max-width:600px){.vision-print{--scan-start:0%;--scan-end:56%;overflow:hidden;height:270px;margin-top:26px}.vision-reticle>i{width:10px;height:10px}.collective-footer{margin-top:24px}}
+    @media(prefers-reduced-motion:reduce){.vision-detail{clip-path:inset(8% 28% 3% 28%)}.vision-reticle{left:var(--scan-focus)}}
+
+    .team-intro{grid-template-columns:1fr 2.2fr;gap:30px 50px}
+    .team-intro>.eyebrow{grid-column:1/-1;padding-top:0}
+    .team-intro>.vision-print{grid-column:1;grid-row:2;width:100%;height:auto;aspect-ratio:1;margin:0}
+    .team-intro>.collective-content{grid-column:2;grid-row:2;align-self:center}
+    .vision-wash{object-position:center}
+    .vision-detail{background-position:center}
+    .vision-print:after{mask-position:center}
+    @media(max-width:900px){.team-intro{gap:26px 28px;grid-template-columns:1fr 1.8fr}}
+    @media(max-width:600px){.team-intro>.vision-print{height:auto;aspect-ratio:1;max-width:340px;margin:0 0 30px}.team-intro>.eyebrow{margin-bottom:24px}}
+
+    .team-intro{grid-template-columns:1.2fr 1.8fr;gap:26px 36px}
+    .collective-content h2{font-size:clamp(38px,4vw,68px)}
+    @media(max-width:900px){.team-intro{grid-template-columns:1fr 1.35fr;gap:24px}.collective-content h2{font-size:4.5vw}}
+    @media(max-width:600px){.collective-content h2{font-size:clamp(31px,8.5vw,45px)}.team-intro>.vision-print{max-width:none}}
+
+    @font-face{font-family:Grotesk;src:url('fonts/overused-grotesk/OverusedGrotesk-ExtraBold.woff') format('woff');font-weight:800;font-display:swap}
+    .poster-footer{--poster-line:rgba(21,22,19,.45);padding-block:0 24px;background:var(--red);color:var(--ink)}
+    .footer-poster{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));border:1px solid var(--poster-line);border-bottom:0}
+    .footer-poster>*{min-width:0;border-bottom:1px solid var(--poster-line)}
+    .poster-word{font-weight:800;line-height:.86;letter-spacing:-.075em;white-space:nowrap;overflow:hidden;padding:25px 18px 16px}
+    .poster-see{grid-column:span 9;font-size:clamp(65px,15.2vw,250px);border-right:1px solid var(--poster-line)}
+    .poster-hello{grid-column:span 3;display:flex;align-items:center;justify-content:center;gap:16px;padding:25px;font-size:clamp(32px,4vw,65px);line-height:.95;letter-spacing:-.045em}
+    .poster-hello>span:first-child{display:block;transform:rotate(-8deg)}
+    .poster-hello em{display:block;border-bottom:1px solid;padding-bottom:5px}
+    .poster-hello .arrow{align-self:end;font-size:38px;margin-bottom:10px}
+    .poster-hello:hover .arrow{transform:translate(4px,-4px)}
+    .poster-stamp{grid-column:span 3;position:relative;min-height:200px;overflow:hidden;border-right:1px solid var(--poster-line)}
+    .poster-stamp img{position:absolute;object-fit:contain;width:clamp(80px,10vw,165px);height:auto;left:calc(50% - clamp(40px,5vw,82.5px));top:10%;filter:brightness(0);transform:rotate(-15deg)}
+    .poster-stamp img:nth-child(2){top:27%;transform:rotate(0)}.poster-stamp img:nth-child(3){top:44%;transform:rotate(15deg)}
+    .poster-out{grid-column:span 9;font-size:clamp(55px,11.8vw,195px);display:flex;align-items:center;padding-left:22px}
+    .poster-contact{grid-column:span 5;border-right:1px solid var(--poster-line);display:flex;flex-direction:column;justify-content:center;padding:25px 22px;gap:10px}
+    .poster-contact-title{font-size:clamp(32px,4.3vw,66px);font-weight:800;line-height:1;letter-spacing:-.045em;display:flex;justify-content:space-between;align-items:center}
+    .poster-contact-title>span{font-weight:400;transition:transform .3s}
+    .poster-contact:hover .poster-contact-title>span{transform:translate(4px,-4px)}
+    .poster-email{font-size:14px}
+    .poster-faces{grid-column:span 7;display:flex;justify-content:space-around;align-items:center;gap:10px;padding:25px 20px;overflow:hidden}
+    .poster-faces>img,.poster-smiley{display:block;width:clamp(35px,5.6vw,92px);height:clamp(35px,5.6vw,92px);flex-shrink:0;object-fit:contain;filter:brightness(0);transition:transform .4s var(--ease)}
+    .poster-faces>img:hover{transform:rotate(12deg)}
+    .poster-faces>.poster-smiley{filter:none;transform:scale(1.35) rotate(8deg)}
+    .poster-faces>.smiley-filled{transform:scale(1.35) rotate(-10deg)}
+    .poster-faces>.smiley-outline{transform:scale(1.35) rotate(5deg)}
+    .poster-faces>.poster-smiley:hover{transform:scale(1.35) rotate(-8deg)}
+    .poster-links{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr)}
+    .poster-links a{display:flex;align-items:center;justify-content:space-between;gap:15px;font-size:14px;padding:19px 22px;border-right:1px solid var(--poster-line);transition:background .2s,color .2s}
+    .poster-links a:last-child{border-right:0}.poster-links a:hover{background:var(--ink);color:var(--paper)}
+    .poster-legal{display:flex;justify-content:space-between;gap:20px;padding-top:22px;font-size:9px}
+    @media(max-width:900px){.poster-stamp{min-height:150px}.poster-word{padding:22px 12px 16px}.poster-hello{padding:18px}.poster-contact{padding:20px 15px}.poster-faces{padding:20px 12px;gap:7px}.poster-email{font-size:12px}.poster-links a{padding:16px;font-size:13px}}
+    @media(max-width:600px){.poster-see{font-size:15vw;padding:17px 9px 12px}.poster-hello{font-size:6.5vw;gap:5px;padding:12px}.poster-hello .arrow{font-size:20px;margin:0}.poster-stamp{min-height:103px}.poster-stamp img{width:62px;left:calc(50% - 31px)}.poster-out{font-size:11.4vw;padding:14px 10px 10px}.poster-contact{grid-column:1/-1;border-right:0;padding:20px 14px;gap:9px}.poster-contact-title{font-size:37px}.poster-contact .meta{font-size:8px}.poster-faces{grid-column:1/-1;padding:18px 14px;gap:14px}.poster-faces>img,.poster-smiley{width:42px;height:42px}.poster-links{grid-template-columns:repeat(2,1fr)}.poster-links a{padding:14px;font-size:12px}.poster-links a:nth-child(2){border-right:0}.poster-links a:nth-child(-n+2){border-bottom:1px solid var(--poster-line)}.poster-legal{font-size:7px;gap:10px;align-items:center}.poster-legal span:nth-child(2){display:none}}
+
+    .poster-stamp{display:flex;align-items:center;justify-content:center}
+    .poster-os{display:block;font-family:'Manufacturing Consent',serif;font-size:clamp(90px,13vw,200px);font-weight:400;line-height:1.1;letter-spacing:-.06em;padding-right:.06em;color:var(--ink);transform:rotate(-8deg);transition:transform .4s var(--ease)}
+    .poster-stamp:hover .poster-os{transform:rotate(3deg) scale(1.04)}
+    @media(max-width:600px){.poster-os{font-size:18vw}}
+
+    .poster-word>span{display:block}
+    .motion-ready .poster-word>span{transform:translateY(115%);transition:transform 1s var(--ease)}
+    .motion-ready .poster-out>span{transition-delay:160ms}
+    .motion-ready .poster-stamp .poster-os{opacity:0;transform:rotate(-24deg) scale(.72);transition:opacity .8s var(--ease) 180ms,transform 1s var(--ease) 180ms}
+    .motion-ready .poster-faces>img{opacity:0;translate:0 35px;transition:opacity .6s var(--ease),translate .7s var(--ease),transform .4s var(--ease);transition-delay:calc(300ms + var(--face-index)*85ms)}
+    .motion-ready .footer-entered .poster-word>span{transform:none}
+    .motion-ready .footer-entered .poster-os{opacity:1;transform:rotate(-8deg)}
+    .motion-ready .footer-entered .poster-stamp:hover .poster-os{transform:rotate(3deg) scale(1.04)}
+    .motion-ready .footer-entered .poster-faces>img{opacity:1;translate:0 0}
+    .motion-paused .poster-word>span,.motion-paused .poster-stamp .poster-os,.motion-paused .poster-faces>img{opacity:1!important;translate:0 0!important;transform:none!important;transition:none!important}
+    @media(prefers-reduced-motion:reduce){.motion-ready .poster-word>span,.motion-ready .poster-stamp .poster-os,.motion-ready .poster-faces>img{opacity:1;translate:0 0;transform:none}}
+
+    .contact{color:var(--ink);isolation:isolate}
+    .contact-title>.arrow{color:var(--ink)}
+    .contact-bottom{border-color:rgba(21,22,19,.4)}
+    .contact:before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle,var(--ink) 1px,transparent 1.3px) 0 0/7px 7px;opacity:.18;mask-image:radial-gradient(ellipse at 100% 45%,#000 0%,transparent 68%)}
+    .contact-circles{--orb-size:clamp(32px,4.7vw,68px);inset:12px;width:auto;height:auto;opacity:1;z-index:0}
+    .contact-circles i{background:var(--ink);animation-duration:17s}
+    .contact-circles i:nth-child(2){animation-duration:21s}
+    .contact-circles i:nth-child(3){animation-duration:25s}
+    .contact-circles i:after{content:'';position:absolute;inset:-12px;border-radius:50%;background:radial-gradient(circle,var(--ink) 1px,transparent 1.3px) 0 0/5px 5px;transform:translate(13px,13px);opacity:.4;z-index:-1}
+    @media(max-width:600px){.contact-circles{--orb-size:26px;inset:10px;width:auto;height:auto;opacity:1}.contact:before{background-size:6px 6px;opacity:.13}.contact-circles i:after{inset:-8px;transform:translate(8px,8px)}}
+
+    .wordmark{isolation:isolate;padding-top:.075em;padding-bottom:.065em;margin-top:0}
+    .wordmark .wordmark-colorblocks{position:absolute;top:.087em;right:auto;left:0;bottom:auto;width:49.5%;height:clamp(6.6px,1.155vw,16.5px);transform:translateY(-100%);display:flex;margin:0;font-size:inherit;pointer-events:none}
+    .wordmark-colorblocks i{display:block;flex:1;background:var(--blue)}
+    .wordmark-colorblocks i:nth-child(2){background:var(--red)}
+    .wordmark-colorblocks i:nth-child(3){background:var(--yellow)}
+    @media(max-width:600px){.wordmark{padding-top:.11em}.wordmark .wordmark-colorblocks{top:.087em}}
+
+    .team-intro{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .collective-footer{flex-direction:column;align-items:flex-start;gap:18px}
+    .collective-footer .text-link{margin-top:0}
+    @media(max-width:900px){.team-intro{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:600px){.team-intro{display:block}.collective-footer{gap:16px}}
+
+    .team-intro{padding-block:70px 76px}
+    .team-intro>.vision-print{aspect-ratio:1.8;height:auto}
+    .vision-wash{object-position:center bottom}
+    .vision-detail{background-position:center bottom}
+    .vision-print:after{mask-position:center bottom}
+    @media(max-width:900px){.team-intro{padding-block:60px}.team-intro>.vision-print{aspect-ratio:1.45}}
+    @media(max-width:600px){.team-intro{padding-block:48px 54px}.team-intro>.vision-print{aspect-ratio:1.65}}
+
+    .studio-title{grid-template-columns:repeat(2,minmax(0,1fr));gap:7vw}
+    .studio-heading{text-align:left;min-width:0}
+    .studio-photo:after{content:none}
+    .studio-dots{display:flex;gap:11px;margin-top:24px}
+    .studio-dots i{display:block;width:12px;height:12px;border-radius:50%;background:var(--blue);animation:dot-lift 4s ease-in-out infinite}
+    .studio-dots i:nth-child(2){background:var(--logo-red);animation-delay:.15s}
+    .studio-dots i:nth-child(3){background:var(--yellow);animation-delay:.3s}
+    @media(max-width:600px){.studio-title{display:block}.studio-dots{margin-top:20px}}
+    .studio-content{align-items:end}
+
+    .studio{padding-block:70px}
+    .studio-content{margin-top:26px}
+    @media(min-width:601px){.studio-content>.studio-photo{aspect-ratio:auto;align-self:stretch}.studio-content>.studio-photo img{position:absolute;inset:0}}
+    .studio-dots{margin-top:18px}
+    @media(max-width:600px){.studio{padding-block:48px}.studio-content{margin-top:24px}}
+
+    .studio-photo img,.studio-photo:before{transform:scale(1.48);transform-origin:center bottom}
+    @media(min-width:601px){.studio-content>.studio-photo{margin-top:-70px}}
+    .studio-photo:before{content:none}
+    .studio-photo img{-webkit-mask-image:radial-gradient(circle,rgba(0,0,0,.45) .9px,#000 1.1px);mask-image:radial-gradient(circle,rgba(0,0,0,.45) .9px,#000 1.1px);-webkit-mask-size:3px 3px;mask-size:3px 3px;-webkit-mask-repeat:repeat;mask-repeat:repeat}
+
+
+    .principles .principle{border-bottom:1px solid var(--line);padding:21px 0}
+    .principles .principle h3{font-size:17px;font-weight:400;line-height:1.45}
+    .principles .principle p{font-size:15px;color:var(--muted);max-width:430px;margin-top:18px;line-height:1.6}
+
+    .contact:before,.contact-circles i:after{content:none}
+    .contact-circles{z-index:3}
+    .contact-circles i,.contact-circles i:nth-child(2),.contact-circles i:nth-child(3){left:0;top:0;animation:none;background:rgba(21,22,19,.08);border:1px solid var(--ink);box-shadow:none;-webkit-backdrop-filter:grayscale(1) invert(1) brightness(.7) contrast(100) invert(.08);backdrop-filter:grayscale(1) invert(1) brightness(.7) contrast(100) invert(.08);will-change:transform}
+    .contact-circles i:before{content:none}
+    .nav-mark{width:31px;height:31px;padding:0;background:transparent;mix-blend-mode:multiply}
+    @media(max-width:600px){.nav-mark{width:27px;height:27px}}
+    .nav-mark{animation:nav-logo-spin 18s linear infinite}
+    @keyframes nav-logo-spin{to{transform:rotate(360deg)}}
+    .service{display:flex;flex-direction:column}
+    .service-media{flex-shrink:0}
+    .service p{margin-bottom:25px}
+    .service .text-link{margin-top:auto;align-self:flex-start}
+    .poster-links{grid-template-columns:repeat(5,minmax(0,1fr))}
+    @media(max-width:600px){.poster-links{grid-template-columns:repeat(2,minmax(0,1fr))}.poster-links a:nth-child(-n+4){border-bottom:1px solid var(--poster-line)}.poster-links a:nth-child(4){border-right:0}.poster-links a:last-child{grid-column:1/-1}}
+
+    .nav-contact{background:var(--ink);color:var(--paper);padding:11px 18px;gap:22px;border:1px solid var(--ink);transition:background .2s,color .2s}
+    .nav-contact:hover{background:var(--red);color:var(--paper);border-color:var(--red)}
+  </style>
+  <link rel="stylesheet" href="assets/css/title-entrance.css">
+  <script src="assets/js/title-entrance.js?v=20261006-word-reveal" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header>
+    <nav class="nav" aria-label="Main navigation">
+      <div class="nav-brand"><a href="#" aria-label="Obskura home">Obskura</a><a class="nav-logo-button" href="#" aria-label="Obskura home"><img class="nav-mark" src="assets/svg/obskura-logo-compact.svg" alt=""></a></div>
+      <div class="nav-center"><a href="works-concept-v5.html">Selected work</a><a href="team-concept-v5.html">The team</a></div>
+      <a class="nav-contact" href="#getintouch">Contact <span class="arrow" aria-hidden="true">↗</span></a>
+      <button class="menu-toggle" aria-haspopup="dialog" aria-controls="mobile-menu">Menu <span aria-hidden="true">＋</span></button>
+    </nav>
+    <div class="masthead" aria-label="Obskura creative production studio">
+      <div class="wordmark" aria-hidden="true"><span class="wordmark-colorblocks"><i></i><i></i><i></i></span>OBSKURA</div>
+      <div class="masthead-bottom meta"><span>Artists. Brands. Live shows.</span><span>Film / Photography / Storytelling</span></div>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <video muted loop playsinline preload="metadata" poster="assets/images/BOBM.webp" aria-hidden="true" data-motion><source src="assets/videos/Ef_1080Clip.webm" type="video/webm"></video>
+      <div class="hero-top"><span class="meta">Obskura / Chicago</span><button class="motion-toggle" aria-pressed="false">Pause motion Ⅱ</button></div>
+      <div class="hero-copy">
+        <h1 id="hero-title">You do your thing.<br><span class="serif">We’ll get the shot.</span></h1>
+        <div class="hero-bottom"><p>Photo and video for artists, brands, and live shows. Based in Chicago. Happy to travel.</p><button class="play-button" data-film="reel"><span class="play-circle" aria-hidden="true"></span><span>Watch the reel<span class="meta">A little of what we do</span></span></button></div>
+      </div>
+    </section>
+
+    <section class="team-intro wrap" id="team" aria-labelledby="team-title">
+      <p class="eyebrow meta">01 / Meet the crew</p>
+        <figure class="vision-print" aria-label="The crowd at Radius, seen through an animated viewfinder">
+          <img class="vision-wash" src="img/photo/RadiusFan.webp" alt="A fan reaches toward the stage beneath confetti and lights at Radius" loading="lazy">
+          <div class="vision-detail" aria-hidden="true"></div>
+          <div class="vision-reticle" aria-hidden="true"><i></i><i></i><i></i><i></i><span class="reticle-center"></span></div>
+        </figure>
+      <div class="collective-content">
+        <h2 id="team-title">Hey, we’re Obskura.<br><span class="word-focus serif">Your camera crew.</span></h2>
+
+
+        <div class="collective-footer"><p>We like good music, good people,<br>and making something worth keeping.</p><a href="team-concept-v5.html" class="text-link">Meet Obskura <span class="arrow" aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+    <section id="work" class="wrap" aria-labelledby="work-title">
+      <div class="section-head"><div><p class="meta">02 / Selected work</p><h2 id="work-title">A few <span class="serif">favorites.</span></h2></div><a class="text-link" href="works-concept-v5.html">All projects <span class="arrow" aria-hidden="true">↗</span></a></div>
+      <div class="work-grid">
+        <article class="project"><button class="project-media" data-film="limperatrice" aria-label="Watch L’impératrice at Aragon Ballroom"><img src="assets/images/limpTN.webp" alt="L’impératrice silhouetted beneath theatrical spotlights" loading="lazy"><span class="project-index meta">01 / Film</span><span class="project-go arrow" aria-hidden="true">↗</span></button><div class="project-caption"><div><h3>L’impératrice</h3><p>Aragon Ballroom</p></div><span class="meta">Live performance<br>Artist content</span></div></article>
+        <article class="project"><button class="project-media" data-film="zedsdead" aria-label="Watch Zeds Dead’s full Hulaween set"><img src="assets/images/ZEDS_DEAD_HULA.webp" alt="Zeds Dead’s Hulaween stage glowing above the crowd" loading="lazy"><span class="project-index meta">02 / Film</span><span class="project-go arrow" aria-hidden="true">↗</span></button><div class="project-caption"><div><h3>Zeds Dead</h3><p>Hulaween · Full set</p></div><span class="meta">Full performance<br>Coverage</span></div></article>
+        <article class="project"><a class="project-media" href="https://www.instagram.com/reel/DTLq2vHEuaF/" target="_blank" rel="noopener noreferrer" aria-label="Watch LSDREAM’s New Year’s Eve reel on Instagram (opens in a new tab)"><img src="assets/images/LSDREAM_NAVYPIER.webp" alt="Multicolored lasers sweep across LSDREAM’s New Year’s Eve crowd" loading="lazy"><span class="project-index meta">03 / Social</span><span class="project-go arrow" aria-hidden="true">↗</span></a><div class="project-caption"><div><h3>LSDREAM</h3><p>New Year’s Eve · Navy Pier</p></div><span class="meta">Event recap<br>Social content</span></div></article>
+        <article class="project"><button class="project-media" data-film="nicole" aria-label="Watch Nicole Moudaber’s full ARC Chicago set"><img src="assets/images/NICOLE_MOUDABER_ARC25.webp" alt="Nicole Moudaber facing a sea of fans at ARC Chicago" loading="lazy"><span class="project-index meta">04 / Film</span><span class="project-go arrow" aria-hidden="true">↗</span></button><div class="project-caption"><div><h3>Nicole Moudaber</h3><p>ARC Chicago · Full set</p></div><span class="meta">Full performance<br>Coverage</span></div></article>
+      </div>
+      <a class="all-work" href="works-concept-v5.html"><span>There’s more where that came from.</span><span class="arrow" aria-hidden="true">↗</span></a>
+    </section>
+    <section id="services" class="services wrap" aria-labelledby="services-title">
+      <div class="section-head"><div><p class="meta">03 / What we do</p><h2 id="services-title">Here’s what <span class="serif">we do.</span></h2></div></div>
+      <div class="service-grid">
+        <article class="service"><div class="service-media"><video muted loop playsinline preload="none" poster="img/photo/Mamitas_WindyCitySmokeout.webp" aria-hidden="true" data-motion data-src="assets/videos/Mamitas_1080Clip.webm"></video><span class="service-dot" aria-hidden="true"></span><span class="meta">01 / Brands</span></div><h3>Social campaigns</h3><p>Photos and videos made for your feed. For a launch, a campaign, or giving people a better look at what you do.</p><a href="mailto:conall@obskurastudios.com?subject=Social%20campaign%20inquiry" class="text-link">Tell us what you’re working on <span class="arrow" aria-hidden="true">↗</span></a></article>
+        <article class="service"><div class="service-media"><video muted loop playsinline preload="none" poster="assets/images/pppp_vic.webp" aria-hidden="true" data-motion data-src="assets/videos/Pigeons_Clip.webm"></video><span class="service-dot" aria-hidden="true"></span><span class="meta">02 / Live shows</span></div><h3>Performance coverage</h3><p>The whole set, covered. We’ll handle the cameras so you can focus on the show.</p><a href="mailto:conall@obskurastudios.com?subject=Performance%20coverage%20inquiry" class="text-link">Let’s cover your next show <span class="arrow" aria-hidden="true">↗</span></a></article>
+        <article class="service"><div class="service-media"><video muted loop playsinline preload="none" poster="img/photo/BobMosesElectricForest.webp" aria-hidden="true" data-motion data-src="assets/videos/Ef_1080Clip.webm"></video><span class="service-dot" aria-hidden="true"></span><span class="meta">03 / Events</span></div><h3>Event highlights</h3><p>The crowd, the set, and the moments in between. A highlight film that gives people a feel for being there.</p><a href="mailto:conall@obskurastudios.com?subject=Event%20highlights%20inquiry" class="text-link">Let’s capture your next event <span class="arrow" aria-hidden="true">↗</span></a></article>
+      </div>
+    </section>
+    <section id="getintouch" class="contact wrap" aria-labelledby="contact-title"><div class="contact-circles" aria-hidden="true"><i></i><i></i><i></i></div><div class="contact-top"><p class="eyebrow meta">Got a project?</p><p>We’d like to hear about it.</p></div><a class="contact-title" href="mailto:conall@obskurastudios.com"><h2 id="contact-title">Let’s work<br><span class="serif">together.</span></h2><span class="arrow" aria-hidden="true">↗</span></a><div class="contact-bottom"><a href="mailto:conall@obskurastudios.com">conall@obskurastudios.com</a><p>Send us the idea, the date,<br>or whatever you’ve got so far.</p></div></section>
+    <section id="studio" class="studio wrap" aria-labelledby="studio-title">
+      <div class="studio-title"><p class="eyebrow meta">04 / Working with us</p><div class="studio-heading"><h2 id="studio-title">Chicago <span class="serif">&amp; beyond.</span></h2><div class="studio-dots" aria-hidden="true"><i></i><i></i><i></i></div></div></div>
+      <div class="studio-content"><figure class="studio-photo"><img src="img/photo/ChanceTheRapperBW.webp" alt="Chance the Rapper performing, rendered as a monochrome screen print" loading="lazy"><figcaption class="meta">Chance the Rappers</figcaption></figure><div class="studio-aside"><p>We’re a Chicago production crew working with artists, brands, and the people putting on a good show. We care about the work, and we like keeping the process easy.</p><div class="principles"><div class="principle"><h3>Easy to work with</h3><p>Tell us what you have in mind. We’ll talk through the shots, figure out what you need, and keep you in the loop.</p></div><div class="principle"><h3>We get the room</h3><p>Live shows move fast. We know when to get close and when to stay out of the way, so you can do what you came to do.</p></div><div class="principle"><h3>Clear timelines</h3><p>We’ll talk through delivery before we start and keep you posted along the way. If you’re working toward a date, let us know.</p></div></div></div></div>
+    </section>
+    <section class="archive wrap" id="archive" aria-labelledby="archive-title"><div class="section-head"><div class="archive-heading"><p class="meta">05 / A few more shots</p><h2 id="archive-title">The <span class="serif">camera roll.</span></h2><p>Some shows, some familiar faces, and a few things we saw along the way.</p></div><span class="meta">Photography / Field notes</span></div>
+      <div class="archive-grid"><button class="archive-item" aria-label="Enlarge ZHU / Lollapalooza"><figure><img src="img/photo/ZHU_Lollapalooza.webp" alt="ZHU / Lollapalooza — photography by Obskura" loading="lazy" decoding="async" width="3200" height="4800"></figure><span>ZHU / Lollapalooza</span></button><button class="archive-item" aria-label="Enlarge Chance The Rapper BW"><figure><img src="img/photo/ChanceTheRapperBW.webp" alt="Chance The Rapper BW — photography by Obskura" loading="lazy" decoding="async" width="3200" height="2133"></figure><span>Chance The Rapper BW</span></button><button class="archive-item" aria-label="Enlarge Ben Bohmer / Salt Shed"><figure><img src="img/photo/BenBohmer_SaltShed.webp" alt="Ben Bohmer / Salt Shed — photography by Obskura" loading="lazy" decoding="async" width="7925" height="5286"></figure><span>Ben Bohmer / Salt Shed</span></button><button class="archive-item" aria-label="Enlarge Tazu / Red Rocks"><figure><img src="img/photo/Tazu - Red Rocks-6.webp" alt="Tazu / Red Rocks — photography by Obskura" loading="lazy" decoding="async" width="1312" height="2200"></figure><span>Tazu / Red Rocks</span></button><button class="archive-item" aria-label="Enlarge Cannons / Bonnaroo"><figure><img src="assets/images/CANNONS_BONAROO.webp" alt="Cannons / Bonnaroo — photography by Obskura" loading="lazy" decoding="async" width="3200" height="1800"></figure><span>Cannons / Bonnaroo</span></button><button class="archive-item" aria-label="Enlarge summer / smash / 2024"><figure><img src="assets/images/summer_smash_2024.webp" alt="summer / smash / 2024 — photography by Obskura" loading="lazy" decoding="async" width="2048" height="1536"></figure><span>summer / smash / 2024</span></button><button class="archive-item" aria-label="Enlarge Bicep / CRSSD"><figure><img src="img/photo/Bicep_CRSSD.webp" alt="Bicep / CRSSD — photography by Obskura" loading="lazy" decoding="async" width="6044" height="4031"></figure><span>Bicep / CRSSD</span></button><button class="archive-item" aria-label="Enlarge Mamitas / Windy City Smokeout2"><figure><img src="img/photo/Mamitas_WindyCitySmokeout2.webp" alt="Mamitas / Windy City Smokeout2 — photography by Obskura" loading="lazy" decoding="async" width="3305" height="4953"></figure><span>Mamitas / Windy City Smokeout2</span></button></div>
+<details class="archive-more"><summary>Explore the full archive <span class="meta">69 photographs</span></summary><div class="archive-grid"><button class="archive-item" aria-label="Enlarge ALLEYCVT / The Caverns"><figure><img src="assets/images/ALLEYCVT_CAVERNS.webp" alt="ALLEYCVT / The Caverns — photography by Obskura" loading="lazy" decoding="async" width="3685" height="2577"></figure><span>ALLEYCVT / The Caverns</span></button><button class="archive-item" aria-label="Enlarge Anna Morgan / Boiler Room"><figure><img src="img/photo/AnnaMorgan_BoilerRoom.webp" alt="Anna Morgan / Boiler Room — photography by Obskura" loading="lazy" decoding="async" width="7769" height="5182"></figure><span>Anna Morgan / Boiler Room</span></button><button class="archive-item" aria-label="Enlarge Anna Morgan / Boiler Room"><figure><img src="img/photo/AnnaMorganBoilerRoom.webp" alt="Anna Morgan / Boiler Room — photography by Obskura" loading="lazy" decoding="async" width="3200" height="2134"></figure><span>Anna Morgan / Boiler Room</span></button><button class="archive-item" aria-label="Enlarge Beach Bunny   Salt Shed"><figure><img src="img/photo/Beach Bunny - Salt Shed.webp" alt="Beach Bunny   Salt Shed — photography by Obskura" loading="lazy" decoding="async" width="2200" height="1468"></figure><span>Beach Bunny   Salt Shed</span></button><button class="archive-item" aria-label="Enlarge Bob Moses"><figure><img src="assets/images/BOBM.webp" alt="Bob Moses — photography by Obskura" loading="lazy" decoding="async" width="1920" height="1080"></figure><span>Bob Moses</span></button><button class="archive-item" aria-label="Enlarge Bob Moses Electric Forest"><figure><img src="img/photo/BobMosesElectricForest.webp" alt="Bob Moses Electric Forest — photography by Obskura" loading="lazy" decoding="async" width="3200" height="2136"></figure><span>Bob Moses Electric Forest</span></button><button class="archive-item" aria-label="Enlarge carlcox1"><figure><img src="assets/images/carlcox1.webp" alt="carlcox1 — photography by Obskura" loading="lazy" decoding="async" width="3200" height="1800"></figure><span>carlcox1</span></button><button class="archive-item" aria-label="Enlarge Chase Status / Aragon Theater"><figure><img src="img/photo/ChaseStatus_AragonTheater.webp" alt="Chase Status / Aragon Theater — photography by Obskura" loading="lazy" decoding="async" width="3200" height="2134"></figure><span>Chase Status / Aragon Theater</span></button><button class="archive-item" aria-label="Enlarge Claude Vonstroke Chicago"><figure><img src="img/photo/ClaudeVonstrokeChicago.webp" alt="Claude Vonstroke Chicago — photography by Obskura" loading="lazy" decoding="async" width="3200" height="2133"></figure><span>Claude Vonstroke Chicago</span></button><button class="archive-item" aria-label="Enlarge Daily Bread   House of Blues Chicago"><figure><img src="img/photo/Daily Bread - House of Blues Chicago.webp" alt="Daily Bread   House of Blues Chicago — photography by Obskura" loading="lazy" decoding="async" width="2200" height="1468"></figure><span>Daily Bread   House of Blues Chicago</span></button><button class="archive-item" aria-label="Enlarge Daily Bread / Radius"><figure><img src="img/photo/DailyBread_Radius.webp" alt="Daily Bread / Radius — photography by Obskura" loading="lazy" decoding="async" width="5464" height="8192"></figure><span>Daily Bread / Radius</span></button><button class="archive-item" aria-label="Enlarge Daniel Allan   Portrait"><figure><img src="img/photo/Daniel Allan - Portrait.webp" alt="Daniel Allan   Portrait — photography by Obskura" loading="lazy" decoding="async" width="1467" height="2200"></figure><span>Daniel Allan   Portrait</span></button><button class="archive-item" aria-label="Enlarge Daniel Allan   Tour Promo"><figure><img src="img/photo/Daniel Allan - Tour Promo.webp" alt="Daniel Allan   Tour Promo — photography by Obskura" loading="lazy" decoding="async" width="1467" height="2200"></figure><span>Daniel Allan   Tour Promo</span></button><button class="archive-item" aria-label="Enlarge Daya / Pride In The Park"><figure><img src="img/photo/Daya_PrideInThePark.webp" alt="Daya / Pride In The Park — photography by Obskura" loading="lazy" decoding="async" width="3648" height="5472"></figure><span>Daya / Pride In The Park</span></button><button class="archive-item" aria-label="Enlarge DEADSHED / Salt Shed"><figure><img src="img/photo/DEADSHED_SaltShed.webp" alt="DEADSHED / Salt Shed — photography by Obskura" loading="lazy" decoding="async" width="7763" height="5178"></figure><span>DEADSHED / Salt Shed</span></button><button class="archive-item" aria-label="Enlarge Denzel Curry / Riviera Theater"><figure><img src="img/photo/DenzelCurry_RivieraTheater.webp" alt="Denzel Curry / Riviera Theater — photography by Obskura" loading="lazy" decoding="async" width="3200" height="2133"></figure><span>Denzel Curry / Riviera Theater</span></button><button class="archive-item" aria-label="Enlarge Disco Biscuits   Garcias"><figure><img src="img/photo/Disco Biscuits - Garcias.webp" alt="Disco Biscuits   Garcias — photography by Obskura" loading="lazy" decoding="async" width="1467" height="2200"></figure><span>Disco Biscuits   Garcias</span></button><button class="archive-item" aria-label="Enlarge Disco Biscuits 2   Garcias"><figure><img src="img/photo/Disco Biscuits 2 - Garcias.webp" alt="Disco Biscuits 2   Garcias — photography by Obskura" loading="lazy" decoding="async" width="1467" height="2200"></figure><span>Disco Biscuits 2   Garcias</span></button><button class="archive-item" aria-label="Enlarge Disco Biscuits 3   Garcias"><figure><img src="img/photo/Disco Biscuits 3 - Garcias.webp" alt="Disco Biscuits 3   Garcias — photography by Obskura" loading="lazy" decoding="async" width="2200" height="1467"></figure><span>Disco Biscuits 3   Garcias</span></button><button class="archive-item" aria-label="Enlarge djbone zackfox tour"><figure><img src="assets/images/djbone-zackfox-tour.jpg" alt="djbone zackfox tour — photography by Obskura" loading="lazy" decoding="async" width="361" height="640"></figure><span>djbone zackfox tour</span></button><button class="archive-item" aria-label="Enlarge Drop Kick Murphys   Salt Shed"><figure><img src="img/photo/Drop Kick Murphys - Salt Shed.webp" alt="Drop Kick Murphys   Salt Shed — photography by Obskura" loading="lazy" decoding="async" width="2200" height="1467"></figure><span>Drop Kick Murphys   Salt Shed</span></button><button class="archive-item" aria-label="Enlarge Drop Kick Murphys 2   Salt Shed"><figure><img src="img/photo/Drop Kick Murphys 2 - Salt Shed.webp" alt="Drop Kick Murphys 2   Salt Shed — photography by Obskura" loading="lazy" decoding="async" width="1467" height="2200"></figure><span>Drop Kick Murphys 2   Salt Shed</span></button><button class="archive-item" aria-label="Enlarge Elderbrook   Salt Shed"><figure><img src="img/photo/Elderbrook - Salt Shed.webp" alt="Elderbrook   Salt Shed — photography by Obskura" loading="lazy" decoding="async" width="2200" height="1467"></figure><span>Elderbrook   Salt Shed</span></button><button class="archive-item" aria-label="Enlarge Elder Brook / Salt Shed"><figure><img src="img/photo/ElderBrook_SaltShed.webp" alt="Elder Brook / Salt Shed — photography by Obskura" loading="lazy" decoding="async" width="6266" height="4179"></figure><span>Elder Brook / Salt Shed</span></button><button class="archive-item" aria-label="Enlarge Elder Brook / Salt Shed / II"><figure><img src="img/photo/ElderBrook_SaltShed(2).webp" alt="Elder Brook / Salt Shed / II — photography by Obskura" loading="lazy" decoding="async" width="6852" height="4570"></figure><span>Elder Brook / Salt Shed / II</span></button><button class="archive-item" aria-label="Enlarge Elephantheart"><figure><img src="assets/images/ELEPHANTHEART.webp" alt="Elephantheart — photography by Obskura" loading="lazy" decoding="async" width="1920" height="1080"></figure><span>Elephantheart</span></button><button class="archive-item" aria-label="Enlarge elli acula serum"><figure><img src="assets/images/elli-acula-serum.jpg" alt="elli acula serum — photography by Obskura" loading="lazy" decoding="async" width="361" height="640"></figure><span>elli acula serum</span></button><button class="archive-item" aria-label="Enlarge Flawed Mangoes   Chop Shop"><figure><img src="img/photo/Flawed Mangoes - Chop Shop.webp" alt="Flawed Mangoes   Chop Shop — photography by Obskura" loading="lazy" decoding="async" width="1466" height="2200"></figure><span>Flawed Mangoes   Chop Shop</span></button><button class="archive-item" aria-label="Enlarge Fly Nari"><figure><img src="img/photo/FlyNari.webp" alt="Fly Nari — photography by Obskura" loading="lazy" decoding="async" width="3200" height="4797"></figure><span>Fly Nari</span></button><button class="archive-item" aria-label="Enlarge Gotti   PRYSM"><figure><img src="img/photo/Gotti - PRYSM.webp" alt="Gotti   PRYSM — photography by Obskura" loading="lazy" decoding="async" width="2200" height="1467"></figure><span>Gotti   PRYSM</span></button><button class="archive-item" aria-label="Enlarge kvsh soundbar"><figure><img src="assets/images/kvsh-soundbar.jpg" alt="kvsh soundbar — photography by Obskura" loading="lazy" decoding="async" width="1280" height="720"></figure><span>kvsh soundbar</span></button><button class="archive-item" aria-label="Enlarge L’impératrice / Aragon Ballroom"><figure><img src="assets/images/limpTN.webp" alt="L’impératrice / Aragon Ballroom — photography by Obskura" loading="lazy" decoding="async" width="2160" height="3840"></figure><span>L’impératrice / Aragon Ballroom</span></button><button class="archive-item" aria-label="Enlarge LSDREAM / Navy Pier"><figure><img src="assets/images/LSDREAM_NAVYPIER.webp" alt="LSDREAM / Navy Pier — photography by Obskura" loading="lazy" decoding="async" width="1787" height="954"></figure><span>LSDREAM / Navy Pier</span></button><button class="archive-item" aria-label="Enlarge LSZEE / Night two"><figure><img src="img/photo/LSZEE-Night2-3.webp" alt="LSZEE / Night two — photography by Obskura" loading="lazy" decoding="async" width="2160" height="3240"></figure><span>LSZEE / Night two</span></button><button class="archive-item" aria-label="Enlarge LSZEE / Salt Shed"><figure><img src="img/photo/LSZEE_SaltShed.webp" alt="LSZEE / Salt Shed — photography by Obskura" loading="lazy" decoding="async" width="2160" height="1440"></figure><span>LSZEE / Salt Shed</span></button><button class="archive-item" aria-label="Enlarge Louis the Child"><figure><img src="img/photo/LTC.webp" alt="Louis the Child — photography by Obskura" loading="lazy" decoding="async" width="773" height="1000"></figure><span>Louis the Child</span></button><button class="archive-item" aria-label="Enlarge Lunar Tide"><figure><img src="assets/images/lunar_tide_recap_v2_mp4_00_00_23_15_still001.webp" alt="Lunar Tide — photography by Obskura" loading="lazy" decoding="async" width="3200" height="1800"></figure><span>Lunar Tide</span></button><button class="archive-item" aria-label="Enlarge LYNY"><figure><img src="img/photo/LYNY-1.webp" alt="LYNY — photography by Obskura" loading="lazy" decoding="async" width="4153" height="2769"></figure><span>LYNY</span></button><button class="archive-item" aria-label="Enlarge M.E.H."><figure><img src="img/photo/M.E.H..webp" alt="M.E.H. — photography by Obskura" loading="lazy" decoding="async" width="3567" height="5351"></figure><span>M.E.H.</span></button><button class="archive-item" aria-label="Enlarge Mamitas / Windy City Smokeout"><figure><img src="img/photo/Mamitas_WindyCitySmokeout.webp" alt="Mamitas / Windy City Smokeout — photography by Obskura" loading="lazy" decoding="async" width="3049" height="5421"></figure><span>Mamitas / Windy City Smokeout</span></button><button class="archive-item" aria-label="Enlarge Mary Droppinz   Chop Shop"><figure><img src="img/photo/Mary Droppinz - Chop Shop.webp" alt="Mary Droppinz   Chop Shop — photography by Obskura" loading="lazy" decoding="async" width="1467" height="2200"></figure><span>Mary Droppinz   Chop Shop</span></button><button class="archive-item" aria-label="Enlarge Moody Good / Electric Forest"><figure><img src="img/photo/MoodyGood_ElectricForest.webp" alt="Moody Good / Electric Forest — photography by Obskura" loading="lazy" decoding="async" width="8192" height="5464"></figure><span>Moody Good / Electric Forest</span></button><button class="archive-item" aria-label="Enlarge Moody Good Radius 17"><figure><img src="img/photo/MoodyGoodRadius-17.webp" alt="Moody Good Radius 17 — photography by Obskura" loading="lazy" decoding="async" width="2160" height="1440"></figure><span>Moody Good Radius 17</span></button><button class="archive-item" aria-label="Enlarge nastia movement detroit"><figure><img src="assets/images/nastia-movement-detroit.jpg" alt="nastia movement detroit — photography by Obskura" loading="lazy" decoding="async" width="1280" height="720"></figure><span>nastia movement detroit</span></button><button class="archive-item" aria-label="Enlarge Nicole Moudaber / ARC"><figure><img src="assets/images/NICOLE_MOUDABER_ARC.webp" alt="Nicole Moudaber / ARC — photography by Obskura" loading="lazy" decoding="async" width="1920" height="1080"></figure><span>Nicole Moudaber / ARC</span></button><button class="archive-item" aria-label="Enlarge Nicole Moudaber / ARC"><figure><img src="assets/images/NICOLE_MOUDABER_ARC25.webp" alt="Nicole Moudaber / ARC — photography by Obskura" loading="lazy" decoding="async" width="1920" height="1080"></figure><span>Nicole Moudaber / ARC</span></button><button class="archive-item" aria-label="Enlarge Noel / Austin"><figure><img src="assets/images/Noel_aus.webp" alt="Noel / Austin — photography by Obskura" loading="lazy" decoding="async" width="1984" height="1116"></figure><span>Noel / Austin</span></button><button class="archive-item" aria-label="Enlarge Noel / Philadelphia"><figure><img src="assets/images/Noel_philly.webp" alt="Noel / Philadelphia — photography by Obskura" loading="lazy" decoding="async" width="1517" height="853"></figure><span>Noel / Philadelphia</span></button><button class="archive-item" aria-label="Enlarge Nye Aragon"><figure><img src="img/photo/NyeAragon.webp" alt="Nye Aragon — photography by Obskura" loading="lazy" decoding="async" width="3200" height="2133"></figure><span>Nye Aragon</span></button><button class="archive-item" aria-label="Enlarge overmono movement detroit"><figure><img src="assets/images/overmono-movement-detroit.jpg" alt="overmono movement detroit — photography by Obskura" loading="lazy" decoding="async" width="361" height="640"></figure><span>overmono movement detroit</span></button><button class="archive-item" aria-label="Enlarge Paris Texas / Mid Air"><figure><img src="assets/images/Paris_texas_midair.webp" alt="Paris Texas / Mid Air — photography by Obskura" loading="lazy" decoding="async" width="3200" height="1800"></figure><span>Paris Texas / Mid Air</span></button><button class="archive-item" aria-label="Enlarge Purple Disco Machine / Aragon"><figure><img src="assets/images/PDM_ARAGON2.webp" alt="Purple Disco Machine / Aragon — photography by Obskura" loading="lazy" decoding="async" width="1920" height="1080"></figure><span>Purple Disco Machine / Aragon</span></button><button class="archive-item" aria-label="Enlarge Pigeons Playing Ping Pong / The Vic"><figure><img src="assets/images/pppp_vic.webp" alt="Pigeons Playing Ping Pong / The Vic — photography by Obskura" loading="lazy" decoding="async" width="3209" height="1805"></figure><span>Pigeons Playing Ping Pong / The Vic</span></button><button class="archive-item" aria-label="Enlarge Radius Fan"><figure><img src="img/photo/RadiusFan.webp" alt="Radius Fan — photography by Obskura" loading="lazy" decoding="async" width="3200" height="2133"></figure><span>Radius Fan</span></button><button class="archive-item" aria-label="Enlarge SIREN / Ramova"><figure><img src="img/photo/SIREN_Ramova.webp" alt="SIREN / Ramova — photography by Obskura" loading="lazy" decoding="async" width="7555" height="5039"></figure><span>SIREN / Ramova</span></button><button class="archive-item" aria-label="Enlarge supersonic caverns"><figure><img src="assets/images/supersonic-caverns.jpg" alt="supersonic caverns — photography by Obskura" loading="lazy" decoding="async" width="361" height="640"></figure><span>supersonic caverns</span></button><button class="archive-item" aria-label="Enlarge Supertaste   Electric Forest"><figure><img src="img/photo/Supertaste - Electric Forest.webp" alt="Supertaste   Electric Forest — photography by Obskura" loading="lazy" decoding="async" width="1467" height="2200"></figure><span>Supertaste   Electric Forest</span></button><button class="archive-item" aria-label="Enlarge Super Taste   Electric Forest 2"><figure><img src="img/photo/SuperTaste - Electric Forest 2.webp" alt="Super Taste   Electric Forest 2 — photography by Obskura" loading="lazy" decoding="async" width="2200" height="1467"></figure><span>Super Taste   Electric Forest 2</span></button><button class="archive-item" aria-label="Enlarge surf / mesa / lollapalooza"><figure><img src="assets/images/surf_mesa_lollapalooza.webp" alt="surf / mesa / lollapalooza — photography by Obskura" loading="lazy" decoding="async" width="1920" height="1080"></figure><span>surf / mesa / lollapalooza</span></button><button class="archive-item" aria-label="Enlarge Violent Femmes   Salt Shed"><figure><img src="img/photo/Violent Femmes - Salt Shed.webp" alt="Violent Femmes   Salt Shed — photography by Obskura" loading="lazy" decoding="async" width="2200" height="1467"></figure><span>Violent Femmes   Salt Shed</span></button><button class="archive-item" aria-label="Enlarge Zeds / Dead / Hula"><figure><img src="assets/images/ZEDS_DEAD_HULA.webp" alt="Zeds / Dead / Hula — photography by Obskura" loading="lazy" decoding="async" width="1920" height="1080"></figure><span>Zeds / Dead / Hula</span></button></div></details>
+    </section>
+
+  </main>
+  <footer class="footer poster-footer wrap" aria-label="Obskura footer">
+    <div class="footer-poster">
+      <div class="poster-word poster-see" aria-hidden="true"><span>SEE YOU</span></div>
+      <a class="poster-hello" href="mailto:conall@obskurastudios.com"><span>Say <em class="serif">hey.</em></span><span class="arrow" aria-hidden="true">↗</span></a>
+      <div class="poster-stamp" aria-hidden="true"><span class="poster-os">OS</span></div>
+      <div class="poster-word poster-out" aria-hidden="true"><span>OUT THERE.</span></div>
+      <a class="poster-contact" href="mailto:conall@obskurastudios.com"><span class="meta">Got something coming up?</span><span class="poster-contact-title">Let’s talk. <span aria-hidden="true">↗</span></span><span class="poster-email">conall@obskurastudios.com</span></a>
+      <div class="poster-faces" aria-hidden="true"><img src="assets/svg/ObskuraWhite150ppi-05.png" alt="" loading="lazy"><img class="poster-smiley" src="assets/images/smiley-dripping.png" alt="" loading="lazy"><img class="poster-smiley smiley-filled" src="assets/images/smiley-black-v2.png" alt="" loading="lazy"><img class="poster-smiley smiley-outline" src="assets/images/smiley-outline-x-eyes-solid.png" alt="" loading="lazy"><img src="assets/svg/ObskuraWhite150ppi-05.png" alt="" loading="lazy"></div>
+      <nav class="poster-links" aria-label="Footer links"><a href="works-concept-v5.html">Work <span aria-hidden="true">↗</span></a><a href="gallery.html">Gallery <span aria-hidden="true">↗</span></a><a href="https://www.instagram.com/obskurastudios" target="_blank" rel="noopener noreferrer">Instagram <span aria-hidden="true">↗</span></a><a href="https://www.tiktok.com/@obskurastudios" target="_blank" rel="noopener noreferrer">TikTok <span aria-hidden="true">↗</span></a><a class="myspace-easter-egg" href="#after-hours">Myspace <span aria-hidden="true">↗</span></a></nav>
+    </div>
+    <div class="poster-legal meta"><span>© <span id="year">2026</span> Obskura</span><span>Chicago & beyond.</span><a href="#">Back to top ↑</a></div>
+  </footer>
+  <dialog id="after-hours" class="game-dialog" aria-labelledby="game-title" aria-describedby="game-help">
+    <div class="dialog-bar"><h2 id="game-title">After hours.</h2><div class="game-header-actions"><button class="game-pause" disabled>Pause Ⅱ</button><button class="dialog-close" data-close>Close <span aria-hidden="true">×</span></button></div></div>
+    <div class="game-hud"><div><span class="meta">Time</span><strong class="game-score">0.00s</strong></div><span class="game-edition meta">One life / Fastest wins</span><div><span class="meta">Bricks</span><strong class="game-remaining">56</strong></div></div>
+    <div class="game-stage"><canvas width="800" height="520" tabindex="0" aria-label="Brick breaker playfield. Move using the arrow keys, mouse, or touch. Press P to pause." aria-describedby="game-help"></canvas><div class="game-overlay"><span class="meta">A little after-hours activity</span><h3 class="game-message">You thought we had a myspace??</h3><p class="game-message-copy">One life. Clear all 56 bricks as fast as you can. Lower time wins.</p><button class="game-start">Let’s play ↗</button></div></div>
+    <p id="game-help" class="game-help">Mouse, ← →, or drag to move. <span>P to pause. Esc to leave.</span></p><p class="game-announcement sr-only" role="status" aria-live="polite"></p>
+  </dialog>
+  <dialog id="mobile-menu" class="mobile-menu" aria-labelledby="menu-title"><div class="dialog-bar"><h2 id="menu-title">Obskura <span class="color-trio" aria-hidden="true"><i></i><i></i><i></i></span></h2><button class="dialog-close" data-close>Close <span aria-hidden="true">×</span></button></div><nav aria-label="Mobile navigation"><a href="works-concept-v5.html">Selected work</a><a href="team-concept-v5.html">The team</a><a href="#archive">The archive</a><a href="#getintouch">Contact ↗</a></nav></dialog>
+  <dialog id="film-dialog" aria-labelledby="film-title"><div class="dialog-bar"><h2 id="film-title">Obskura film</h2><button class="dialog-close" data-close>Close <span class="arrow" aria-hidden="true">×</span></button></div><div class="film-frame"></div><div class="dialog-note"><span>Film by Obskura · Best with sound.</span><a id="film-external" href="#" target="_blank" rel="noopener noreferrer">Open film in a new tab ↗</a></div></dialog>
+  <dialog id="photo-dialog" aria-labelledby="photo-title"><div class="dialog-bar"><h2 id="photo-title">Through our lens</h2><button class="dialog-close" data-close>Close <span class="arrow" aria-hidden="true">×</span></button></div><div class="lightbox-picture"><img alt=""></div><div class="lightbox-controls"><button id="photo-prev" aria-label="Previous photograph">← Previous</button><span class="meta" id="photo-count"></span><button id="photo-next" aria-label="Next photograph">Next →</button></div></dialog>
+  <script>
+    (()=>{
+      const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+      const videos=[...document.querySelectorAll('[data-motion]')];
+      const motionButton=document.querySelector('.motion-toggle');
+      const dialogs=[...document.querySelectorAll('dialog')];
+      let paused=reduced.matches;
+      const updateMotion=()=>{
+        document.documentElement.classList.toggle('motion-paused',paused);
+        motionButton.textContent=paused?'Play motion ▷':'Pause motion Ⅱ';motionButton.setAttribute('aria-pressed',String(paused));
+        videos.forEach(video=>{if(paused||dialogs.some(d=>d.open)||!video.dataset.visible)video.pause();else {if(video.dataset.src){video.src=video.dataset.src;delete video.dataset.src;}video.play().catch(()=>{});}});
+      };
+      const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting)entry.target.dataset.visible='true';else delete entry.target.dataset.visible;});updateMotion();},{threshold:.12});
+      videos.forEach(v=>observer.observe(v));motionButton.addEventListener('click',()=>{paused=!paused;updateMotion();});reduced.addEventListener('change',e=>{paused=e.matches;updateMotion();});updateMotion();
+      const openDialog=dialog=>{dialog.showModal();document.body.style.overflow='hidden';updateMotion();};
+      dialogs.forEach(dialog=>{
+        dialog.querySelector('[data-close]').addEventListener('click',()=>dialog.close());
+        dialog.addEventListener('click',e=>{const r=dialog.getBoundingClientRect();if(e.target===dialog&&(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom))dialog.close();});
+        dialog.addEventListener('close',()=>{document.body.style.overflow='';if(dialog.id==='film-dialog')dialog.querySelector('.film-frame').replaceChildren();updateMotion();});
+      });
+      document.addEventListener('obskura:afterhours',()=>{const game=document.querySelector('#after-hours');if(!game.open){openDialog(game);game.dispatchEvent(new Event('afterhours:open'));}});
+      const menu=document.querySelector('#mobile-menu');document.querySelector('.menu-toggle').addEventListener('click',()=>openDialog(menu));menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.close()));
+      const films={reel:{title:'The Obskura film',src:'https://player.vimeo.com/video/1100065426?autoplay=1&dnt=1',link:'https://vimeo.com/1100065426'},limperatrice:{title:'L’impératrice / Aragon Ballroom',src:'https://player.vimeo.com/video/1053953559?autoplay=1&dnt=1',link:'https://vimeo.com/1053953559',vertical:true},zedsdead:{title:'Zeds Dead / Hulaween',src:'https://www.youtube-nocookie.com/embed/acLdrrfLSoc?autoplay=1',link:'https://www.youtube.com/watch?v=acLdrrfLSoc'},nicole:{title:'Nicole Moudaber / ARC Chicago',src:'https://www.youtube-nocookie.com/embed/6g7HHRV0HSE?autoplay=1',link:'https://www.youtube.com/watch?v=6g7HHRV0HSE'}};
+      const filmDialog=document.querySelector('#film-dialog');document.querySelectorAll('[data-film]').forEach(button=>button.addEventListener('click',()=>{const film=films[button.dataset.film];document.querySelector('#film-title').textContent=film.title;document.querySelector('#film-external').href=film.link;const frame=filmDialog.querySelector('.film-frame');frame.classList.toggle('vertical',!!film.vertical);const iframe=document.createElement('iframe');iframe.title=film.title;iframe.src=film.src;iframe.allow='autoplay; fullscreen; picture-in-picture';iframe.allowFullscreen=true;frame.replaceChildren(iframe);openDialog(filmDialog);}));
+      // Shuffle the whole archive before binding the lightbox, keeping its order in sync.
+      const archiveGrids=[...document.querySelectorAll('#archive .archive-grid')];
+      const shuffled=[...document.querySelectorAll('#archive .archive-item')];
+      for(let i=shuffled.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[shuffled[i],shuffled[j]]=[shuffled[j],shuffled[i]];}
+      archiveGrids.forEach(grid=>grid.replaceChildren());
+      shuffled.forEach((photo,i)=>archiveGrids[i<8?0:1].append(photo));
+      const photos=[...document.querySelectorAll('.archive-item')];const photoDialog=document.querySelector('#photo-dialog');let photoIndex=0;
+      const showPhoto=index=>{photoIndex=(index+photos.length)%photos.length;const thumb=photos[photoIndex].querySelector('img');const img=photoDialog.querySelector('img');img.src=thumb.getAttribute('src');img.alt=thumb.alt;document.querySelector('#photo-title').textContent=photos[photoIndex].querySelector('span').textContent;document.querySelector('#photo-count').textContent=String(photoIndex+1).padStart(2,'0')+' / '+photos.length;};
+      photos.forEach((button,index)=>button.addEventListener('click',()=>{showPhoto(index);openDialog(photoDialog);}));document.querySelector('#photo-prev').addEventListener('click',()=>showPhoto(photoIndex-1));document.querySelector('#photo-next').addEventListener('click',()=>showPhoto(photoIndex+1));photoDialog.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();showPhoto(photoIndex-1);}if(e.key==='ArrowRight'){e.preventDefault();showPhoto(photoIndex+1);}});
+
+      // Reveal on entry; content remains visible if JavaScript is unavailable.
+      const revealTargets=[...document.querySelectorAll('.intro h2,.intro .eyebrow,.section-head,.project,.service,.studio-title,.studio-photo,.studio-aside,.contact-top,.contact-title,.contact-bottom')];
+      const revealObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');revealObserver.unobserve(entry.target);}});},{threshold:.08});
+      revealTargets.forEach((el,index)=>{el.classList.add('reveal');if(el.classList.contains('service'))el.style.setProperty('--reveal-delay',((index%3)*90)+'ms');revealObserver.observe(el);});
+      // Equal-mass discs bounce off the section edges and each other.
+      const orbField=document.querySelector('.contact-circles');
+      const orbs=[...orbField.children].map((el,i)=>({el,x:0,y:0,vx:[142,-95,-128][i],vy:[90,-119,105][i]}));
+      let fieldWidth=0,fieldHeight=0,diameter=0,orbFrame=0,orbTime=0,orbVisible=false;
+      const paintOrbs=()=>orbs.forEach(o=>o.el.style.transform=`translate3d(${o.x}px,${o.y}px,0)`);
+      const sizeOrbs=()=>{
+        const oldWidth=fieldWidth,oldHeight=fieldHeight;
+        fieldWidth=orbField.clientWidth;fieldHeight=orbField.clientHeight;diameter=orbs[0].el.offsetWidth;
+        orbs.forEach((o,i)=>{o.x=oldWidth?o.x/oldWidth*fieldWidth:fieldWidth*[.28,.5,.72][i];o.y=oldHeight?o.y/oldHeight*fieldHeight:fieldHeight*[.4,.43,.46][i];o.x=Math.max(0,Math.min(fieldWidth-diameter,o.x));o.y=Math.max(0,Math.min(fieldHeight-diameter,o.y));});paintOrbs();
+      };
+      const moveOrbs=time=>{
+        orbFrame=0;if(paused||!orbVisible||document.hidden){orbTime=0;return;}
+        const dt=orbTime?Math.min((time-orbTime)/1000,.025):0;orbTime=time;
+        orbs.forEach(o=>{o.x+=o.vx*dt;o.y+=o.vy*dt;const maxX=fieldWidth-diameter,maxY=fieldHeight-diameter;if(o.x<0){o.x=0;o.vx=Math.abs(o.vx);}if(o.x>maxX){o.x=maxX;o.vx=-Math.abs(o.vx);}if(o.y<0){o.y=0;o.vy=Math.abs(o.vy);}if(o.y>maxY){o.y=maxY;o.vy=-Math.abs(o.vy);}});
+        for(let i=0;i<orbs.length;i++)for(let j=i+1;j<orbs.length;j++){
+          const a=orbs[i],b=orbs[j],dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy);
+          if(d<diameter&&d>.001){const nx=dx/d,ny=dy/d,overlap=(diameter-d)/2;a.x-=nx*overlap;a.y-=ny*overlap;b.x+=nx*overlap;b.y+=ny*overlap;const speed=(a.vx-b.vx)*nx+(a.vy-b.vy)*ny;if(speed>0){a.vx-=speed*nx;a.vy-=speed*ny;b.vx+=speed*nx;b.vy+=speed*ny;}}
+        }
+        orbs.forEach(o=>{o.x=Math.max(0,Math.min(fieldWidth-diameter,o.x));o.y=Math.max(0,Math.min(fieldHeight-diameter,o.y));});paintOrbs();orbFrame=requestAnimationFrame(moveOrbs);
+      };
+      const syncOrbs=()=>{if(orbFrame)cancelAnimationFrame(orbFrame);orbFrame=0;orbTime=0;if(orbVisible&&!paused&&!document.hidden)orbFrame=requestAnimationFrame(moveOrbs);};
+      new ResizeObserver(sizeOrbs).observe(orbField);sizeOrbs();
+      new IntersectionObserver(entries=>{orbVisible=entries[0].isIntersecting;syncOrbs();},{threshold:0}).observe(orbField);
+      motionButton.addEventListener('click',syncOrbs);reduced.addEventListener('change',syncOrbs);document.addEventListener('visibilitychange',syncOrbs);
+      const footer=document.querySelector('.poster-footer');
+      footer.querySelectorAll('.poster-faces>img').forEach((img,index)=>img.style.setProperty('--face-index',index));
+      const footerObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){footer.classList.add('footer-entered');footerObserver.unobserve(footer);}});},{threshold:.12});
+      footerObserver.observe(footer);
+      document.documentElement.classList.add('motion-ready');
+      // Run the subtle type registration only while the introduction is visible.
+      const machine=document.querySelector('.team-intro');
+      const machineObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>machine.classList.toggle('focus-running',entry.isIntersecting));},{threshold:.15});
+      machineObserver.observe(machine);
+      // A small magnetic response on the film control, confined to mouse devices.
+      if(matchMedia('(hover:hover) and (pointer:fine)').matches){
+        const play=document.querySelector('.play-button');const disc=play.querySelector('.play-circle');
+        play.addEventListener('pointermove',e=>{if(paused)return;const rect=disc.getBoundingClientRect();const x=Math.max(-7,Math.min(7,(e.clientX-rect.left-rect.width/2)*.12));const y=Math.max(-7,Math.min(7,(e.clientY-rect.top-rect.height/2)*.12));disc.style.transform=`translate(${x}px,${y}px)`;});
+        play.addEventListener('pointerleave',()=>{disc.style.transform='';});
+        motionButton.addEventListener('click',()=>{disc.style.transform='';});
+        reduced.addEventListener('change',()=>{disc.style.transform='';});
+      }
+      document.querySelector('#year').textContent=new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
