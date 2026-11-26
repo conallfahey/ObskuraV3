@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <script>document.documentElement.classList.add('hero-enhanced','hero-loading','hero-title-waiting');</script>
+  <style>.hero-enhanced:not(.hero-nav-visible) .nav{visibility:hidden;opacity:0;translate:0 -100%}.hero-enhanced:not(.hero-title-started) .hero-fullbleed .wordmark{visibility:hidden}</style>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#ece9e1">
@@ -296,32 +298,71 @@
 
     .nav-contact{background:var(--ink);color:var(--paper);padding:11px 18px;gap:22px;border:1px solid var(--ink);transition:background .2s,color .2s}
     .nav-contact:hover{background:var(--red);color:var(--paper);border-color:var(--red)}
+
+    /* Full-bleed film hero, with only the brand overlaid. */
+    .hero-fullbleed{margin:0;width:100%;height:calc(100svh - 85px);min-height:440px;display:flex;align-items:center;isolation:isolate}
+    .hero-fullbleed>video{width:100%;height:100%;object-fit:cover;filter:saturate(.9)}
+    .hero-fullbleed:after{z-index:0;background:linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.32) 50%,rgba(0,0,0,.18))}
+    .hero-fullbleed .masthead{position:relative;z-index:1;width:100%;padding:0 var(--pad)}
+    .hero-fullbleed .wordmark{font-size:23.7vw;font-weight:500;line-height:.75;letter-spacing:-.077em;max-width:none;color:var(--paper);padding-top:.075em;padding-bottom:.065em;margin:0 0 0 -.012em;white-space:nowrap}
+    .hero-fullbleed .motion-toggle{position:absolute;right:var(--pad);bottom:24px;z-index:2;width:38px;height:38px;border:1px solid #ece9e160;border-radius:50%;padding:0;display:grid;place-items:center;font-size:14px;background:#15161330;backdrop-filter:blur(8px)}
+    @media(max-width:600px){.hero-fullbleed{height:calc(100svh - 68px);min-height:400px}.hero-fullbleed .wordmark{font-size:22.9vw;line-height:.84;padding-top:.11em}.hero-fullbleed .motion-toggle{bottom:20px}}
+
+    .hero-fullbleed .hero-intro{display:flex;justify-content:space-between;align-items:end;gap:28px;border-top:1px solid #ece9e14d;margin-top:20px;padding-top:24px}
+    .hero-description>.meta{font-size:10px;color:var(--paper);margin-bottom:10px}
+    .hero-description>p:last-child{font-size:clamp(19px,1.8vw,26px);letter-spacing:-.025em;line-height:1.25}
+    .hero-cta{display:inline-flex;align-items:center;justify-content:space-between;gap:48px;min-height:52px;padding:15px 21px;background:var(--red);color:var(--paper);font-size:15px;transition:background .2s,color .2s}
+    .hero-cta:hover{background:var(--paper);color:var(--ink)}.hero-cta:hover .arrow{transform:translate(3px,-3px)}
+    @media(max-width:600px){.hero-fullbleed{min-height:490px}.hero-fullbleed .hero-intro{display:block;margin-top:18px;padding-top:19px}.hero-description>.meta{font-size:9px;margin-bottom:9px}.hero-description>p:last-child{font-size:21px}.hero-cta{margin-top:24px;gap:44px;min-height:48px;padding:12px 18px;font-size:14px}}
+
+    .hero-fullbleed .hero-intro{display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .hero-description>.meta{margin-bottom:0}
+    .hero-fullbleed .hero-cta{margin-top:0}
+    @media(max-width:600px){.hero-fullbleed .hero-intro{display:flex;align-items:center;gap:16px}.hero-fullbleed .hero-cta{gap:24px;min-height:44px;padding:11px 15px}.hero-description>.meta{margin-bottom:0}}
+    #team-title .word-focus{white-space:normal}
+    .collective-footer p{max-width:37ch}
+    .hero-reel{position:absolute;inset:0;overflow:hidden;background:var(--ink) url("assets/images/BOBM.webp") center/cover no-repeat;pointer-events:none}
+    .hero-reel iframe{position:absolute;top:50%;left:50%;width:100%;height:100%;max-width:none;border:0;transform:translate(-50%,-50%);filter:saturate(.9)}
+.film-clip-tabs{display:flex;flex-wrap:wrap;gap:8px;padding:14px 22px;border-bottom:1px solid #505149}.film-clip-tabs[hidden]{display:none}.film-clip-tabs button{font-size:13px;padding:8px 13px;border:1px solid #72746a;min-height:38px}.film-clip-tabs button[aria-pressed=true]{background:var(--paper);color:var(--ink);border-color:var(--paper)}.film-clip-tabs button:hover{border-color:var(--red)}.film-frame.local-film{aspect-ratio:auto;height:65dvh}.film-frame.local-film video{width:100%;height:100%;object-fit:contain;background:#080908}.film-frame.local-film.vertical{width:100%;aspect-ratio:auto;height:65dvh}
+@media(max-width:600px){.film-clip-tabs{padding:10px 14px;gap:6px}.film-clip-tabs button{font-size:12px;padding:7px 10px}.film-frame.local-film,.film-frame.local-film.vertical{height:56dvh}}
+
+
+    /* White glass navigation floats directly over the full-height reel. */
+    header{padding-top:0}
+    .hero-fullbleed{height:100svh}
+    .nav{background:rgba(21,22,19,.1);color:#fff;border-bottom:1px solid #ffffff26;box-shadow:none;-webkit-backdrop-filter:blur(20px) saturate(125%);backdrop-filter:blur(20px) saturate(125%)}
+    .nav .nav-mark{filter:brightness(0) invert(1);mix-blend-mode:normal}
+    .nav .nav-contact{background:#ffffff0a;border-color:#ffffff59;color:#fff}
+    .nav .nav-contact:hover{background:var(--red);border-color:var(--red);color:#fff}
+    .nav .nav-center a:hover{color:#fff}
+    @media(max-width:600px){header{padding-top:0}.hero-fullbleed{height:100svh}}
   </style>
   <link rel="stylesheet" href="assets/css/title-entrance.css">
-  <script src="assets/js/title-entrance.js?v=20261006-word-reveal" defer></script>
+  <script src="assets/js/title-entrance.js?v=reel-nav-staging" defer></script>
+  <link rel="stylesheet" href="assets/css/hero-loading-v5.css?v=reel-nav-staging">
+  <script src="assets/js/hero-loading-v5.js?v=reel-nav-staging"></script>
+  <script src="https://player.vimeo.com/api/player.js" defer></script>
+  <script src="assets/js/hero-choreography-v5.js?v=full-reel" defer></script>
+  <script src="assets/js/hero-reel-v5.js?v=continuous-menu" defer></script>
+  <link rel="stylesheet" href="assets/css/project-thumbnails-v5.css?v=clip-links">
+<link rel="stylesheet" href="assets/css/navigation-v5.css?v=tighter-menu-socials"><script src="js/library/TweenMax.min.js" defer></script><script src="assets/js/navigation-v5.js?v=centered-nav" defer></script><script src="js/random-menu-image.js" defer></script>
 </head>
 <body>
+  <div class="reel-loader" id="reel-loader" role="status" aria-live="polite"><span class="reel-loader-brand" aria-hidden="true">Obskura</span><span class="reel-loader-location meta" aria-hidden="true">Chicago & beyond</span><div class="reel-loader-counter" aria-hidden="true"><span id="reel-loader-percent">000</span><small>%</small></div><p class="meta reel-loader-caption">Loading the reel</p><div class="reel-loader-track" aria-hidden="true"><i></i><i></i><i></i></div><button class="reel-loader-skip" type="button" data-skip-reel>Enter site ↗</button></div>
   <a class="skip" href="#main">Skip to content</a>
   <header>
-    <nav class="nav" aria-label="Main navigation">
-      <div class="nav-brand"><a href="#" aria-label="Obskura home">Obskura</a><a class="nav-logo-button" href="#" aria-label="Obskura home"><img class="nav-mark" src="assets/svg/obskura-logo-compact.svg" alt=""></a></div>
-      <div class="nav-center"><a href="works-concept-v5.html">Selected work</a><a href="team-concept-v5.html">The team</a></div>
-      <a class="nav-contact" href="#getintouch">Contact <span class="arrow" aria-hidden="true">↗</span></a>
-      <button class="menu-toggle" aria-haspopup="dialog" aria-controls="mobile-menu">Menu <span aria-hidden="true">＋</span></button>
-    </nav>
-    <div class="masthead" aria-label="Obskura creative production studio">
-      <div class="wordmark" aria-hidden="true"><span class="wordmark-colorblocks"><i></i><i></i><i></i></span>OBSKURA</div>
-      <div class="masthead-bottom meta"><span>Artists. Brands. Live shows.</span><span>Film / Photography / Storytelling</span></div>
-    </div>
+    <nav aria-label="Main navigation" class="nav">
+<div class="nav-brand"><a aria-label="Obskura home" href="#">Obskura</a></div><a aria-label="Obskura home" class="nav-logo-button" href="#"><img alt="" class="nav-mark" src="assets/svg/obskura-logo-compact.svg"/></a>
+<div class="header-actions"><button aria-controls="mobile-menu" aria-expanded="false" aria-haspopup="dialog" aria-label="Open menu" class="menu-toggle action action--menuUzi" type="button"><div class="hamburger_menu"><div class="hamburger_line"></div><div class="hamburger_line"></div><div class="hamburger_line"></div></div></button></div>
+</nav>
   </header>
   <main id="main">
-    <section class="hero" aria-labelledby="hero-title">
-      <video muted loop playsinline preload="metadata" poster="assets/images/BOBM.webp" aria-hidden="true" data-motion><source src="assets/videos/Ef_1080Clip.webm" type="video/webm"></video>
-      <div class="hero-top"><span class="meta">Obskura / Chicago</span><button class="motion-toggle" aria-pressed="false">Pause motion Ⅱ</button></div>
-      <div class="hero-copy">
-        <h1 id="hero-title">You do your thing.<br><span class="serif">We’ll get the shot.</span></h1>
-        <div class="hero-bottom"><p>Photo and video for artists, brands, and live shows. Based in Chicago. Happy to travel.</p><button class="play-button" data-film="reel"><span class="play-circle" aria-hidden="true"></span><span>Watch the reel<span class="meta">A little of what we do</span></span></button></div>
-      </div>
+    <section class="hero hero-fullbleed" aria-labelledby="hero-title">
+      <div class="hero-reel" aria-hidden="true"><iframe src="https://player.vimeo.com/video/1100065426?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;playsinline=1&amp;autopause=0&amp;dnt=1&amp;title=0&amp;byline=0&amp;controls=0" title="Obskura full reel" allow="autoplay; fullscreen; picture-in-picture" tabindex="-1"></iframe></div>
+      <div class="masthead"><h1 id="hero-title" class="wordmark"><span class="wordmark-colorblocks" aria-hidden="true"><i></i><i></i><i></i></span>OBSKURA</h1><div class="hero-intro"><div class="hero-description"><p class="meta">Chicago & beyond</p></div><a class="hero-cta" href="#getintouch">Let’s talk <span class="arrow" aria-hidden="true">↗</span></a></div></div>
+      <button class="hero-watch-reel" type="button" data-film="reel" aria-label="Play full reel with sound"><svg width="13" height="15" viewBox="0 0 13 15" fill="none" aria-hidden="true"><path d="m1 1 11 6.5L1 14V1Z" fill="currentColor"/></svg><span>Play full reel</span></button>
+      <a class="hero-scroll" href="#team" aria-label="Scroll to meet Obskura"><svg width="20" height="26" viewBox="0 0 20 26" fill="none" aria-hidden="true"><path d="M10 1v22m-7-7 7 7 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg></a>
+      <button class="motion-toggle" aria-pressed="false" aria-label="Pause motion">Ⅱ</button>
     </section>
 
     <section class="team-intro wrap" id="team" aria-labelledby="team-title">
@@ -332,20 +373,15 @@
           <div class="vision-reticle" aria-hidden="true"><i></i><i></i><i></i><i></i><span class="reticle-center"></span></div>
         </figure>
       <div class="collective-content">
-        <h2 id="team-title">Hey, we’re Obskura.<br><span class="word-focus serif">Your camera crew.</span></h2>
+        <h2 id="team-title">We are a creative<br><span class="word-focus serif">production company.</span></h2>
 
 
-        <div class="collective-footer"><p>We like good music, good people,<br>and making something worth keeping.</p><a href="team-concept-v5.html" class="text-link">Meet Obskura <span class="arrow" aria-hidden="true">↗</span></a></div>
+        <div class="collective-footer"><p>A small team. We cover festivals, shoot social campaigns, and make films for brands.</p><a href="socials-concept-v5.html">Socials</a><a href="team-concept-v5.html" class="text-link">Meet Obskura <span class="arrow" aria-hidden="true">↗</span></a></div>
       </div>
     </section>
     <section id="work" class="wrap" aria-labelledby="work-title">
       <div class="section-head"><div><p class="meta">02 / Selected work</p><h2 id="work-title">A few <span class="serif">favorites.</span></h2></div><a class="text-link" href="works-concept-v5.html">All projects <span class="arrow" aria-hidden="true">↗</span></a></div>
-      <div class="work-grid">
-        <article class="project"><button class="project-media" data-film="limperatrice" aria-label="Watch L’impératrice at Aragon Ballroom"><img src="assets/images/limpTN.webp" alt="L’impératrice silhouetted beneath theatrical spotlights" loading="lazy"><span class="project-index meta">01 / Film</span><span class="project-go arrow" aria-hidden="true">↗</span></button><div class="project-caption"><div><h3>L’impératrice</h3><p>Aragon Ballroom</p></div><span class="meta">Live performance<br>Artist content</span></div></article>
-        <article class="project"><button class="project-media" data-film="zedsdead" aria-label="Watch Zeds Dead’s full Hulaween set"><img src="assets/images/ZEDS_DEAD_HULA.webp" alt="Zeds Dead’s Hulaween stage glowing above the crowd" loading="lazy"><span class="project-index meta">02 / Film</span><span class="project-go arrow" aria-hidden="true">↗</span></button><div class="project-caption"><div><h3>Zeds Dead</h3><p>Hulaween · Full set</p></div><span class="meta">Full performance<br>Coverage</span></div></article>
-        <article class="project"><a class="project-media" href="https://www.instagram.com/reel/DTLq2vHEuaF/" target="_blank" rel="noopener noreferrer" aria-label="Watch LSDREAM’s New Year’s Eve reel on Instagram (opens in a new tab)"><img src="assets/images/LSDREAM_NAVYPIER.webp" alt="Multicolored lasers sweep across LSDREAM’s New Year’s Eve crowd" loading="lazy"><span class="project-index meta">03 / Social</span><span class="project-go arrow" aria-hidden="true">↗</span></a><div class="project-caption"><div><h3>LSDREAM</h3><p>New Year’s Eve · Navy Pier</p></div><span class="meta">Event recap<br>Social content</span></div></article>
-        <article class="project"><button class="project-media" data-film="nicole" aria-label="Watch Nicole Moudaber’s full ARC Chicago set"><img src="assets/images/NICOLE_MOUDABER_ARC25.webp" alt="Nicole Moudaber facing a sea of fans at ARC Chicago" loading="lazy"><span class="project-index meta">04 / Film</span><span class="project-go arrow" aria-hidden="true">↗</span></button><div class="project-caption"><div><h3>Nicole Moudaber</h3><p>ARC Chicago · Full set</p></div><span class="meta">Full performance<br>Coverage</span></div></article>
-      </div>
+      <div class="work-grid"><article class="project" data-audience="djs" data-category="full-sets" data-work-id="zedsdead"><button aria-label="Watch Zeds Dead" class="project-media" data-film="zedsdead"><img alt="Zeds Dead / Hulaween [Full Set]" decoding="async" loading="lazy" src="assets/images/ZEDS_DEAD_HULA.jpg"/><span class="project-index meta">01 / Film</span><span aria-hidden="true" class="project-go arrow">↗</span></button><div class="project-caption"><div><h3>Zeds Dead</h3><p>Hulaween · Full set</p></div><span class="meta">Full performance<br/>Coverage</span></div></article><article class="project" data-audience="djs" data-category="full-sets" data-work-id="nicole-sara"><button aria-label="Watch Nicole Moudaber b2b Sara Landry" class="project-media" data-film="nicole-sara"><img alt="Nicole Moudaber b2b Sara Landry / After Dark Chicago 2026 / Full set" decoding="async" loading="lazy" src="assets/images/works-v5/nicole-sara.webp"/><span class="project-index meta">02 / Film</span><span aria-hidden="true" class="project-go arrow">↗</span></button><div class="project-caption"><div><h3>Nicole Moudaber b2b Sara Landry</h3><p>After Dark Chicago 2026 · Full set</p></div><span class="meta">Full performance<br/>Coverage</span></div></article><article class="project" data-audience="bands" data-category="recaps" data-work-id="midnight-generation-tour"><button aria-label="Watch Midnight Generation" class="project-media" data-film="midnight-generation-tour"><img alt="Midnight Generation / Tour / BMO, Forest Hills &amp; Red Rocks" decoding="async" loading="eager" src="assets/images/works-v5/midnight-generation-tour.webp"/><span class="project-index meta">03 / Film</span><span aria-hidden="true" class="project-go arrow">↗</span></button><div class="project-caption"><div><h3>Midnight Generation</h3><p>BMO · Forest Hills · Red Rocks</p><div aria-label="Midnight Generation / Tour videos" class="project-clip-links" role="group"><a aria-label="Watch Midnight Generation / Tour / Red Rocks" class="social-cut" data-clip="0" data-film="midnight-generation-tour" href="assets/videos/works-v5/midnight-generation-red-rocks.mp4">Red Rocks ↗</a><a aria-label="Watch Midnight Generation / Tour / BMO" class="social-cut" data-clip="1" data-film="midnight-generation-tour" href="assets/videos/works-v5/midnight-generation-bmo.mp4">BMO ↗</a><a aria-label="Watch Midnight Generation / Tour / Forest Hills" class="social-cut" data-clip="2" data-film="midnight-generation-tour" href="assets/videos/works-v5/midnight-generation-forest-hills.mp4">Forest Hills ↗</a></div></div><span class="meta">Tour recaps<br/>Artist content</span></div></article><article class="project" data-audience="djs" data-category="full-sets" data-work-id="alleycvt"><button aria-label="Watch Caverns [Full Set]" class="project-media" data-film="alleycvt"><img alt="Caverns [Full Set] / ALLEYCVT" decoding="async" loading="lazy" src="assets/images/ALLEYCVT_CAVERNS.JPG"/><span class="project-index meta">04 / Film</span><span aria-hidden="true" class="project-go arrow">↗</span></button><div class="project-caption"><div><h3>ALLEYCVT</h3><p>The Caverns · Full set</p></div><span class="meta">Full performance<br/>Coverage</span></div></article></div>
       <a class="all-work" href="works-concept-v5.html"><span>There’s more where that came from.</span><span class="arrow" aria-hidden="true">↗</span></a>
     </section>
     <section id="services" class="services wrap" aria-labelledby="services-title">
@@ -375,7 +411,7 @@
       <div class="poster-word poster-out" aria-hidden="true"><span>OUT THERE.</span></div>
       <a class="poster-contact" href="mailto:conall@obskurastudios.com"><span class="meta">Got something coming up?</span><span class="poster-contact-title">Let’s talk. <span aria-hidden="true">↗</span></span><span class="poster-email">conall@obskurastudios.com</span></a>
       <div class="poster-faces" aria-hidden="true"><img src="assets/svg/ObskuraWhite150ppi-05.png" alt="" loading="lazy"><img class="poster-smiley" src="assets/images/smiley-dripping.png" alt="" loading="lazy"><img class="poster-smiley smiley-filled" src="assets/images/smiley-black-v2.png" alt="" loading="lazy"><img class="poster-smiley smiley-outline" src="assets/images/smiley-outline-x-eyes-solid.png" alt="" loading="lazy"><img src="assets/svg/ObskuraWhite150ppi-05.png" alt="" loading="lazy"></div>
-      <nav class="poster-links" aria-label="Footer links"><a href="works-concept-v5.html">Work <span aria-hidden="true">↗</span></a><a href="gallery.html">Gallery <span aria-hidden="true">↗</span></a><a href="https://www.instagram.com/obskurastudios" target="_blank" rel="noopener noreferrer">Instagram <span aria-hidden="true">↗</span></a><a href="https://www.tiktok.com/@obskurastudios" target="_blank" rel="noopener noreferrer">TikTok <span aria-hidden="true">↗</span></a><a class="myspace-easter-egg" href="#after-hours">Myspace <span aria-hidden="true">↗</span></a></nav>
+      <nav aria-label="Footer links" class="poster-links"><a href="works-concept-v5.html">Work <span aria-hidden="true">↗</span></a><a href="gallery.html">Gallery <span aria-hidden="true">↗</span></a><a href="https://www.instagram.com/obskurastudios" rel="noopener noreferrer" target="_blank">Instagram <span aria-hidden="true">↗</span></a><a href="https://www.tiktok.com/@obskurastudios" rel="noopener noreferrer" target="_blank">TikTok <span aria-hidden="true">↗</span></a><a href="https://www.youtube.com/@obskurastudios" rel="noopener noreferrer" target="_blank">YouTube <span aria-hidden="true">↗</span></a><a class="myspace-easter-egg" href="#after-hours">Myspace <span aria-hidden="true">↗</span></a></nav>
     </div>
     <div class="poster-legal meta"><span>© <span id="year">2026</span> Obskura</span><span>Chicago & beyond.</span><a href="#">Back to top ↑</a></div>
   </footer>
@@ -385,8 +421,98 @@
     <div class="game-stage"><canvas width="800" height="520" tabindex="0" aria-label="Brick breaker playfield. Move using the arrow keys, mouse, or touch. Press P to pause." aria-describedby="game-help"></canvas><div class="game-overlay"><span class="meta">A little after-hours activity</span><h3 class="game-message">You thought we had a myspace??</h3><p class="game-message-copy">One life. Clear all 56 bricks as fast as you can. Lower time wins.</p><button class="game-start">Let’s play ↗</button></div></div>
     <p id="game-help" class="game-help">Mouse, ← →, or drag to move. <span>P to pause. Esc to leave.</span></p><p class="game-announcement sr-only" role="status" aria-live="polite"></p>
   </dialog>
-  <dialog id="mobile-menu" class="mobile-menu" aria-labelledby="menu-title"><div class="dialog-bar"><h2 id="menu-title">Obskura <span class="color-trio" aria-hidden="true"><i></i><i></i><i></i></span></h2><button class="dialog-close" data-close>Close <span aria-hidden="true">×</span></button></div><nav aria-label="Mobile navigation"><a href="works-concept-v5.html">Selected work</a><a href="team-concept-v5.html">The team</a><a href="#archive">The archive</a><a href="#getintouch">Contact ↗</a></nav></dialog>
-  <dialog id="film-dialog" aria-labelledby="film-title"><div class="dialog-bar"><h2 id="film-title">Obskura film</h2><button class="dialog-close" data-close>Close <span class="arrow" aria-hidden="true">×</span></button></div><div class="film-frame"></div><div class="dialog-note"><span>Film by Obskura · Best with sound.</span><a id="film-external" href="#" target="_blank" rel="noopener noreferrer">Open film in a new tab ↗</a></div></dialog>
+  <dialog id="mobile-menu" class="mobile-menu" aria-labelledby="menu-title"><h2 id="menu-title" class="menu-sr-only">Explore Obskura</h2><svg class="hidden">
+<symbol id="icon-arrow" viewbox="0 0 24 24">
+<title>arrow</title>
+<polygon points="6.3,12.8 20.9,12.8 20.9,11.2 6.3,11.2 10.2,7.2 9,6 3.1,12 9,18 10.2,16.8 "></polygon>
+</symbol>
+<symbol id="icon-drop" viewbox="0 0 24 24">
+<title>drop</title>
+<path d="M12,21c-3.6,0-6.6-3-6.6-6.6C5.4,11,10.8,4,11.4,3.2C11.6,3.1,11.8,3,12,3s0.4,0.1,0.6,0.3c0.6,0.8,6.1,7.8,6.1,11.2C18.6,18.1,15.6,21,12,21zM12,4.8c-1.8,2.4-5.2,7.4-5.2,9.6c0,2.9,2.3,5.2,5.2,5.2C17.2,12.2,13.8,7.3,12,4.8z"></path>
+<path d="M12,18.2c-0.4,0-0.7-0.3-0.7-0.7s0.3-0.7,0.7-0.7c1.3,0,2.4-1.1,2.4-2.4c0-0.4,0.3-0.7,0.7-0.7c0.4,0,0.7,0.3,0.7,0.7C15.8,16.5,14.1,18.2,12,18.2z"></path>
+</symbol>
+<symbol id="icon-menu" viewbox="0 0 119 25">
+<title>menu</title>
+<path d="M 0.053 7.899 L -0.139 0.148 L 100 0 L 100 8 L 0.148 8.186 Z Z M 0 28 L 0 20 L 71 20 L 71 28 L 0 28 Z"></path>
+</symbol>
+<symbol id="icon-close" viewbox="0 0 24 24">
+<title>close</title>
+<path d="m12.002 2.005c5.518 0 9.998 4.48 9.998 9.997 0 5.518-4.48 9.998-9.998 9.998-5.517 0-9.997-4.48-9.997-9.997 0-5.517 4.48-9.997 9.997-9.997zm0 1.5c-4.69 0-8.497 3.807-8.497 8.497s3.807 8.498 8.497 8.498 8.498-3.808 8.498-8.498-3.808-8.497-8.498-8.497zm0 7.425 2.717-2.718c.146-.146.339-.219.531-.219.404 0 .75.325.75.75 0 .193-.073.384-.219.531l-2.717 2.717 2.727 2.728c.147.147.22.339.22.531 0 .427-.349.75-.75.75-.192 0-.384-.073-.53-.219l-2.729-2.728-2.728 2.728c-.146.146-.338.219-.53.219-.401 0-.751-.323-.751-.75 0-.192.073-.384.22-.531l2.728-2.728-2.722-2.722c-.146-.147-.219-.338-.219-.531 0-.425.346-.749.75-.749.192 0 .385.073.531.219z" fill-rule="nonzero"></path>
+</symbol>
+<symbol id="icon-instagram" viewbox="0 0 24 24">
+<title>instagram</title>
+<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.919-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+</symbol>
+<symbol id="icon-linktree" viewbox="0 0 24 24">
+<title>linktree</title>
+<path d="m13.511 5.853 4.005-4.117 2.325 2.381-4.201 4.005h5.909v3.305h-5.937l4.229 4.108-2.325 2.334-5.741-5.769-5.741 5.769-2.325-2.325 4.229-4.108H2V8.122h5.909L3.708 4.117l2.325-2.381 4.005 4.117V0h3.473v5.853zM10.038 16.16h3.473v7.842h-3.473V16.16z"></path>
+</symbol>
+<symbol id="icon-linkedin" viewbox="0 0 24 24">
+<title>linkedin</title>
+<path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
+</symbol>
+<symbol id="icon-tiktok" viewbox="0 0 24 24">
+<title>tiktok</title>
+<path d="M15 3h2.2c.7 1.7 2.3 3 4 3.4v2.4c-1.8-.2-3.5-.9-5-1.9v6.3c0 3.7-3 6.8-6.8 6.8S2.6 16.9 2.6 13.2c0-3.7 3-6.8 6.8-6.8.4 0 .8 0 1.2.1v3.7c-.4-.2-.8-.3-1.2-.3-2 0-3.6 1.6-3.6 3.6s1.6 3.6 3.6 3.6 3.6-1.6 3.6-3.6V3z"></path>
+</symbol>
+<symbol id="arrow-left" viewbox="0 0 21.1 13.2">
+<g>
+<polygon points="6.5,12.8 0.5,6.8 0.3,6.5 0.5,6.3 6.5,0.3 7.1,0.8 1.7,6.2 20.8,6.2 20.8,6.9 1.7,6.9 7.1,12.3 	"></polygon>
+<path d="M6.5,0l1,0.8L2.3,6h18.7v1.2H2.3l5.2,5.2l-1,0.8L0.3,7L0,6.5L6.5,0z M6.8,0.9L6.5,0.7L0.6,6.6l0.1,0.1l5.8,5.8l0.2-0.2
+		L1.1,6.7h19.5V6.5H1.1L6.8,0.9z"></path>
+</g>
+</symbol>
+<symbol id="arrow-right" viewbox="0 0 21.1 13.2">
+<g>
+<polygon points="14.6,0.3 20.5,6.3 20.8,6.6 20.5,6.8 14.6,12.8 13.9,12.3 19.4,6.9 0.2,6.9 0.2,6.2 19.4,6.2 13.9,0.8 	"></polygon>
+<path d="M14.6,13.2l-1-0.8l5.2-5.2H0V6h18.7l-5.2-5.2l1-0.8l6.2,6.2l0.3,0.5L14.6,13.2z M14.3,12.3l0.2,0.2l5.9-5.9l-0.1-0.1
+		l-5.8-5.8l-0.2,0.2L20,6.5H0.5v0.2H20L14.3,12.3z"></path>
+</g>
+</symbol>
+</svg><nav aria-label="Explore Obskura" class="menuUzi targeted">
+<div class="menuUzi__item menuUzi__item--1" data-direction="bt">
+<div class="menuUzi__item-inner">
+<div class="mainmenuUzi"><a aria-current="page" class="mainmenuUzi__item" href="index-concept-v5.html">Home</a><a class="mainmenuUzi__item" href="works-concept-v5.html">Works</a><a class="mainmenuUzi__item" href="socials-concept-v5.html">Socials</a><a class="mainmenuUzi__item" href="team-concept-v5.html">The team</a><a class="mainmenuUzi__item" href="index-concept-v5.html#archive">Photography</a><a class="mainmenuUzi__item" href="#getintouch">Contact</a></div>
+<p class="label label--topleft label--vert-mirror">⛬</p>
+<p class="label label--bottomright label--vert">⛬</p>
+</div>
+</div>
+<div class="menuUzi__item menuUzi__item--2" data-direction="lr">
+<div class="menuUzi__item-inner">
+<div class="menuUzi__item-map"></div>
+<a class="menuUzi__item-hoverlink" href="index-concept-v5.html">Obskura</a>
+</div>
+</div>
+<div class="menuUzi__item menuUzi__item--3" data-direction="bt">
+<div class="menuUzi__item-inner">
+<div class="sidemenuUzi"><a class="sidemenuUzi__item" href="team-concept-v5.html"><span class="sidemenuUzi__item-inner"><img alt="Obskura" src="assets/svg/ObskuraWhite150ppi-05.png" style="width:75px;height:auto"/></span></a><a class="team-signin-button" href="https://config1--obskuraos.us-central1.hosted.app" rel="noopener" target="_blank">Team Member Sign In</a></div>
+</div>
+</div>
+<div class="menuUzi__item menuUzi__item--4" data-direction="rl">
+<div class="menuUzi__item-inner">
+<p class="label label--topleft label--line">⛬</p>
+<div class="yearnow">©2026</div>
+</div>
+</div>
+<div class="menuUzi__item menuUzi__item--5" data-direction="tb">
+<div class="menuUzi__item-inner">
+<p class="label label--topleft label--vert-mirror">⛬</p>
+<ul class="socials-sidemenu">
+<li data-cursor="-medium -exclusion">
+<a aria-label="instagram" class="instagram transit" href="https://www.instagram.com/obskurastudios" rel="noopener" target="_blank"><svg class="footer-social-icon"><use xlink:href="#icon-instagram"></use></svg> Instagram</a>
+</li>
+<li data-cursor="-medium -exclusion">
+<a aria-label="tiktok" class="tiktok transit" href="https://www.tiktok.com/@obskurastudios" rel="noopener" target="_blank"><svg class="footer-social-icon"><use xlink:href="#icon-tiktok"></use></svg> TikTok</a>
+</li>
+<li><a aria-label="YouTube" class="youtube transit" href="https://www.youtube.com/@obskurastudios" rel="noopener" target="_blank"><svg aria-hidden="true" class="footer-social-icon" viewbox="0 0 24 24"><path clip-rule="evenodd" d="M7 4h10a5 5 0 0 1 5 5v6a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V9a5 5 0 0 1 5-5Zm3 4v8l6-4-6-4Z" fill-rule="evenodd"></path></svg> YouTube</a></li></ul>
+</div>
+</div>
+
+<button aria-label="Close menu" class="action action--close menu-close" data-close="" type="button">
+<svg class="icon icon-cursor icon--close" height="12px"><use xlink:href="#icon-close"></use></svg>
+</button>
+</nav></dialog>
+  <dialog id="film-dialog" aria-labelledby="film-title"><div class="dialog-bar"><h2 id="film-title">Obskura film</h2><button class="dialog-close" data-close>Close <span class="arrow" aria-hidden="true">×</span></button></div><div class="film-clip-tabs" role="group" aria-label="Choose a project video" hidden></div><div class="film-frame"></div><div class="dialog-note"><span>Film by Obskura · Best with sound.</span><a id="film-external" href="#" target="_blank" rel="noopener noreferrer">Open film in a new tab ↗</a></div></dialog>
   <dialog id="photo-dialog" aria-labelledby="photo-title"><div class="dialog-bar"><h2 id="photo-title">Through our lens</h2><button class="dialog-close" data-close>Close <span class="arrow" aria-hidden="true">×</span></button></div><div class="lightbox-picture"><img alt=""></div><div class="lightbox-controls"><button id="photo-prev" aria-label="Previous photograph">← Previous</button><span class="meta" id="photo-count"></span><button id="photo-next" aria-label="Next photograph">Next →</button></div></dialog>
   <script>
     (()=>{
@@ -397,8 +523,8 @@
       let paused=reduced.matches;
       const updateMotion=()=>{
         document.documentElement.classList.toggle('motion-paused',paused);
-        motionButton.textContent=paused?'Play motion ▷':'Pause motion Ⅱ';motionButton.setAttribute('aria-pressed',String(paused));
-        videos.forEach(video=>{if(paused||dialogs.some(d=>d.open)||!video.dataset.visible)video.pause();else {if(video.dataset.src){video.src=video.dataset.src;delete video.dataset.src;}video.play().catch(()=>{});}});
+        motionButton.textContent=paused?'▷':'Ⅱ';motionButton.setAttribute('aria-label',paused?'Play motion':'Pause motion');motionButton.setAttribute('aria-pressed',String(paused));
+        videos.forEach(video=>{if(paused||dialogs.some(d=>d.open&&d.id!=='mobile-menu')||!video.dataset.visible)video.pause();else {if(video.dataset.src){video.src=video.dataset.src;delete video.dataset.src;}video.play().catch(()=>{});}});
       };
       const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting)entry.target.dataset.visible='true';else delete entry.target.dataset.visible;});updateMotion();},{threshold:.12});
       videos.forEach(v=>observer.observe(v));motionButton.addEventListener('click',()=>{paused=!paused;updateMotion();});reduced.addEventListener('change',e=>{paused=e.matches;updateMotion();});updateMotion();
@@ -406,12 +532,40 @@
       dialogs.forEach(dialog=>{
         dialog.querySelector('[data-close]').addEventListener('click',()=>dialog.close());
         dialog.addEventListener('click',e=>{const r=dialog.getBoundingClientRect();if(e.target===dialog&&(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom))dialog.close();});
-        dialog.addEventListener('close',()=>{document.body.style.overflow='';if(dialog.id==='film-dialog')dialog.querySelector('.film-frame').replaceChildren();updateMotion();});
+        dialog.addEventListener('close',()=>{document.body.style.overflow='';if(dialog.id==='film-dialog'){dialog.querySelector('video')?.pause();dialog.querySelector('.film-frame').replaceChildren();}updateMotion();});
       });
       document.addEventListener('obskura:afterhours',()=>{const game=document.querySelector('#after-hours');if(!game.open){openDialog(game);game.dispatchEvent(new Event('afterhours:open'));}});
-      const menu=document.querySelector('#mobile-menu');document.querySelector('.menu-toggle').addEventListener('click',()=>openDialog(menu));menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.close()));
-      const films={reel:{title:'The Obskura film',src:'https://player.vimeo.com/video/1100065426?autoplay=1&dnt=1',link:'https://vimeo.com/1100065426'},limperatrice:{title:'L’impératrice / Aragon Ballroom',src:'https://player.vimeo.com/video/1053953559?autoplay=1&dnt=1',link:'https://vimeo.com/1053953559',vertical:true},zedsdead:{title:'Zeds Dead / Hulaween',src:'https://www.youtube-nocookie.com/embed/acLdrrfLSoc?autoplay=1',link:'https://www.youtube.com/watch?v=acLdrrfLSoc'},nicole:{title:'Nicole Moudaber / ARC Chicago',src:'https://www.youtube-nocookie.com/embed/6g7HHRV0HSE?autoplay=1',link:'https://www.youtube.com/watch?v=6g7HHRV0HSE'}};
-      const filmDialog=document.querySelector('#film-dialog');document.querySelectorAll('[data-film]').forEach(button=>button.addEventListener('click',()=>{const film=films[button.dataset.film];document.querySelector('#film-title').textContent=film.title;document.querySelector('#film-external').href=film.link;const frame=filmDialog.querySelector('.film-frame');frame.classList.toggle('vertical',!!film.vertical);const iframe=document.createElement('iframe');iframe.title=film.title;iframe.src=film.src;iframe.allow='autoplay; fullscreen; picture-in-picture';iframe.allowFullscreen=true;frame.replaceChildren(iframe);openDialog(filmDialog);}));
+      const films={"zedsdead": {"title": "Zeds Dead / Hulaween [Full Set]", "src": "https://www.youtube-nocookie.com/embed/acLdrrfLSoc?autoplay=1", "link": "https://www.youtube.com/watch?v=acLdrrfLSoc", "vertical": false}, "nicole-sara": {"title": "Nicole Moudaber / After Dark Chicago 2026 (Solo & b2b Sara Landry)", "src": "https://www.youtube-nocookie.com/embed/cvEnfJliz-M?autoplay=1", "link": "https://www.youtube.com/watch?v=cvEnfJliz-M", "vertical": false}, "midnight-generation-tour": {"title": "Midnight Generation / Tour", "type": "local", "clips": [{"label": "Red Rocks", "src": "assets/videos/works-v5/midnight-generation-red-rocks.mp4", "vertical": false, "poster": "assets/images/works-v5/midnight-generation-tour.webp"}, {"label": "BMO", "src": "assets/videos/works-v5/midnight-generation-bmo.mp4", "vertical": false, "poster": "assets/images/works-v5/midnight-generation-tour.webp"}, {"label": "Forest Hills", "src": "assets/videos/works-v5/midnight-generation-forest-hills.mp4", "vertical": true, "poster": "assets/images/works-v5/midnight-generation-tour.webp"}]}, "alleycvt": {"title": "Caverns [Full Set] / ALLEYCVT", "src": "https://www.youtube-nocookie.com/embed/-pzhzLFUu9c?autoplay=1", "link": "https://www.youtube.com/watch?v=-pzhzLFUu9c", "vertical": false}, "reel": {"title": "The Obskura reel", "src": "https://player.vimeo.com/video/1100065426?autoplay=1&muted=0&playsinline=1&dnt=1", "link": "https://vimeo.com/1100065426", "vertical": false}};
+      const filmDialog=document.querySelector('#film-dialog');
+  const frame=filmDialog.querySelector('.film-frame'),clipTabs=filmDialog.querySelector('.film-clip-tabs');
+  const external=document.querySelector('#film-external');
+  const showLocalClip=(film,index)=>{
+    const clip=film.clips[index];frame.querySelector('video')?.pause();
+    frame.classList.toggle('vertical',!!clip.vertical);frame.classList.add('local-film');
+    const video=document.createElement('video');video.controls=true;video.playsInline=true;video.preload='metadata';video.poster=clip.poster;video.src=clip.src;
+    video.setAttribute('aria-label',film.title+' / '+clip.label);frame.replaceChildren(video);
+    document.querySelector('#film-title').textContent=film.title+(film.clips.length>1?' / '+clip.label:'');
+    external.href=clip.src;external.textContent='Open video in a new tab ↗';
+    [...clipTabs.children].forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));
+    video.play().catch(()=>{});
+  };
+  document.querySelectorAll('[data-film]').forEach(button=>button.addEventListener('click',event=>{
+    event.preventDefault();
+    const film=films[button.dataset.film];
+    clipTabs.replaceChildren();clipTabs.hidden=true;frame.classList.remove('local-film');
+    if(film.type==='local'){
+      if(film.clips.length>1){
+        clipTabs.hidden=false;
+        film.clips.forEach((clip,index)=>{const tab=document.createElement('button');tab.type='button';tab.textContent=clip.label;tab.setAttribute('aria-pressed',String(index===0));tab.addEventListener('click',()=>showLocalClip(film,index));clipTabs.append(tab);});
+      }
+      openDialog(filmDialog);showLocalClip(film,Number(button.dataset.clip)||0);
+    }else{
+      document.querySelector('#film-title').textContent=film.title;external.href=film.link;external.textContent='Open film in a new tab ↗';
+      frame.classList.toggle('vertical',!!film.vertical);
+      const iframe=document.createElement('iframe');iframe.title=film.title;iframe.src=film.src;iframe.allow='autoplay; fullscreen; picture-in-picture';iframe.allowFullscreen=true;frame.replaceChildren(iframe);openDialog(filmDialog);
+    }
+  }));
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)frame.querySelector('video')?.pause();});
       // Shuffle the whole archive before binding the lightbox, keeping its order in sync.
       const archiveGrids=[...document.querySelectorAll('#archive .archive-grid')];
       const shuffled=[...document.querySelectorAll('#archive .archive-item')];
@@ -460,7 +614,7 @@
       const machineObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>machine.classList.toggle('focus-running',entry.isIntersecting));},{threshold:.15});
       machineObserver.observe(machine);
       // A small magnetic response on the film control, confined to mouse devices.
-      if(matchMedia('(hover:hover) and (pointer:fine)').matches){
+      if(matchMedia('(hover:hover) and (pointer:fine)').matches&&document.querySelector('.play-button')){
         const play=document.querySelector('.play-button');const disc=play.querySelector('.play-circle');
         play.addEventListener('pointermove',e=>{if(paused)return;const rect=disc.getBoundingClientRect();const x=Math.max(-7,Math.min(7,(e.clientX-rect.left-rect.width/2)*.12));const y=Math.max(-7,Math.min(7,(e.clientY-rect.top-rect.height/2)*.12));disc.style.transform=`translate(${x}px,${y}px)`;});
         play.addEventListener('pointerleave',()=>{disc.style.transform='';});

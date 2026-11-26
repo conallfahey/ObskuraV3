@@ -1,0 +1,15 @@
+{
+  "name": "obskura-us",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-site.mjs",
+    "check": "node scripts/check-site.mjs",
+    "preview": "node scripts/preview-site.mjs",
+    "deploy:preview": "npm run build && cf deploy ./dist",
+    "deploy": "npm run build && cf deploy ./dist --mode production"
+  },
+  "devDependencies": {
+    "cf": "1.0.0-rc.6"
+  }
+}

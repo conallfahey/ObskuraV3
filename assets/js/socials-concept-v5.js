@@ -1,0 +1,42 @@
+(() => {
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+  const clips=window.obskuraSocialClips,video=document.querySelector('#social-reel-video'),select=document.querySelector('#social-clip-select');
+  const toggle=document.querySelector('#social-reel-toggle'),sound=document.querySelector('#social-reel-sound');
+  let index=0,running=!reduced.matches,visible=false;
+  const play=()=>{if(running&&visible&&!document.hidden&&!document.querySelector('dialog[open]:not(#mobile-menu)'))video.play().catch(()=>{});else video.pause();};
+  const show=i=>{
+    index=(i+clips.length)%clips.length;const clip=clips[index];video.pause();
+    video.poster=`assets/socials/videos/posters/${clip.id}.jpg`;video.src=`assets/socials/videos/${clip.id}.mp4`;
+    video.setAttribute('aria-label',clip.festival+' — '+clip.title);
+    document.querySelector('#social-reel-festival').textContent=clip.festival;
+    document.querySelector('#social-reel-title').textContent=clip.title;
+    document.querySelector('#social-reel-views').textContent=clip.views;
+    document.querySelector('.social-frame-index').textContent=String(index+1).padStart(2,'0')+' / '+clips.length;
+    document.querySelector('.social-ghost-left').src=`assets/socials/videos/posters/${clips[(index+clips.length-1)%clips.length].id}.jpg`;
+    document.querySelector('.social-ghost-right').src=`assets/socials/videos/posters/${clips[(index+1)%clips.length].id}.jpg`;
+    select.value=index;play();
+  };
+  document.querySelector('#social-reel-back').addEventListener('click',()=>show(index-1));
+  document.querySelector('#social-reel-next').addEventListener('click',()=>show(index+1));
+  select.addEventListener('change',()=>show(Number(select.value)));
+  toggle.textContent=running?'Pause reel':'Play reel';
+  toggle.addEventListener('click',()=>{running=!running;toggle.textContent=running?'Pause reel':'Play reel';play();});
+  sound.addEventListener('click',()=>{video.muted=!video.muted;sound.textContent=video.muted?'Sound off':'Sound on';sound.setAttribute('aria-pressed',String(!video.muted));});
+  video.addEventListener('ended',()=>{if(running)show(index+1);});
+  new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;play();},{threshold:.2}).observe(video);
+  document.addEventListener('visibilitychange',play);reduced.addEventListener('change',e=>{if(e.matches){running=false;toggle.textContent='Play reel';play();}});
+  const dialogs=[...document.querySelectorAll('dialog')];
+  const open=dialog=>{dialog.showModal();document.body.style.overflow='hidden';play();};
+  dialogs.forEach(dialog=>{
+    dialog.querySelector('[data-close]').addEventListener('click',()=>dialog.close());
+    dialog.addEventListener('close',()=>{document.body.style.overflow='';play();});
+    dialog.addEventListener('click',e=>{const r=dialog.getBoundingClientRect();if(e.target===dialog&&(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom))dialog.close();});
+  });
+  document.addEventListener('obskura:afterhours',()=>{const game=document.querySelector('#after-hours');if(!game.open){open(game);game.dispatchEvent(new Event('afterhours:open'));}});
+  const reveals=[...document.querySelectorAll('.social-service-grid article,.social-case-grid article,.social-audiences>div,.social-team-grid figure')];
+  const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}}),{threshold:.06});
+  reveals.forEach(el=>{el.classList.add('social-reveal');observer.observe(el);});document.body.classList.add('motion-ready');
+  const footer=document.querySelector('.poster-footer');footer.querySelectorAll('.poster-faces>img').forEach((img,i)=>img.style.setProperty('--face-index',i));
+  const footerObserver=new IntersectionObserver(entries=>{if(entries[0].isIntersecting){footer.classList.add('footer-entered');footerObserver.disconnect();}},{threshold:.1});footerObserver.observe(footer);
+  document.querySelector('#year').textContent=new Date().getFullYear();
+})();

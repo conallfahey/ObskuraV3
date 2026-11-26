@@ -4,17 +4,39 @@
   dialogs.forEach(dialog=>{
     dialog.querySelector('[data-close]').addEventListener('click',()=>dialog.close());
     dialog.addEventListener('click',e=>{const r=dialog.getBoundingClientRect();if(e.target===dialog&&(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom))dialog.close();});
-    dialog.addEventListener('close',()=>{document.body.style.overflow='';if(dialog.id==='film-dialog')dialog.querySelector('.film-frame').replaceChildren();});
+    dialog.addEventListener('close',()=>{document.body.style.overflow='';if(dialog.id==='film-dialog'){dialog.querySelector('video')?.pause();dialog.querySelector('.film-frame').replaceChildren();}});
   });
-  const menu=document.querySelector('#mobile-menu');document.querySelector('.menu-toggle').addEventListener('click',()=>openDialog(menu));menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.close()));
   document.addEventListener('obskura:afterhours',()=>{const game=document.querySelector('#after-hours');if(!game.open){openDialog(game);game.dispatchEvent(new Event('afterhours:open'));}});
   const filmDialog=document.querySelector('#film-dialog');
-  document.querySelectorAll('[data-film]').forEach(button=>button.addEventListener('click',()=>{
+  const frame=filmDialog.querySelector('.film-frame'),clipTabs=filmDialog.querySelector('.film-clip-tabs');
+  const external=document.querySelector('#film-external');
+  const showLocalClip=(film,index)=>{
+    const clip=film.clips[index];frame.querySelector('video')?.pause();
+    frame.classList.toggle('vertical',!!clip.vertical);frame.classList.add('local-film');
+    const video=document.createElement('video');video.controls=true;video.playsInline=true;video.preload='metadata';video.poster=clip.poster;video.src=clip.src;
+    video.setAttribute('aria-label',film.title+' / '+clip.label);frame.replaceChildren(video);
+    document.querySelector('#film-title').textContent=film.title+(film.clips.length>1?' / '+clip.label:'');
+    external.href=clip.src;external.textContent='Open video in a new tab ↗';
+    [...clipTabs.children].forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));
+    video.play().catch(()=>{});
+  };
+  document.querySelectorAll('[data-film]').forEach(button=>button.addEventListener('click',event=>{
+    event.preventDefault();
     const film=window.obskuraWorkFilms[button.dataset.film];
-    document.querySelector('#film-title').textContent=film.title;document.querySelector('#film-external').href=film.link;
-    const frame=filmDialog.querySelector('.film-frame');frame.classList.toggle('vertical',!!film.vertical);
-    const iframe=document.createElement('iframe');iframe.title=film.title;iframe.src=film.src;iframe.allow='autoplay; fullscreen; picture-in-picture';iframe.allowFullscreen=true;frame.replaceChildren(iframe);openDialog(filmDialog);
+    clipTabs.replaceChildren();clipTabs.hidden=true;frame.classList.remove('local-film');
+    if(film.type==='local'){
+      if(film.clips.length>1){
+        clipTabs.hidden=false;
+        film.clips.forEach((clip,index)=>{const tab=document.createElement('button');tab.type='button';tab.textContent=clip.label;tab.setAttribute('aria-pressed',String(index===0));tab.addEventListener('click',()=>showLocalClip(film,index));clipTabs.append(tab);});
+      }
+      openDialog(filmDialog);showLocalClip(film,Number(button.dataset.clip)||0);
+    }else{
+      document.querySelector('#film-title').textContent=film.title;external.href=film.link;external.textContent='Open film in a new tab ↗';
+      frame.classList.toggle('vertical',!!film.vertical);
+      const iframe=document.createElement('iframe');iframe.title=film.title;iframe.src=film.src;iframe.allow='autoplay; fullscreen; picture-in-picture';iframe.allowFullscreen=true;frame.replaceChildren(iframe);openDialog(filmDialog);
+    }
   }));
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)frame.querySelector('video')?.pause();});
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');
   const projects=[...document.querySelectorAll('.project')];
   // Reveal each pair once, as it enters the viewport. Keyboard focus opens it immediately.

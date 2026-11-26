@@ -1,0 +1,7 @@
+/* Keep individual project grades consistent between the homepage and works page. */
+body .project[data-work-id="midnight-generation-tour"] .project-media img{filter:sepia(.08) saturate(1.18) contrast(1.05)}
+body .project[data-work-id="overmono-portola"] .project-media img{filter:none}
+
+body .project[data-work-id="nicole-sara"] .project-media img{filter:none}
+
+.project-clip-links{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:13px}.project-clip-links .social-cut{display:inline-flex;align-items:center;font-size:12px;line-height:1.5;border-bottom:1px solid var(--line);padding:3px 0;margin:0}.project-clip-links .social-cut:hover{color:var(--red);border-color:var(--red)}

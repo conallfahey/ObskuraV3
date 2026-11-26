@@ -13,15 +13,39 @@
     node.replaceWith(line); line.append(node); line.style.clipPath = 'inset(-0.2em 100% -0.2em 0)'; return line;
   });
   const animations = [];
+  let announced=false;
+  const announceFinished=()=>{
+    if(!title.closest('.hero-fullbleed')||announced)return;
+    announced=true;window.obskuraHeroTitleFinished=true;
+    document.dispatchEvent(new Event('obskura:hero-title-finished'));
+  };
   const finish = () => {
     animations.forEach(animation => animation.cancel());
     lines.forEach(line => line.style.clipPath = 'none');
     bar?.classList.remove('load-bar');
+    if(title.closest('.hero-fullbleed'))document.documentElement.classList.add('hero-title-started');
+    announceFinished();
   };
   reduced.addEventListener('change', e => { if (e.matches) finish(); });
-  document.fonts.ready.then(() => {
+  const hero=title.closest('.hero-fullbleed');
+  const waitForHero=()=>new Promise(resolve=>{
+    if(!hero)return resolve();
+    let timer;
+    const fallback=()=>{clearTimeout(timer);finish();resolve(false);};
+    const playing=()=>{
+      const start=window.obskuraHeroLoading?.playingAt??performance.now();
+      timer=setTimeout(()=>resolve(true),Math.max(0,3200-(performance.now()-start)));
+    };
+    document.addEventListener('obskura:hero-unavailable',fallback,{once:true});
+    if(window.obskuraHeroLoading?.fallback)return fallback();
+    if(window.obskuraHeroLoading?.playingAt!=null)playing();
+    else document.addEventListener('obskura:hero-playing',playing,{once:true});
+  });
+  Promise.all([document.fonts.ready,waitForHero()]).then(([,animate]) => {
+    document.documentElement.classList.remove('hero-title-waiting');
+    if(animate===false)return;
     if (reduced.matches || document.documentElement.classList.contains('motion-paused')) { finish(); return; }
-    let delay = 140;
+    let delay = hero ? 0 : 140;
     lines.forEach(line => {
       // The italic work title enters as one word; the first line still types on.
       if (line.closest('.works-heading .serif')) {
@@ -48,6 +72,9 @@
       delay += duration + 70;
     });
     bar?.classList.add('load-bar');
+    if(hero)document.documentElement.classList.add('hero-title-started');
+    const group=[...animations,...(bar?.getAnimations({subtree:true})||[])];
+    Promise.all(group.map(animation=>animation.finished.catch(()=>{}))).then(announceFinished);
   });
   document.querySelector('.motion-toggle')?.addEventListener('click', () => {
     if (document.documentElement.classList.contains('motion-paused')) finish();
