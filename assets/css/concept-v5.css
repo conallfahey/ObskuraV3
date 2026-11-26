@@ -276,8 +276,9 @@
     .service-media{flex-shrink:0}
     .service p{margin-bottom:25px}
     .service .text-link{margin-top:auto;align-self:flex-start}
-    .poster-links{grid-template-columns:repeat(5,minmax(0,1fr))}
-    @media(max-width:600px){.poster-links{grid-template-columns:repeat(2,minmax(0,1fr))}.poster-links a:nth-child(-n+4){border-bottom:1px solid var(--poster-line)}.poster-links a:nth-child(4){border-right:0}.poster-links a:last-child{grid-column:1/-1}}
+    .poster-links{grid-template-columns:repeat(6,minmax(0,1fr))}
+    @media(min-width:601px) and (max-width:900px){.poster-links{grid-template-columns:repeat(3,minmax(0,1fr))}.poster-links a:nth-child(3n){border-right:0}.poster-links a:nth-child(-n+3){border-bottom:1px solid var(--poster-line)}}
+    @media(max-width:600px){.poster-links{grid-template-columns:repeat(2,minmax(0,1fr))}.poster-links a:nth-child(-n+4){border-bottom:1px solid var(--poster-line)}.poster-links a:nth-child(4){border-right:0}.poster-links a:last-child{grid-column:auto}}
 
     .nav-contact{background:var(--ink);color:var(--paper);padding:11px 18px;gap:22px;border:1px solid var(--ink);transition:background .2s,color .2s}
     .nav-contact:hover{background:var(--red);color:var(--paper);border-color:var(--red)}
