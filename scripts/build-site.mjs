@@ -83,6 +83,9 @@ async function include(relative) {
   const target = path.join(output, relative);
   const info = await stat(source);
   if (info.size > 25 * 1024 * 1024) throw new Error(`Asset exceeds Workers' 25 MiB limit: ${relative}`);
+  if (info.size < 200 && (await readFile(source, "utf8")).startsWith("version https://git-lfs.github.com/spec/v1")) {
+    throw new Error(`Git LFS content is missing for ${relative}. Run git lfs pull before building.`);
+  }
   await mkdir(path.dirname(target), { recursive: true });
   if (textTypes.has(path.extname(relative).toLowerCase())) {
     const text = await normalizeAssets(await readFile(source, "utf8"), relative);
@@ -121,8 +124,6 @@ await writeFile(path.join(output, "_headers"), `/*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: SAMEORIGIN
-  Cache-Control: public, max-age=0, must-revalidate
-
 /assets/*
   Cache-Control: public, max-age=86400
 

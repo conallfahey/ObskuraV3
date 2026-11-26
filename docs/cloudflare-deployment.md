@@ -10,6 +10,7 @@ Requires Node.js 22.18 or newer.
 
 ```sh
 npm ci
+git lfs pull
 npm run build
 npm run check
 npm run preview
@@ -40,7 +41,7 @@ yahir.ns.cloudflare.com
 
 The domain was using GoDaddy nameservers at setup. A registrar nameserver change is required to activate Cloudflare DNS. Existing Zoho MX, SPF, DKIM and DMARC records, the `pay` subdomain and `_domainconnect` record have been imported into Cloudflare. Compare any additional records in GoDaddy before switching. Domain registration remains with GoDaddy.
 
-The Vimeo hero and YouTube embeds remain with their existing hosts. Local project and social videos are included as static assets with byte-range playback support. This deployment uses no R2 bucket, Stream subscription, or backend database. The game keeps its current local leaderboard behavior.
+The Vimeo hero and YouTube embeds remain with their existing hosts. Local project and social videos are included as static assets for progressive playback. Videos in Git use Git LFS; pull their contents before building from a fresh checkout. This deployment uses no R2 bucket, Stream subscription, or backend database. The game keeps its current local leaderboard behavior.
 
 ## Editing
 
