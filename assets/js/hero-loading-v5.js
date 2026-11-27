@@ -17,12 +17,13 @@
     setTimeout(()=>root.classList.add('hero-nav-visible'),450);
   };
   window.obskuraHeroLoading={playingAt:null,fallback:false,progress:setProgress,
-    playing(){
-      if(this.playingAt!==null)return;
-      this.playingAt=performance.now();cancelAnimationFrame(progressFrame);progressFrame=0;progress=target=100;paint();release();
+    playing(elapsedSeconds=0){
+      if(this.playingAt!==null||this.fallback)return;
+      this.playingAt=Math.max(0,performance.now()-Math.max(0,elapsedSeconds)*1000);cancelAnimationFrame(progressFrame);progressFrame=0;progress=target=100;paint();release();
       document.dispatchEvent(new CustomEvent('obskura:hero-playing',{detail:{startedAt:this.playingAt}}));
     },
     skip(){
+      if(this.playingAt!==null||this.fallback)return;
       this.fallback=true;cancelAnimationFrame(progressFrame);progressFrame=0;release();root.classList.remove('hero-title-waiting');root.classList.add('hero-title-started');
       document.dispatchEvent(new Event('obskura:hero-unavailable'));
     }

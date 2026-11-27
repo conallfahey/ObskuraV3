@@ -12,6 +12,8 @@
   <link rel="preload" href="fonts/overused-grotesk/OverusedGrotesk-Medium.woff" as="font" type="font/woff" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://player.vimeo.com">
+  <link rel="preconnect" href="https://vod-adaptive-ak.vimeocdn.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manufacturing+Consent&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/after-hours.css">
   <script src="assets/js/after-hours.js" defer></script>
@@ -341,10 +343,10 @@
   <link rel="stylesheet" href="assets/css/title-entrance.css">
   <script src="assets/js/title-entrance.js?v=reel-nav-staging" defer></script>
   <link rel="stylesheet" href="assets/css/hero-loading-v5.css?v=reel-nav-staging">
-  <script src="assets/js/hero-loading-v5.js?v=reel-nav-staging"></script>
-  <script src="https://player.vimeo.com/api/player.js" defer></script>
+  <script src="assets/js/hero-loading-v5.js?v=playback-catchup"></script>
+  <script id="hero-vimeo-sdk" src="https://player.vimeo.com/api/player.js" async onerror="this.dataset.failed='true'"></script>
   <script src="assets/js/hero-choreography-v5.js?v=full-reel" defer></script>
-  <script src="assets/js/hero-reel-v5.js?v=continuous-menu" defer></script>
+  <script src="assets/js/hero-reel-v5.js?v=playback-catchup" defer></script>
   <link rel="stylesheet" href="assets/css/project-thumbnails-v5.css?v=clip-links">
 <link rel="stylesheet" href="assets/css/navigation-v5.css?v=mobile-proportions"><script src="js/library/TweenMax.min.js" defer></script><script src="assets/js/navigation-v5.js?v=centered-nav" defer></script><script src="js/random-menu-image.js" defer></script>
 <link rel="stylesheet" href="assets/css/social-reel-v5.css?v=swipe"><script src="assets/js/social-clips-v5.js" defer></script><script src="assets/js/social-reel-v5.js?v=swipe" defer></script><link rel="stylesheet" href="assets/css/home-socials-v5.css?v=fuller-section">
@@ -360,7 +362,11 @@
   </header>
   <main id="main">
     <section class="hero hero-fullbleed" aria-labelledby="hero-title">
-      <div class="hero-reel" aria-hidden="true"><iframe src="https://player.vimeo.com/video/1100065426?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;playsinline=1&amp;autopause=0&amp;dnt=1&amp;title=0&amp;byline=0&amp;controls=0" title="Obskura full reel" allow="autoplay; fullscreen; picture-in-picture" tabindex="-1"></iframe></div>
+      <div class="hero-reel" aria-hidden="true"><iframe data-src="https://player.vimeo.com/video/1100065426?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;playsinline=1&amp;autopause=0&amp;dnt=1&amp;title=0&amp;byline=0&amp;controls=0&amp;preload=auto" title="Obskura full reel" allow="autoplay; fullscreen; picture-in-picture" tabindex="-1"></iframe></div>
+      <script>
+        // Pick the initial stream before navigating the iframe; avoid downloading two versions.
+        {const frame=document.querySelector('.hero-reel iframe'),url=new URL(frame.dataset.src);url.searchParams.set('quality',matchMedia('(max-width: 767px)').matches?'720p':'1080p');frame.src=url.href;}
+      </script>
       <div class="masthead"><h1 id="hero-title" class="wordmark"><span class="wordmark-colorblocks" aria-hidden="true"><i></i><i></i><i></i></span>OBSKURA</h1><div class="hero-intro"><div class="hero-description"><p class="meta">Chicago & beyond</p></div><a class="hero-cta" href="#getintouch">Let’s talk <span class="arrow" aria-hidden="true">↗</span></a></div></div>
       <button class="hero-watch-reel" type="button" data-film="reel" aria-label="Play full reel with sound"><svg width="13" height="15" viewBox="0 0 13 15" fill="none" aria-hidden="true"><path d="m1 1 11 6.5L1 14V1Z" fill="currentColor"/></svg><span>Play full reel</span></button>
       <a class="hero-scroll" href="#team" aria-label="Scroll to meet Obskura"><svg width="20" height="26" viewBox="0 0 20 26" fill="none" aria-hidden="true"><path d="M10 1v22m-7-7 7 7 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg></a>
