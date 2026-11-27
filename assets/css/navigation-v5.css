@@ -9,6 +9,9 @@ html:has(#mobile-menu[open]){background:#15171b}
 .nav .nav-logo-button{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;padding:8px}
 .nav .nav-mark{width:39px;height:39px}
 @media(max-width:600px){.nav .nav-mark{width:34px;height:34px}}
+/* The original PNG includes transparent padding; the visible mark is about 12% smaller. */
+.nav .nav-mark-original{width:42px;height:42px;object-fit:contain}
+@media(max-width:600px){.nav .nav-mark-original{width:37px;height:37px}}
 .nav .menu-toggle{display:block;position:absolute;right:1.5rem;top:1.3rem;width:90px;padding:0;color:inherit}
 .hamburger_menu {
   display: flex;
